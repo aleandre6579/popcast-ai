@@ -1,0 +1,9 @@
+essentia-tensorflow
+yt-dlp
+ipython
+matplotlib
+pandas
+requests
+librosa
+numpy
+python-dotenv
