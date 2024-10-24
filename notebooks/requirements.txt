@@ -7,3 +7,4 @@ requests
 librosa
 numpy
 python-dotenv
+tqdm
