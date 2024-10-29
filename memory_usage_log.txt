@@ -1,0 +1,2166 @@
+Timestamp: 2024-10-27 09:28:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946        5795        5553           3         597        5878
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:29:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6261        5087           3         597        5412
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:29:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6101        5247           3         597        5572
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:30:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6304        5042           3         598        5369
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:30:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6357        4987           3         601        5316
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:31:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6817        4526           3         602        4856
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:31:34
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6520        4824           3         601        5153
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:32:02
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6379        4965           3         602        5294
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:32:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6392        4951           3         602        5280
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:32:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6456        4887           3         602        5217
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:33:27
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6603        4740           3         602        5069
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:33:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6735        4608           3         602        4938
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:34:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7449        3894           3         602        4224
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:34:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6746        4597           3         602        4927
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:35:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6788        4555           3         602        4885
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:35:50
+               total        used        free      shared  buff/cache   available
+Mem:           11946        6816        4527           3         602        4857
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:36:18
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7218        4125           3         602        4455
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:36:48
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7195        4147           3         602        4478
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:37:17
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7091        4252           3         602        4582
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:37:45
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7390        3953           3         602        4283
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:38:13
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7457        3885           3         602        4215
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:38:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7621        3722           3         602        4052
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:39:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7638        3705           3         602        4035
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:39:39
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7538        3804           3         603        4135
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:40:07
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7441        3901           3         603        4232
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:40:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7752        3590           3         603        3921
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:41:04
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7809        3533           3         603        3864
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:41:32
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7756        3587           3         603        3917
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:42:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7890        3452           3         603        3783
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:42:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7662        3680           3         603        4011
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:42:57
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7847        3495           3         603        3826
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:43:27
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7928        3414           3         603        3745
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:43:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8011        3331           3         603        3662
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:44:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8076        3266           3         603        3597
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:44:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946        7932        3409           3         603        3740
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:45:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8044        3297           3         603        3628
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:45:49
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8511        2831           3         603        3162
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:46:18
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8422        2920           3         603        3251
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:46:46
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8392        2950           3         603        3281
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:47:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8471        2871           3         603        3202
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:47:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8450        2892           3         603        3223
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:48:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8719        2622           3         603        2954
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:48:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8563        2778           3         603        3110
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:49:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8578        2756           3         610        3095
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:49:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8684        2650           3         610        2989
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:50:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8614        2721           3         611        3059
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:50:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8833        2501           3         611        2839
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:51:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8627        2708           3         611        3046
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:51:32
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8822        2512           3         611        2851
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:52:00
+               total        used        free      shared  buff/cache   available
+Mem:           11946        8958        2376           3         611        2715
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:52:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9071        2263           3         611        2602
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:52:57
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9053        2281           3         611        2620
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:53:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9196        2138           3         611        2476
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:53:54
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9074        2260           3         611        2599
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:54:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9517        1817           3         611        2156
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:54:50
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9077        2257           3         611        2596
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:55:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9577        1756           3         611        2095
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:55:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10651         683           3         611        1022
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:56:16
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9409        1925           3         611        2264
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:56:44
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9665        1669           3         611        2008
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:57:14
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10404         929           3         611        1268
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:57:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9699        1635           3         611        1974
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:58:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9465        1868           3         612        2208
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:58:39
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9775        1558           3         612        1897
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:59:07
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9643        1690           3         612        2029
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 09:59:36
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9784        1549           3         612        1888
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:00:04
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9933        1400           3         612        1740
+Swap:           3072           0        3072
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:00:32
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9952        1699           2         294        1736
+Swap:           3072          60        3011
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:01:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9839        1810           2         296        1849
+Swap:           3072          60        3011
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:01:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10622        1026           2         296        1065
+Swap:           3072          59        3012
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:03:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10241        1443           2         261        1447
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:03:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10079        1605           2         261        1608
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:04:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10068        1616           2         261        1619
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:04:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10380        1304           2         261        1308
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:05:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10193        1491           2         261        1495
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:05:36
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10305        1378           2         261        1383
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:06:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10752         932           2         261         936
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:06:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10524        1160           2         262        1164
+Swap:           3072         124        2947
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:07:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946       11534         160           2         251         149
+Swap:           3072         418        2653
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:07:30
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10388        1306           2         251        1296
+Swap:           3072         418        2653
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:07:58
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10474        1220           2         251        1210
+Swap:           3072         418        2653
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:08:26
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10431        1263           2         251        1257
+Swap:           3072         418        2653
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:08:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10601        1093           2         250        1086
+Swap:           3072         418        2653
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:09:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10777         918           2         250         911
+Swap:           3072         418        2653
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:09:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946       11124         576           2         245         564
+Swap:           3072         435        2636
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:10:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10496        1204           2         245        1192
+Swap:           3072         435        2636
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:10:50
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10532        1222           2         191        1172
+Swap:           3072        1012        2059
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:11:18
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10404        1355           2         186        1303
+Swap:           3072        1012        2059
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:11:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10515        1246           2         184        1193
+Swap:           3072        1012        2059
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:12:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10375        1383           2         187        1331
+Swap:           3072        1012        2059
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:12:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10506        1251           2         188        1200
+Swap:           3072        1012        2059
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:13:12
+               total        used        free      shared  buff/cache   available
+Mem:           11946       11069         708           2         167         647
+Swap:           3072        1594        1477
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:13:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10323        1455           2         167        1393
+Swap:           3072        1594        1477
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:14:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10295        1482           2         168        1420
+Swap:           3072        1594        1477
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:14:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10432        1346           2         168        1284
+Swap:           3072        1594        1477
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:15:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10427        1350           2         168        1289
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:15:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10712        1065           2         168        1004
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:16:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10474        1303           2         168        1241
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:16:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10597        1179           2         169        1118
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:17:00
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10507        1269           2         169        1208
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:17:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10486        1290           2         169        1229
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:17:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10487        1288           2         169        1228
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:18:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946       11477         299           2         169         238
+Swap:           3072        1593        1478
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:18:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9909        1891           2         145        1818
+Swap:           3072        2592         479
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:19:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9643        2157           2         144        2084
+Swap:           3072        2592         479
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:19:50
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9885        1915           2         145        1842
+Swap:           3072        2590         481
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:20:18
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10107        1693           2         145        1620
+Swap:           3072        2590         481
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:20:46
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10064        1736           2         145        1663
+Swap:           3072        2590         481
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:21:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10036        1763           2         146        1691
+Swap:           3072        2590         481
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:21:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10036        1763           2         146        1691
+Swap:           3072        2590         481
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:22:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10020        1779           2         146        1706
+Swap:           3072        2590         481
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:22:41
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10221        1578           2         146        1506
+Swap:           3072        2589         482
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:23:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946        9976        1832           1         137        1756
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:23:38
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10073        1734           1         137        1658
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:24:06
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10464        1343           1         137        1267
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:24:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10204        1603           1         137        1527
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:25:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946       11121         686           1         138         610
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:25:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10247        1560           1         138        1484
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:26:00
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10362        1445           1         138        1369
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:26:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10389        1417           1         138        1341
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:26:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10493        1314           1         138        1238
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:27:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10468        1339           1         138        1263
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:27:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10730        1076           1         138        1000
+Swap:           3072        2931         140
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:28:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10627        1180           1         138        1104
+Swap:           3072        2924         147
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:28:49
+               total        used        free      shared  buff/cache   available
+Mem:           11946       10743        1065           1         137         988
+Swap:           3072        2921         150
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:29:18
+               total        used        free      shared  buff/cache   available
+Mem:           11946        5109        6672           0         163        6610
+Swap:           3072         980        2091
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:29:48
+               total        used        free      shared  buff/cache   available
+Mem:           11946        5006        6774           0         165        6712
+Swap:           3072         980        2091
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:30:16
+               total        used        free      shared  buff/cache   available
+Mem:           11946        1624       10153           0         169       10092
+Swap:           3072         838        2233
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:30:44
+               total        used        free      shared  buff/cache   available
+Mem:           11946         876       10894           0         175       10837
+Swap:           3072         713        2358
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:31:13
+               total        used        free      shared  buff/cache   available
+Mem:           11946         878       10891           0         176       10835
+Swap:           3072         712        2359
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:31:41
+               total        used        free      shared  buff/cache   available
+Mem:           11946         877       10892           0         176       10836
+Swap:           3072         712        2359
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:32:09
+               total        used        free      shared  buff/cache   available
+Mem:           11946         884       10885           0         176       10829
+Swap:           3072         712        2359
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:32:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946         880       10890           0         176       10833
+Swap:           3072         712        2359
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:33:06
+               total        used        free      shared  buff/cache   available
+Mem:           11946         870       10899           0         176       10843
+Swap:           3072         712        2359
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:33:34
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10886           0         176       10830
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:34:02
+               total        used        free      shared  buff/cache   available
+Mem:           11946         882       10887           0         176       10830
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:34:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10880           0         176       10823
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:34:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10878           0         176       10822
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:35:27
+               total        used        free      shared  buff/cache   available
+Mem:           11946         884       10885           0         177       10828
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:35:55
+               total        used        free      shared  buff/cache   available
+Mem:           11946         878       10890           0         177       10834
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:36:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946         877       10891           0         177       10835
+Swap:           3072         710        2361
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:36:54
+               total        used        free      shared  buff/cache   available
+Mem:           11946         882       10886           0         177       10830
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:37:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946         879       10889           0         177       10833
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:37:50
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10885           0         177       10829
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:38:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10881           0         177       10826
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:38:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10881           0         177       10825
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:39:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10882           0         177       10826
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:39:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10940           0         120       10855
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:40:12
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10935           0         122       10851
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:40:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10931           0         124       10848
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:41:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10933           0         122       10849
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:41:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946         884       10937           0         123       10855
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:42:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10936           0         123       10853
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:42:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10932           0         123       10850
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:43:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10936           0         124       10853
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:43:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946         884       10937           0         124       10855
+Swap:           3072         709        2362
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:44:00
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10935           0         124       10853
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:44:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10934           0         124       10851
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:44:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10933           0         124       10851
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:45:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10933           0         124       10851
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:45:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10927           0         124       10845
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:46:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10932           0         124       10850
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:46:49
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10932           0         124       10849
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:47:18
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10935           0         124       10853
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:47:46
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10938           0         125       10855
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:48:14
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10930           0         125       10848
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:48:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10925           0         125       10843
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:49:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10926           0         125       10844
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:49:39
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10928           0         125       10846
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:50:09
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10925           0         125       10843
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:50:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10931           0         125       10849
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:51:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10926           0         125       10845
+Swap:           3072         708        2363
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:51:34
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10924           0         125       10842
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:52:02
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10931           0         125       10849
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:52:30
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10930           0         125       10848
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:52:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10931           0         125       10849
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:53:27
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10930           0         125       10848
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:53:55
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10934           0         125       10852
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:54:23
+               total        used        free      shared  buff/cache   available
+Mem:           11946         880       10939           0         125       10857
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:54:52
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10933           0         125       10851
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:55:20
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10934           0         126       10853
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:55:48
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10936           0         126       10854
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:56:16
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10930           0         126       10849
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:56:45
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10932           0         126       10850
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:57:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10931           0         126       10850
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:57:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10927           0         126       10846
+Swap:           3072         707        2364
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:58:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10934           0         126       10852
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:58:39
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10926           0         126       10845
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:59:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10931           0         126       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 10:59:36
+               total        used        free      shared  buff/cache   available
+Mem:           11946         882       10937           0         126       10856
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:00:04
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10934           0         123       10851
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:00:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10931           0         124       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:01:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10937           0         125       10855
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:01:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10932           0         125       10850
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:01:57
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10931           0         125       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:02:26
+               total        used        free      shared  buff/cache   available
+Mem:           11946         881       10939           0         125       10857
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:02:54
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10929           0         125       10847
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:03:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10932           0         125       10850
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:03:52
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10931           0         125       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:04:20
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10930           0         125       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:04:49
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10932           0         126       10850
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:05:17
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10937           0         126       10855
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:05:45
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10931           0         126       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:06:13
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10934           0         126       10853
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:06:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10931           0         126       10849
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:07:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10932           0         126       10850
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:07:38
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10930           0         126       10848
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:08:06
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10932           0         126       10851
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:08:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10927           0         126       10846
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:09:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10928           0         126       10847
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:09:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10929           0         126       10848
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:09:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10928           0         126       10846
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:10:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10921           0         126       10840
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:10:58
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10928           0         126       10847
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:11:26
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10927           0         126       10846
+Swap:           3072         706        2365
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:11:54
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10929           0         126       10847
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:12:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10931           0         126       10850
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:12:51
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10928           0         127       10847
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:13:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10928           0         127       10847
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:13:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10929           0         127       10848
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:14:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10930           0         127       10848
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:14:44
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10933           0         127       10852
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:15:12
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10929           0         127       10848
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:15:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10926           0         127       10845
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:16:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10930           0         127       10849
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:16:36
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10927           0         127       10846
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:17:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10929           0         131       10850
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:17:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10924           0         131       10845
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:18:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10927           0         131       10848
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:18:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946         886       10928           0         131       10849
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:18:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10921           0         131       10842
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:19:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10927           0         131       10848
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:19:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10924           0         131       10845
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:20:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10921           0         131       10842
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:20:52
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10925           0         131       10846
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:21:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10921           0         131       10842
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:21:49
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10922           0         131       10843
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:22:17
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10921           0         131       10842
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:22:45
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10926           0         132       10847
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:23:14
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10924           0         132       10845
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:23:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10920           0         132       10842
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:24:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10918           0         132       10839
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:24:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10926           0         132       10847
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:25:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946         884       10929           0         132       10850
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:25:36
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10923           0         132       10845
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:26:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10925           0         132       10846
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:26:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10924           0         132       10845
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:27:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10928           0         132       10849
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:27:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10930           0         132       10851
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:27:58
+               total        used        free      shared  buff/cache   available
+Mem:           11946         883       10930           0         132       10852
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:28:26
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10922           0         132       10843
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:28:54
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10918           0         132       10840
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:29:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10922           0         132       10844
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:29:51
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10919           0         132       10841
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:30:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10920           0         132       10841
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:30:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10916           0         133       10837
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:31:17
+               total        used        free      shared  buff/cache   available
+Mem:           11946         899       10913           0         133       10835
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:31:45
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10917           0         133       10839
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:32:14
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10928           0         133       10850
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:32:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10927           0         133       10849
+Swap:           3072         705        2366
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:33:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10923           0         133       10845
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:33:38
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10919           0         133       10841
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:34:07
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10922           0         133       10844
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:34:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10920           0         133       10842
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:35:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10923           0         133       10845
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:35:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10919           0         133       10841
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:35:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10920           0         133       10842
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:36:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         899       10913           0         133       10835
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:36:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10919           0         133       10841
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:37:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946         899       10913           0         133       10835
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:37:52
+               total        used        free      shared  buff/cache   available
+Mem:           11946         900       10912           0         133       10834
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:38:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946         901       10911           0         133       10833
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:38:51
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10915           0         133       10837
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:39:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10921           0         133       10843
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:39:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10922           0         133       10844
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:40:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10919           0         134       10842
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:40:44
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10918           0         134       10840
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:41:12
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10924           0         134       10847
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:41:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10915           0         136       10838
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:42:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10912           0         136       10835
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:42:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10920           0         136       10844
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:43:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10916           0         136       10840
+Swap:           3072         704        2367
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:43:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946         901       10907           0         136       10831
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:44:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10911           0         136       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:44:30
+               total        used        free      shared  buff/cache   available
+Mem:           11946         902       10906           0         136       10830
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:45:00
+               total        used        free      shared  buff/cache   available
+Mem:           11946         903       10906           0         136       10829
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:45:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10911           0         136       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:45:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946         900       10909           0         136       10833
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:46:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10913           0         137       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:46:52
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10914           0         137       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:47:21
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10917           0         137       10841
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:47:49
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10911           0         137       10835
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:48:17
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10914           0         137       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:48:45
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10915           0         137       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:49:14
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10914           0         137       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:49:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10911           0         137       10835
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:50:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10912           0         137       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:50:38
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10913           0         137       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:51:06
+               total        used        free      shared  buff/cache   available
+Mem:           11946         901       10906           0         137       10830
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:51:35
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10914           0         137       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:52:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         888       10920           0         137       10844
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:52:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10918           0         137       10842
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:53:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946         899       10909           0         137       10833
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:53:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10910           0         137       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:53:58
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10909           0         138       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:54:26
+               total        used        free      shared  buff/cache   available
+Mem:           11946         902       10905           0         138       10830
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:54:54
+               total        used        free      shared  buff/cache   available
+Mem:           11946         900       10907           0         138       10832
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:55:22
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10909           0         138       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:55:50
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10919           0         138       10843
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:56:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10918           0         138       10842
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:56:47
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10912           0         138       10836
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:57:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946         900       10908           0         138       10832
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:57:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946         900       10907           0         138       10832
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:58:12
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10914           0         138       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:58:42
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10911           0         138       10835
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:59:10
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10910           0         138       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 11:59:38
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10912           0         138       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:00:06
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10914           0         138       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:00:34
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10911           0         138       10836
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:01:03
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10913           0         138       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:01:31
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10911           0         138       10835
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:01:59
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10913           0         138       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:02:27
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10912           0         138       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:02:55
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10915           0         138       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:03:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10913           0         138       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:03:52
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10917           0         139       10842
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:04:20
+               total        used        free      shared  buff/cache   available
+Mem:           11946         902       10904           0         139       10829
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:04:48
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10909           0         139       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:05:16
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10912           0         139       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:05:46
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10913           0         139       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:06:15
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10913           0         139       10838
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:06:43
+               total        used        free      shared  buff/cache   available
+Mem:           11946         885       10921           0         139       10846
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:07:11
+               total        used        free      shared  buff/cache   available
+Mem:           11946         887       10919           0         139       10844
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:07:39
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10916           0         139       10841
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:08:07
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10915           0         139       10840
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:08:36
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10914           0         139       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:09:04
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10908           0         139       10833
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:09:32
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10910           0         139       10835
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:10:00
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10911           0         139       10836
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:10:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10912           0         139       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:10:57
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10909           0         139       10834
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:11:25
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10908           0         139       10833
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:11:53
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10911           0         139       10836
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:12:23
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10912           0         139       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:12:51
+               total        used        free      shared  buff/cache   available
+Mem:           11946         892       10913           0         139       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:13:19
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10915           0         140       10840
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:13:48
+               total        used        free      shared  buff/cache   available
+Mem:           11946         894       10912           0         140       10837
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:14:16
+               total        used        free      shared  buff/cache   available
+Mem:           11946         891       10914           0         140       10839
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:14:44
+               total        used        free      shared  buff/cache   available
+Mem:           11946         889       10916           0         140       10842
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:15:12
+               total        used        free      shared  buff/cache   available
+Mem:           11946         890       10900           0         155       10833
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:15:40
+               total        used        free      shared  buff/cache   available
+Mem:           11946         900       10890           0         155       10823
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:16:08
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10892           0         155       10825
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:16:37
+               total        used        free      shared  buff/cache   available
+Mem:           11946         893       10897           0         155       10830
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:17:05
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10890           0         158       10825
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:17:33
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10891           0         158       10826
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:18:01
+               total        used        free      shared  buff/cache   available
+Mem:           11946         895       10892           0         158       10827
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:18:29
+               total        used        free      shared  buff/cache   available
+Mem:           11946         899       10888           0         158       10822
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:18:58
+               total        used        free      shared  buff/cache   available
+Mem:           11946         896       10891           0         158       10825
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:19:28
+               total        used        free      shared  buff/cache   available
+Mem:           11946         897       10890           0         158       10825
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:19:56
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10888           0         158       10823
+Swap:           3072         703        2368
+
+--------------------------------------------------
+Timestamp: 2024-10-27 12:20:24
+               total        used        free      shared  buff/cache   available
+Mem:           11946         898       10888           0         158       10823
+Swap:           3072         703        2368
+
+--------------------------------------------------
