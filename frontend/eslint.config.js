@@ -1,7 +1,7 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
+import globals from 'globals'
+import pluginJs from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import pluginReact from 'eslint-plugin-react'
 
 export default {
   files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
@@ -17,4 +17,4 @@ export default {
     ...tseslint.configs.recommended.rules, // Add rules from TypeScript ESLint recommended config
     ...pluginReact.configs.flat.recommended.rules, // Add rules from React plugin recommended config
   },
-};
+}

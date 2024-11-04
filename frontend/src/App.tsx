@@ -1,43 +1,31 @@
-import './App.css';
-import { Canvas } from '@react-three/fiber';
-import { RoundedBox, OrbitControls } from '@react-three/drei';
+import './App.css'
+import { Canvas } from '@react-three/fiber'
+import MyRoundedBox from './components/threejs/my_rounded_box'
+import { Suspense } from 'react'
+import { Environment } from '@react-three/drei'
+import * as THREE from 'three'
 
 function App() {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas shadows>
-        {/* Lighting with shadow casting enabled */}
-        <ambientLight intensity={0.3} />
-        <pointLight 
-          position={[5, 5, 5]} 
-          intensity={30} 
-          castShadow 
-          shadow-mapSize-width={1024} 
-          shadow-mapSize-height={1024} 
-        />
-        
-        {/* RoundedBox with shadow casting */}
-        <RoundedBox
-          args={[1, 1, 1]}
-          radius={0.05}
-          smoothness={4}
-          bevelSegments={4}
-          creaseAngle={0.4}
-          castShadow
-        >
-          <meshPhongMaterial color="cyan" />
-        </RoundedBox>
+      <Canvas id="threejs-canvas" shadows>
+        <Suspense fallback={null}>
+          <Environment background>
+            <mesh>
+              <sphereGeometry args={[50,100,100]} />
+              <meshBasicMaterial color={"cyan"} side={THREE.BackSide} />
+            </mesh>
+          </Environment>
 
-        {/* Shadow-receiving plane */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]} receiveShadow>
-          <planeGeometry args={[10, 10]} />
-          <shadowMaterial opacity={0.3} />
-        </mesh>
-
-        <OrbitControls />
+          <ambientLight intensity={0.1} />
+          <MyRoundedBox position={[0, 0, 1]}/>
+          <MyRoundedBox position={[0, 0, 2]}/>
+          <MyRoundedBox position={[1, 1, 1]}/>
+          <MyRoundedBox position={[1, 1, 2]}/>
+        </Suspense>
       </Canvas>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
