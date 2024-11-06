@@ -30,6 +30,13 @@ Run this command to replace Numpy with an approparite version:
 pip install numpy==1.26.4
 ```
 
+In order to run essentia models with GPU, create an Anaconda environment and install necessary dependencies:
+```
+conda create -n ess python=3.10
+conda activate ess
+conda install -c conda-forge -y cudatoolkit=11.2 cudnn=8.1
+```
+
 <br/>
 
 ### Using Frontend
