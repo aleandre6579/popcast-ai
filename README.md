@@ -35,6 +35,7 @@ In order to run essentia models with GPU, create an Anaconda environment and ins
 conda create -n ess python=3.10
 conda activate ess
 conda install -c conda-forge -y cudatoolkit=11.2 cudnn=8.1
+conda install -c nvidia cuda-toolkit
 ```
 
 <br/>
