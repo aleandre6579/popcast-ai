@@ -38,10 +38,6 @@ conda activate ess
 And install necessary dependencies:
 ```
 conda install -c conda-forge -y cudatoolkit=11.2 cudnn=8.1
-```
-```
-conda install -c nvidia cuda-toolkit
-```
 
 <br/>
 
