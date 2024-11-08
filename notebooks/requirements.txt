@@ -5,7 +5,8 @@ matplotlib
 pandas
 requests
 librosa
-numpy
 python-dotenv
 tqdm
 ipykernel
+h5py
+ipywidgets
