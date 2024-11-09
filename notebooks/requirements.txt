@@ -1,4 +1,5 @@
 essentia-tensorflow
+tensorflow
 yt-dlp
 ipython
 matplotlib

@@ -232,7 +232,7 @@ def process_songs():
     
     song_paths = np.array([os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)])
 
-    songs_data_lower, songs_data_higher = [len(song_paths)//24*0, len(song_paths)//24*1]
+    songs_data_lower, songs_data_higher = [len(song_paths)//48*0, len(song_paths)//48*1]
     #songs_data_lower, songs_data_higher = [0, 20]
     song_paths = song_paths[songs_data_lower:songs_data_higher]
     
@@ -258,10 +258,10 @@ def process_songs():
         for song_index, song_features in song_results:
             for feature, value in song_features.items():
                 if feature == "Embeddings":
+                    song_video_id = songs_data_full.iloc[song_index]['videoID']
                     if song_video_id in hdf5_file:
                         print(f"Dataset for {song_video_id} already exists, skipping.")
                         continue
-                    song_video_id = songs_data_full.iloc[song_index]['videoID']
                     hdf5_file.create_dataset(song_video_id, data=value, compression="gzip")
                     continue
                 
