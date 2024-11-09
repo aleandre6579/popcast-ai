@@ -281,5 +281,3 @@ print(songs_data_full.dropna(subset=['Approachability']))
 
 # %%
 songs_data_full.to_csv('data/songs_data_models_1.csv')
-
-
