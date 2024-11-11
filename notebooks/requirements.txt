@@ -1,8 +1,6 @@
 essentia-tensorflow
-tensorflow
 yt-dlp
 ipython
-matplotlib
 pandas
 requests
 librosa
