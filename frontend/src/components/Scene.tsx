@@ -9,6 +9,7 @@ import {
 import * as THREE from 'three'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { useThree } from '@react-three/fiber'
+import { clamp } from 'three/src/math/MathUtils.js'
 
 function PostProcess() {
   return (
@@ -28,53 +29,58 @@ function Scene() {
     degrees * (Math.PI / 180)
 
   const { width: w, height: h } = useThree((state) => state.viewport)
+  const sceneScale = clamp(w / 4, 1, 5)
 
   return (
     <>
         <AdaptiveDpr pixelated />
         <PostProcess />
-        <Environment background environmentIntensity={0.2}>
+        <Environment background environmentIntensity={0.05}>
           <mesh>
             <sphereGeometry args={[50, 100, 100]} />
-            <meshBasicMaterial color={'white'} side={THREE.BackSide} />
+            <meshBasicMaterial color={'lightgrey'} side={THREE.BackSide} />
           </mesh>
         </Environment>
+        
+        <fog attach="fog" args={['grey', 10, 100]} />
+    
 
         <PerspectiveCamera
           makeDefault
           position={[0, 7, 15]}
           rotation={[-0.3, 0, 0]}
         />
+        <OrbitControls />
+        <ambientLight intensity={1} />
+        <spotLight
+          position={[0, 8, 12]}
+          intensity={100}
+          castShadow
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+        />
 
-        <group scale={[w / 4, w / 4, w / 4]}>
+
+        <group scale={sceneScale}>
             {/* Floor */}
             <mesh
-            rotation={[-Math.PI / 2, 0, 0]}
-            position={[0, -1, 0]}
-            receiveShadow
+              rotation={[-Math.PI / 2, 0, 0]}
+              position={[0, 0, 0]}
+              castShadow receiveShadow
             >
-            <planeGeometry args={[30, 30]} />
-            <shadowMaterial opacity={0.2} />
+              <meshStandardMaterial color={0xDFA06E} />
+              <planeGeometry args={[10, 10]} />
             </mesh>
 
-            <CDPlayer position={[0, 0, 0]} scale={[5,5,5]} />
+            <CDPlayer position={[0, 0, 0.5]} scale={[5,5,5]} />
             <CD
-            position={[-0.03, 0.48, 1]}
-            rotation={[
-                degreesToRadians(100),
-                degreesToRadians(-29),
-                degreesToRadians(40),
-            ]}
-            scale={[0.1, 0.1, 0.1]}
-            />
-
-            <ambientLight intensity={1} />
-            <pointLight
-            position={[5, 5, 5]}
-            intensity={1}
-            castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
+              position={[-0.03, 0.48, 1.3]}
+              rotation={[
+                  degreesToRadians(100),
+                  degreesToRadians(-29),
+                  degreesToRadians(40),
+              ]}
+              scale={[0.1, 0.1, 0.1]}
             />
         </group>
     </>
