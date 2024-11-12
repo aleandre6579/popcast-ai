@@ -24,18 +24,10 @@ export default function Screen(props: MeshProps) {
 
     void main() {
       // Pixelation effect (lower value for larger pixels)
-      vec2 uv = floor(vUv * 10.0) / 10.0; // Change the pixel size
-
-      // Static blue noise (random effect based on time)
-      float noise = random(uv + time * 0.1); // Add time-based variation
-
-      // Use a blue color with some noise variation
-      vec3 color = vec3(0.0, 0.0, 1.0) * (0.8 + 0.2 * noise); // Blue with static noise
-
-      // Add subtle glow or reflection effect (make it slightly brighter and blend with background)
-      color = mix(color, vec3(0.2, 0.2, 0.3), 0.4);
-
-      gl_FragColor = vec4(color, 0.6); // Set transparency
+      vec2 uv = floor(vUv * 200.0) / 10.0;
+      float noise = random(uv + time * 0.1);
+      vec3 color = vec3(0.0, 0.0, 1.0) * (0.8 + 0.2 * noise);
+      gl_FragColor = vec4(color, 1.0);
     }
   `
 
@@ -43,7 +35,7 @@ export default function Screen(props: MeshProps) {
   const ScreenShape = () => {
     const shape = new THREE.Shape()
     const width = 1.19
-    const height = 0.22
+    const height = 0.23
     const cornerRadius = 0.07
 
     // Draw screen shape with rounded corners on the left side
@@ -58,7 +50,6 @@ export default function Screen(props: MeshProps) {
     return new THREE.ShapeGeometry(shape)
   }
 
-  // Update the time uniform using the useFrame hook
   useFrame(({ clock }) => {
     if (meshRef.current && meshRef.current.material) {
       meshRef.current.material.uniforms.time.value = clock.getElapsedTime()
@@ -66,9 +57,14 @@ export default function Screen(props: MeshProps) {
   })
 
   return (
-    <mesh ref={meshRef} {...props} geometry={ScreenShape()}>
+    <mesh
+      scale={[0.1, 0.1, 0]}
+      ref={meshRef}
+      {...props}
+      geometry={ScreenShape()}
+    >
       <shaderMaterial
-        attach="material"
+        attach='material'
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={{
@@ -76,10 +72,6 @@ export default function Screen(props: MeshProps) {
         }}
         transparent={true} // Enable transparency
         opacity={0.8} // Set opacity
-        metalness={0.2} // Simulate a reflective surface
-        roughness={0.5} // Adjust roughness for a glossy effect
-        emissive={new THREE.Color(0.1, 0.1, 0.2)} // Add some emissive glow (light emitted by the material)
-        emissiveIntensity={0.3} // Control the intensity of the glow
       />
     </mesh>
   )

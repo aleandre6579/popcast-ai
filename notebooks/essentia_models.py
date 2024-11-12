@@ -1,7 +1,3 @@
-# %% [markdown]
-# ## Install/Import Dependencies
-
-# %%
 import os
 import numpy as np
 import pandas as pd
@@ -22,63 +18,21 @@ from essentia.standard import (
     TensorflowPredict2D
 )
 
-# %% [markdown]
-# #### Global Constants
-
-# %%
 load_dotenv()
 DOWNLOAD_FOLDER = os.getenv('DOWNLOAD_FOLDER')
 CPU_THREADS = int(os.getenv('CPU_THREADS'))
 MODELS_PATH = './models'
 
-# %% [markdown]
-# #### Data
-
-# %%
-# Get classes for moodtheme predictor model
 with open('data/mtg_jamendo_moodtheme-discogs-effnet-1.json', 'r') as jamendo_file:
     jamendo_metadata = json.load(jamendo_file)
 jamendo_classes = jamendo_metadata['classes']
 
-# Get classes for instrument predictor model
 with open('data/mtg_jamendo_instrument-discogs-effnet-1.json', 'r') as jamendo_file:
     jamendo_instrument_metadata = json.load(jamendo_file)
 jamendo_instrument_classes = jamendo_instrument_metadata['classes']
 
-# %%
 songs_data = pd.read_csv('data/songs_data.csv', index_col=0)
 
-# %% [markdown]
-# #### Util Functions
-
-# %%
-def get_total_memory_usage(process):
-    memory_summary = {f'Process {process.pid}': process.memory_info().rss / (1024 * 1024)}
-    for child in process.children(recursive=True):
-        memory_summary = memory_summary | {f'Child Process {child.pid}': child.memory_info().rss / (1024 * 1024)}
-    return memory_summary
-
-def print_memory_usage(process):
-    print(get_total_memory_usage(process))
-    snapshot = tracemalloc.take_snapshot()
-    print(f"Top Consumer of Process {process.pid}: {snapshot.statistics('lineno')[0]}")
-
-def monitor_memory_usage(process, kill_thread, interval=120):
-    while True:
-        try:
-            if kill_thread.value:
-                print("MONITOR THREAD KILLED")
-                return
-            print_memory_usage(process)
-        except Exception as e:
-            print(f"Thread ERROR: {e}")
-            return
-        time.sleep(interval)
-
-# %% [markdown]
-# #### Extract Features Functions
-
-# %%
 def run_essentia_models(audio16k, audio44k):
     features = {}
     
@@ -184,7 +138,6 @@ def run_essentia_models(audio16k, audio44k):
     }
     return features
 
-# %%
 def extract_audio_features(audio_file):
     # Load the audio file
     audio16k = MonoLoader(filename=audio_file, sampleRate=16000)()
@@ -196,13 +149,6 @@ def extract_audio_features(audio_file):
     # Merge results
     return algorithm_features
 
-# %% [markdown]
-# #### Main Code
-
-# %%
-# Class constructed from song path
-# Song path must follow this format: /some/path/(int)^(video id)^(title).mp3
-#                               e.g  /some/path/0^LlWGt_84jpg^Special Breed.mp3
 class SongPath:
     def __init__(self, song_path: str):
         self.path = song_path
@@ -220,51 +166,39 @@ class SongPath:
     def __str__(self):
         return f"Idx: {self.index},  videoID: {self.video_id}, title: {self.title_with_extension}"
 
-# %%
 def process_song(song_path):
     song = SongPath(song_path)
     song_features = extract_audio_features(song.path)
     return song.index, song_features
 
-# %%
-def process_songs():
-    tracemalloc.start()
-    
+def process_songs(embeddings_filepath, lower, upper):
     song_paths = np.array([os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)])
 
-    songs_data_lower, songs_data_higher = [len(song_paths)//48*0, len(song_paths)//48*1]
-    #songs_data_lower, songs_data_higher = [0, 20]
+    songs_data_lower, songs_data_higher = [len(song_paths)//48*lower, len(song_paths)//48*upper]
+    #songs_data_lower, songs_data_higher = [0, 1]
     song_paths = song_paths[songs_data_lower:songs_data_higher]
     
-    hdf5_file_path = 'data/song_embeddings_1.h5'
-
-    with h5py.File(hdf5_file_path, 'w') as hdf5_file:
-        with mp.Manager() as manager:
-            kill_thread = manager.Value('b', False)
-
-            main_process = psutil.Process(os.getpid())
-            memory_thread = threading.Thread(target=monitor_memory_usage, args=(main_process, kill_thread))
-            memory_thread.start()
-            
-            song_results = []
-            for song_path in tqdm(song_paths, desc="Processing Songs"):
-                processed_song = process_song(song_path)
-                song_results.append(processed_song)
-                        
-            kill_thread.value = True
+    with h5py.File(embeddings_filepath, 'w') as hdf5_file:
+        song_results = []
+        for song_path in tqdm(song_paths, desc="Processing Songs"):
+            processed_song = process_song(song_path)
+            song_results.append(processed_song)        
 
         # Aggregate results in the pandas dataframe
         songs_data_full = songs_data.copy(deep=True)
         for song_index, song_features in song_results:
             for feature, value in song_features.items():
                 if feature == "Embeddings":
-                    song_video_id = songs_data_full.iloc[song_index]['videoID']
-                    if song_video_id in hdf5_file:
-                        print(f"Dataset for {song_video_id} already exists, skipping.")
+                    try:
+                        song_video_id = songs_data_full.iloc[song_index]['videoID']
+                        if str(song_video_id) in hdf5_file:
+                            print(f"Dataset for {song_video_id} already exists, skipping.")
+                            continue
+                        hdf5_file.create_dataset(song_video_id, data=value, compression="gzip")
                         continue
-                    hdf5_file.create_dataset(song_video_id, data=value, compression="gzip")
-                    continue
-                
+                    except Exception as e:
+                        print(f"ERROR: {e}. VideoID: {song_video_id}")
+
                 if feature not in songs_data_full.columns and isinstance(value, (tuple, set, list, np.ndarray, dict)):
                     songs_data_full[feature] = np.nan
                     songs_data_full[feature] = songs_data_full[feature].astype(object)
@@ -272,12 +206,7 @@ def process_songs():
 
     return songs_data_full
 
-# %%
-songs_data_full = process_songs()
-songs_data_full
-
-# %%
-print(songs_data_full.dropna(subset=['Approachability']))
-
-# %%
-songs_data_full.to_csv('data/songs_data_models_1.csv')
+lower, upper = [4, 12]
+embeddings_filepath = f'/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5'
+songs_data_full = process_songs(embeddings_filepath, lower, upper)
+songs_data_full.to_csv(f'data/songs_data_models_{lower}_{upper}.csv', index=True)

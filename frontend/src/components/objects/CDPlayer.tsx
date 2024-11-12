@@ -5,7 +5,9 @@ import Screen from './Screen'
 type CDPlayerProps = GroupProps
 
 export default function CDPlayer(props: CDPlayerProps) {
-  const { nodes, materials } = useGLTF('/objects/cdplayer/scene-transformed.glb') as any
+  const { nodes, materials } = useGLTF(
+    '/objects/cdplayer/scene-transformed.glb',
+  ) as any
 
   // Fix transparency issues
   Object.values(materials).forEach((material: any) => {
@@ -14,13 +16,14 @@ export default function CDPlayer(props: CDPlayerProps) {
   })
 
   return (
-    <group>
-      <group {...props} dispose={null}>
+    <group {...props}>
+      <group>
         <mesh
           castShadow
           receiveShadow
           geometry={
-            nodes['panasonic_sa-pm02_player_panasonic_sa-pm02-player_0'].geometry
+            nodes['panasonic_sa-pm02_player_panasonic_sa-pm02-player_0']
+              .geometry
           }
           material={materials['panasonic_sa-pm02-player']}
           rotation={[-Math.PI / 2, 0, 0]}
@@ -37,7 +40,7 @@ export default function CDPlayer(props: CDPlayerProps) {
           rotation={[-Math.PI / 2, 0, 0]}
         />
       </group>
-      <Screen position={[-0.75,0.88,0.97]}/>
+      <Screen position={[-0.0765, 0.0876, 0.097]} />
     </group>
   )
 }
