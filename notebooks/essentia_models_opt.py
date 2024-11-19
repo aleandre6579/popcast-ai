@@ -176,7 +176,7 @@ def process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batc
         songs_data_lower, songs_data_upper = [len(song_paths)//48*lower, len(song_paths)//48*upper]
         # songs_data_lower, songs_data_upper = [0, 10]
         total_songs = songs_data_upper - songs_data_lower
-        for batch_start in tqdm(range(songs_data_lower, songs_data_upper, batch_size), desc="Processing Batches"):
+        for batch_start in tqdm(range(songs_data_lower, songs_data_upper, batch_size), desc=f"Processing Batches ({lower}, {upper})"):
             batch_end = min(batch_start + batch_size, songs_data_lower + total_songs)
             batch_paths = song_paths[batch_start:batch_end]
 
@@ -191,11 +191,13 @@ def process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batc
 
 def main():
     song_paths = np.array([os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)])
-    lower, upper = [4, 12]
-    embeddings_filepath = f'/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5'
-    
-    songs_data_full = process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batch_size=300)
-    songs_data_full.to_csv(f'data/songs_data_models_{lower}_{upper}.csv', index=True)
+    all_bounds = [(lower, upper) for (lower, upper) in zip(range(4, 48, 4), range(8, 52, 4))]
+
+    for bounds in all_bounds:
+        lower, upper = bounds
+        embeddings_filepath = f'/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5'
+        songs_data_full = process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batch_size=150)
+        songs_data_full.to_csv(f'data/songs_data_models_{lower}_{upper}.csv', index=True)
 
 if __name__ == "__main__":
     main()
