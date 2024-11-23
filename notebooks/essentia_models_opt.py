@@ -189,15 +189,18 @@ def process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batc
                 aggregate_results([result], embeddings_file)
     return songs_data
 
-def main():
-    song_paths = np.array([os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)])
-    all_bounds = [(lower, upper) for (lower, upper) in zip(range(4, 48, 4), range(8, 52, 4))]
+song_paths = np.array([os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)])
+all_bounds = [(lower, upper) for (lower, upper) in zip(range(20, 48, 4), range(24, 52, 4))]
 
-    for bounds in all_bounds:
-        lower, upper = bounds
-        embeddings_filepath = f'/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5'
-        songs_data_full = process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batch_size=150)
-        songs_data_full.to_csv(f'data/songs_data_models_{lower}_{upper}.csv', index=True)
-
-if __name__ == "__main__":
-    main()
+for bounds in all_bounds:
+    lower, upper = bounds
+    embeddings_filepath = f'/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5'
+    songs_data_full = process_songs_in_batches(
+                                                embeddings_filepath,
+                                                song_paths,
+                                                lower,
+                                                upper,
+                                                batch_size=125
+                                                )
+    songs_data_full.to_csv(f'data/songs_data_models_{lower}_{upper}.csv', index=True)
+    songs_data = pd.read_csv('data/songs_data.csv', index_col=0)
