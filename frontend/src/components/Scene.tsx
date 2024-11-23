@@ -29,7 +29,7 @@ function Scene() {
     degrees * (Math.PI / 180)
 
   const { width: w, height: h } = useThree((state) => state.viewport)
-  const sceneScale = clamp(w / 4, 1, 5)
+  const sceneScale = clamp(w / 6, 2, 5)
 
   return (
     <>
@@ -38,13 +38,10 @@ function Scene() {
       <Environment background environmentIntensity={0.05}>
         <mesh>
           <sphereGeometry args={[50, 100, 100]} />
-          <meshBasicMaterial color={'lightgrey'} side={THREE.BackSide} />
+          <meshBasicMaterial color={'white'} side={THREE.BackSide} />
         </mesh>
       </Environment>
       
-      <fog attach="fog" args={['grey', 10, 100]} />
-  
-
       <PerspectiveCamera
         makeDefault
         position={[0, 3, 10]}
@@ -64,16 +61,15 @@ function Scene() {
           {/* Floor */}
           <mesh
             rotation={[-Math.PI / 2, 0, 0]}
-            position={[0, 0, 0]}
+            position={[0, -1.2, 0]}
             castShadow receiveShadow
           >
-            <meshStandardMaterial color={0xDFA06E} />
-            <planeGeometry args={[10, 10]} />
+            <planeGeometry args={[40, 20]} />
           </mesh>
 
-          <CDPlayer position={[0, 0, 0.5]} scale={[5,5,5]} />
+          <CDPlayer position={[0, -0.3, 0.5]} scale={[5,5,5]} />
           <CD
-            position={[-0.03, 0.48, 1.3]}
+            position={[-0.03, 0, 1.3]}
             rotation={[
                 degreesToRadians(100),
                 degreesToRadians(-29),
