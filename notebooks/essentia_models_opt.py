@@ -190,7 +190,7 @@ def process_songs_in_batches(embeddings_filepath, song_paths, lower, upper, batc
     return songs_data
 
 song_paths = np.array([os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)])
-all_bounds = [(lower, upper) for (lower, upper) in zip(range(20, 48, 4), range(24, 52, 4))]
+all_bounds = [(lower, upper) for (lower, upper) in zip(range(24, 48, 4), range(28, 52, 4))]
 
 for bounds in all_bounds:
     lower, upper = bounds
@@ -200,7 +200,7 @@ for bounds in all_bounds:
                                                 song_paths,
                                                 lower,
                                                 upper,
-                                                batch_size=125
+                                                batch_size=130
                                                 )
     songs_data_full.to_csv(f'data/songs_data_models_{lower}_{upper}.csv', index=True)
     songs_data = pd.read_csv('data/songs_data.csv', index_col=0)

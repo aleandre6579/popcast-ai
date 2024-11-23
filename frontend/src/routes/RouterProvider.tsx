@@ -4,9 +4,9 @@ import { Canvas } from '@react-three/fiber'
 import Scene from '../components/Scene'
 import Navbar from '../components/ui/Navbar'
 
-const Home: React.FC = () => <h1>Home Page</h1>
-const About: React.FC = () => <h1>About Page</h1>
-const Contact: React.FC = () => <h1>Contact Page</h1>
+const Home: React.FC = () => <h1 className='text-black'>Home Page</h1>
+const About: React.FC = () => <h1 className='text-black'>About Page</h1>
+const Contact: React.FC = () => <h1 className='text-black'>Contact Page</h1>
 
 const RouterProvider: React.FC = () => {
   return (
@@ -23,17 +23,18 @@ const RouterProvider: React.FC = () => {
             top: 0,
             left: 0,
             width: '100%',
-            zIndex: 10, // Ensure it's on top of the canvas
-          }}        
+            zIndex: 10,
+          }}
         >
           {/* UI Overlay */}
           <Navbar />
 
           {/* Routes */}
           <Routes>
-            <Route path='/home' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact' element={<Contact />} />
+            <Route path='/upload' element={<Home />} />
+            <Route path='/analysis' element={<About />} />
+            <Route path='/results' element={<Contact />} />
+            <Route path='/support' element={<Contact />} />
           </Routes>
         </div>
       </div>

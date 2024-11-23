@@ -7,8 +7,8 @@ interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
   return (
-    <Header className='bg-white flex justify-end items-end'>
-      <span className='bg-white text-white'>PopcastAI</span>
+    <Header className='flex justify-between items-center'>
+      <span className='text-red-400 font-bold'>PopcastAI</span>
       <Button type='primary'>Sign In</Button>
     </Header>
   )
