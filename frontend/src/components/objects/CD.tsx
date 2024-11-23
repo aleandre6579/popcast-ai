@@ -8,7 +8,8 @@ export default function CD(props: CDProps) {
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow receiveShadow
+        castShadow
+        receiveShadow
         geometry={nodes.Object_2.geometry}
         material={materials.None}
         rotation={[-2.957, -0.505, 0.366]}

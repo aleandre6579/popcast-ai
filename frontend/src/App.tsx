@@ -1,19 +1,18 @@
 import './App.css'
-import { Canvas } from '@react-three/fiber'
-import Scene from './components/Scene'
 import { Suspense } from 'react'
-import { Overlay } from './components/Overlay'
+import AuthProvider from './auth/authProvider'
+import RouterProvider from './routes/RouterProvider'
 
 function App() {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas id='threejs-canvas' shadows>
-        <Suspense>
-          <Scene />
-        </Suspense>
-      </Canvas>
-      <Overlay />
+    <AuthProvider>
+      <Suspense>
+        <RouterProvider />
+        <div className="flex items-center justify-center h-screen bg-blue-500 text-red text-3xl">
+      Tailwind CSS is Working!
     </div>
+      </Suspense>
+    </AuthProvider>
   )
 }
 

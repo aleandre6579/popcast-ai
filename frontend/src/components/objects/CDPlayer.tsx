@@ -19,7 +19,8 @@ export default function CDPlayer(props: CDPlayerProps) {
     <group {...props}>
       <group>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={
             nodes['panasonic_sa-pm02_player_panasonic_sa-pm02-player_0']
               .geometry
@@ -28,7 +29,8 @@ export default function CDPlayer(props: CDPlayerProps) {
           rotation={[-Math.PI / 2, 0, 0]}
         />
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={
             nodes['panasonic_sa-pm02_speaker-l_panasonic_sa-pm02-speaker_0']
               .geometry
