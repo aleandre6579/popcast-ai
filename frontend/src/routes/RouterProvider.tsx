@@ -11,21 +11,23 @@ const Contact: React.FC = () => <h1 className='text-black'>Contact Page</h1>
 const RouterProvider: React.FC = () => {
   return (
     <Router>
-      <div style={{width: '100vw', height: '100vh' }}>
+      <div style={{ width: '100vw', height: '100vh' }}>
         {/* Three.js Scene */}
-        <Canvas id='threejs-canvas' shadows>
+        <Canvas
+          id='threejs-canvas'
+          shadows
+          gl={{
+            powerPreference: 'high-performance',
+            alpha: false,
+            antialias: false,
+            stencil: false,
+            depth: false,
+          }}
+        >
           <Scene />
         </Canvas>
 
-        <div 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            zIndex: 10,
-          }}
-        >
+        <div className='absolute top-0 left-0 w-full z-10'>
           {/* UI Overlay */}
           <Navbar />
 
