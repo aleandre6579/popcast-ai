@@ -6,6 +6,7 @@ import {
   AdaptiveDpr,
   OrbitControls,
   PerspectiveCamera,
+  Text,
 } from '@react-three/drei'
 import * as THREE from 'three'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
@@ -18,7 +19,7 @@ import {
 } from 'postprocessing'
 import { useFrame, useThree } from '@react-three/fiber'
 import { clamp } from 'three/src/math/MathUtils.js'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 
@@ -45,8 +46,8 @@ function PostProcess() {
 }
 
 function Scene() {
-  const cameraRef = useRef<THREE.PerspectiveCamera>(null!)
-  const location = useLocation()
+  const { width, height } = useThree((state) => state.viewport)
+  const scaledFov = clamp(70 - (width/(height*3)) * 45, 10, 100)
 
   const degreesToRadians = (degrees: number): number =>
     degrees * (Math.PI / 180)
@@ -55,11 +56,11 @@ function Scene() {
     <>
       <AdaptiveDpr pixelated />
       <PostProcess />
-      <OrbitControls />
-      <PerspectiveCamera 
-        makeDefault 
-        position={[0, 1, 4]}
-        rotation={[-Math.atan2(5, 5), Math.PI / 2, 0]}
+      <PerspectiveCamera
+        makeDefault
+        position={[0, 1.4, 4]}
+        fov={scaledFov}
+        rotation={[-Math.PI / 16, 0, 0]}
       />
       <ambientLight intensity={0.35} />
       <pointLight
@@ -70,8 +71,9 @@ function Scene() {
         castShadow
       />
 
+      {/* Scene Objects */}
       <group>
-        <Room position={[0,0,0]} scale={[2,2,2]} />
+        <Room position={[0, 0, 0]} scale={[2, 2, 2]} />
         <CDPlayer position={[0, 0, 0]} scale={[5, 5, 5]} />
         <CD
           position={[-0.03, 0, 1.3]}
@@ -83,6 +85,7 @@ function Scene() {
           scale={[0.1, 0.1, 0.1]}
         />
       </group>
+
     </>
   )
 }

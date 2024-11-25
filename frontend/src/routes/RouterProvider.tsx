@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Canvas } from '@react-three/fiber'
 import Scene from '../components/Scene'
 import Navbar from '../components/ui/Navbar'
+import { Upload } from 'antd'
 
-const Home: React.FC = () => <h1 className='text-black'>Home Page</h1>
 const About: React.FC = () => <h1 className='text-black'>About Page</h1>
 const Contact: React.FC = () => <h1 className='text-black'>Contact Page</h1>
 
@@ -33,7 +33,7 @@ const RouterProvider: React.FC = () => {
 
           {/* Routes */}
           <Routes>
-            <Route path='/upload' element={<Home />} />
+            <Route path='/' element={<Upload />} />
             <Route path='/analysis' element={<About />} />
             <Route path='/results' element={<Contact />} />
             <Route path='/support' element={<Contact />} />
