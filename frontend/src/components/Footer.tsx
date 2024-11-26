@@ -1,11 +1,14 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import useSize from '../hooks/useSize.ts'
 import { gsap } from 'gsap';
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
+  const location = useLocation()
+  const [width, _] = useSize()
+  
   const pages = [
     { name: 'Upload', path: '/' },
     { name: 'Analysis', path: '/analysis' },
@@ -13,20 +16,27 @@ const Footer: React.FC<FooterProps> = () => {
     { name: 'Support', path: '/support' },
   ]
 
-  const [width, _] = useSize()
+  let pageIndex = 0
+  for(let i = 0; i < pages.length; i++) {
+    if (pages[i].path === location.pathname) {
+      pageIndex = i
+    }
+  }
+
+  // Draw footer
   const footerWidth = (width * 4) / 6
   const sliderWidth = footerWidth - 40
   const sliderSectionWidth = (sliderWidth / 1.314 - 30) / 3
   const sliderSectionGap = 18.3
   const markerLeftBase = (footerWidth - (sliderSectionWidth + sliderSectionGap*2) * 3) / 2 + sliderSectionGap
 
+  // Animate marker
   const markerRef = useRef(null);
   let markerTween = gsap.to(markerRef.current, {
-    x: 0 * (sliderSectionWidth + sliderSectionGap - 0.75),
-    duration: 1,
+    x: pageIndex * (sliderSectionWidth + sliderSectionGap - 0.75),
+    duration: 0.75,
     ease: 'power3',
   })
-
   markerTween.play()
 
   return (
@@ -43,7 +53,7 @@ const Footer: React.FC<FooterProps> = () => {
                 className={({ isActive }) =>
                   `text-sm font-medium flex flex-col items-center ${
                     isActive
-                      ? 'font-black'
+                      ? 'font-[800]'
                       : 'hover:text-gray-900 dark:hover:text-gray-100'
                   }`
                 }
