@@ -1,8 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useThree } from '@react-three/fiber'
-import * as Slider from '@radix-ui/react-slider'
-import useSize from "../hooks/useSize"
+import useSize from '../hooks/useSize.ts'
+import { gsap } from 'gsap';
 
 interface FooterProps {}
 
@@ -14,23 +13,32 @@ const Footer: React.FC<FooterProps> = () => {
     { name: 'Support', path: '/support' },
   ]
 
-  const [ width, height ] = useSize()
-  const footerWidth = width * 4 / 6
+  const [width, _] = useSize()
+  const footerWidth = (width * 4) / 6
   const sliderWidth = footerWidth - 40
-  const sliderSectionWidth = sliderWidth / 1.32 - 30
-  //const sliderSectionGap = 10000 / sliderSectionWidth * 1 - 2
+  const sliderSectionWidth = (sliderWidth / 1.314 - 30) / 3
   const sliderSectionGap = 18.3
-  console.log(sliderSectionWidth);
-  
-  
+  const markerLeftBase = (footerWidth - (sliderSectionWidth + sliderSectionGap*2) * 3) / 2 + sliderSectionGap
+
+  const markerRef = useRef(null);
+  let markerTween = gsap.to(markerRef.current, {
+    x: 0 * (sliderSectionWidth + sliderSectionGap - 0.75),
+    duration: 1,
+    ease: 'power3',
+  })
+
+  markerTween.play()
+
   return (
     <footer className='w-full p-10 flex flex-col items-center'>
-      <div style={{width: footerWidth}} className='flex flex-col items-center gap-4'>
+      <div
+        style={{ width: footerWidth }}
+        className='flex flex-col items-center gap-4 relative'
+      >
         <nav className='w-full flex justify-between relative'>
           {pages.map(page => (
-            <div className='w-full'>
+            <div key={page.name} className='w-full'>
               <NavLink
-                key={page.name}
                 to={page.path}
                 className={({ isActive }) =>
                   `text-sm font-medium flex flex-col items-center ${
@@ -47,12 +55,24 @@ const Footer: React.FC<FooterProps> = () => {
           ))}
         </nav>
 
-        <div style={{gap: sliderSectionGap}} className='w-full flex justify-center relative'>
-          <span style={{width: sliderSectionWidth / 3}} className='bg-black dark:bg-white h-1' />
-          <span style={{width: sliderSectionWidth / 3}} className='bg-black dark:bg-white h-1' />
-          <span style={{width: sliderSectionWidth / 3}} className='bg-black dark:bg-white h-1' />
-          
-          <span className='absolute left-[68px] top-[-8px] rounded-full bg-black dark:bg-white size-5 block' />
+        <div
+          style={{ gap: sliderSectionGap }}
+          className='w-full flex justify-center relative'
+        >
+          <span
+            style={{ width: sliderSectionWidth }}
+            className='bg-black dark:bg-white h-1'
+          />
+          <span
+            style={{ width: sliderSectionWidth }}
+            className='bg-black dark:bg-white h-1'
+          />
+          <span
+            style={{ width: sliderSectionWidth }}
+            className='bg-black dark:bg-white h-1'
+          />
+
+          <span ref={markerRef} style={{left: markerLeftBase}} className='absolute top-[-8px] rounded-full bg-black dark:bg-white size-5 block' />
         </div>
       </div>
     </footer>
