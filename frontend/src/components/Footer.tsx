@@ -1,14 +1,14 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import useSize from '../hooks/useSize.ts'
-import { gsap } from 'gsap';
+import { gsap } from 'gsap'
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   const location = useLocation()
   const [width, _] = useSize()
-  
+
   const pages = [
     { name: 'Upload', path: '/' },
     { name: 'Analysis', path: '/analysis' },
@@ -17,7 +17,7 @@ const Footer: React.FC<FooterProps> = () => {
   ]
 
   let pageIndex = 0
-  for(let i = 0; i < pages.length; i++) {
+  for (let i = 0; i < pages.length; i++) {
     if (pages[i].path === location.pathname) {
       pageIndex = i
     }
@@ -28,10 +28,12 @@ const Footer: React.FC<FooterProps> = () => {
   const sliderWidth = footerWidth - 40
   const sliderSectionWidth = (sliderWidth / 1.314 - 30) / 3
   const sliderSectionGap = 18.3
-  const markerLeftBase = (footerWidth - (sliderSectionWidth + sliderSectionGap*2) * 3) / 2 + sliderSectionGap
+  const markerLeftBase =
+    (footerWidth - (sliderSectionWidth + sliderSectionGap * 2) * 3) / 2 +
+    sliderSectionGap
 
   // Animate marker
-  const markerRef = useRef(null);
+  const markerRef = useRef(null)
   let markerTween = gsap.to(markerRef.current, {
     x: pageIndex * (sliderSectionWidth + sliderSectionGap - 0.75),
     duration: 0.75,
@@ -82,7 +84,11 @@ const Footer: React.FC<FooterProps> = () => {
             className='bg-black dark:bg-white h-1'
           />
 
-          <span ref={markerRef} style={{left: markerLeftBase}} className='absolute top-[-8px] rounded-full bg-black dark:bg-white size-5 block' />
+          <span
+            ref={markerRef}
+            style={{ left: markerLeftBase }}
+            className='absolute top-[-8px] rounded-full bg-black dark:bg-white size-5 block'
+          />
         </div>
       </div>
     </footer>

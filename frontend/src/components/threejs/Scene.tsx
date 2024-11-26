@@ -1,5 +1,5 @@
 import Room from './Room'
-import CDPlayer from './CDPlayer'
+import CDPlayer from './cdplayer/CDPlayer'
 import CD from './CD'
 import {
   Environment,
@@ -74,7 +74,9 @@ function Scene() {
       {/* Scene Objects */}
       <group>
         <Room position={[0, 0, 0]} scale={[2, 2, 2]} />
-        <CDPlayer position={[0, 0, 0]} scale={[5, 5, 5]} />
+
+        <CDPlayer scale={[5, 5, 5]} position={[0, 0, 0]} />
+
         <CD
           position={[-0.03, 0, 1.3]}
           rotation={[
