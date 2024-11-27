@@ -12,12 +12,12 @@ import { RootState } from '@/store'
 import { setCdPlayer } from '@/reducers/outlineSlice'
 
 function CDPlayer(props: JSX.IntrinsicElements['group']) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { openDock } = useSelector((state: RootState) => state.upload)
 
   const openDockZ = 0.12
   const dockRef = useRef<THREE.Group>(null)
-  
+
   // Animate the dock opening
   if (dockRef?.current) {
     if (openDock) {
@@ -34,14 +34,14 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
       })
     }
   }
-  
+
   // Add cd player ref to global state (for outlining)
-  const cdPlayerRef = useRef<THREE.Mesh>(null);
+  const cdPlayerRef = useRef<THREE.Mesh>(null)
   useEffect(() => {
     if (cdPlayerRef.current) {
-      dispatch(setCdPlayer(cdPlayerRef.current));
+      dispatch(setCdPlayer(cdPlayerRef.current))
     }
-  }, [dispatch]);
+  }, [dispatch])
 
   return (
     <group ref={cdPlayerRef} {...props} dispose={null}>

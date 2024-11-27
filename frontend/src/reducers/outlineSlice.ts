@@ -29,9 +29,7 @@ const outlineSlice = createSlice({
       const object = action.payload
       object.traverse(child => {
         if (child instanceof Mesh && state.outlinedObjects.includes(child)) {
-          const index = state.outlinedObjects.findIndex(
-            obj => obj === child,
-          )
+          const index = state.outlinedObjects.findIndex(obj => obj === child)
           if (index !== -1) {
             state.outlinedObjects.splice(index, 1)
           }

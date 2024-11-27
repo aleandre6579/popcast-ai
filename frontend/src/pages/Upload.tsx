@@ -36,25 +36,14 @@ const Upload: React.FC<UploadProps> = () => {
   const uploadBoxHeight = width * 0.1 + height * 0.14 + 60
 
   useEffect(() => {
-    const timeline = gsap.timeline({ repeat: -1, yoyo: true, ease: "linear" });
+    const timeline = gsap.timeline({ repeat: -1, yoyo: true, ease: 'linear' })
 
-    timeline.fromTo(
-      '.animateUpDown',
-      { y: -10 },
-      { y: 10, duration: 2 },
-      0
-    )
+    timeline.fromTo('.animateUpDown', { y: -10 }, { y: 10, duration: 2 }, 0)
 
-    timeline.fromTo(
-      '.downArrow',
-      { y: 0 },
-      { y: 10, duration: 0.5 },
-      0
-    ).to(
-      '.chevron',
-      { y: 0, duration: 0.5 }
-    )
-  }, []);
+    timeline
+      .fromTo('.downArrow', { y: 0 }, { y: 10, duration: 0.5 }, 0)
+      .to('.chevron', { y: 0, duration: 0.5 })
+  }, [])
 
   return (
     <div>
@@ -65,26 +54,27 @@ const Upload: React.FC<UploadProps> = () => {
         Submit your songs and receive quick and meaningful feedback.
       </p>
 
-      <div style={{ width: uploadBoxWidth, height: uploadBoxHeight }} className='absolute top-[calc(50%+22px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-          <p className='animateUpDown flex justify-center gap-5 text-center absolute top-[-50px] w-full'>
-            <ChevronDown className='downArrow'/>
-            <span>Click the CD player or drag an audio file to get started!</span>
-            <ChevronDown className='downArrow'/>
-          </p>
+      <div
+        style={{ width: uploadBoxWidth, height: uploadBoxHeight }}
+        className='absolute top-[calc(50%+22px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+      >
+        <p className='animateUpDown flex justify-center gap-5 text-center absolute top-[-50px] w-full'>
+          <ChevronDown className='downArrow' />
+          <span>Click the CD player or drag an audio file to get started!</span>
+          <ChevronDown className='downArrow' />
+        </p>
 
-
-
-          <Input
-            onMouseEnter={handleUploadOnHover}
-            onMouseLeave={handleUploadOffHover}
-            onChange={e => {
-              if (e.target.files && e.target.files[0]) {
-                handleFileUpload(e.target.files[0])
-              }
-            }}
-            className='opacity-0 absolute top-0 w-full h-full'
-            type='file'
-          />
+        <Input
+          onMouseEnter={handleUploadOnHover}
+          onMouseLeave={handleUploadOffHover}
+          onChange={e => {
+            if (e.target.files && e.target.files[0]) {
+              handleFileUpload(e.target.files[0])
+            }
+          }}
+          className='opacity-0 absolute top-0 w-full h-full'
+          type='file'
+        />
       </div>
     </div>
   )
