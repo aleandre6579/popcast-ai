@@ -33,6 +33,7 @@ const uploadSlice = createSlice({
   },
 })
 
-export const { setFileUploaded, resetFileUploaded, openDock, closeDock } = uploadSlice.actions
+export const { setFileUploaded, resetFileUploaded, openDock, closeDock } =
+  uploadSlice.actions
 
 export default uploadSlice.reducer

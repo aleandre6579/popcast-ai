@@ -18,11 +18,13 @@ const RouterProvider: React.FC = () => {
           id='threejs-canvas'
           shadows
           gl={{
+            toneMapping: 0,
             powerPreference: 'high-performance',
             alpha: false,
-            antialias: false,
+            antialias: true,
             stencil: false,
-            depth: false,
+            autoClear: false,
+            depth: true,
           }}
         >
           <Scene />

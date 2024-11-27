@@ -7,23 +7,22 @@ import PlayBtn from './PlayBtn'
 import Speaker from './Speaker'
 import VolumeKnob from './VolumeKnob'
 import gsap from 'gsap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import { setCdPlayer } from '@/reducers/outlineSlice'
 
 function CDPlayer(props: JSX.IntrinsicElements['group']) {
+  const dispatch = useDispatch();
+  const { openDock } = useSelector((state: RootState) => state.upload)
+
   const openDockZ = 0.12
-
   const dockRef = useRef<THREE.Group>(null)
-
-  const { openDock } = useSelector(
-    (state: RootState) => state.upload
-  );
-
-  // Dock animation
+  
+  // Animate the dock opening
   if (dockRef?.current) {
     if (openDock) {
       gsap.to(dockRef.current.position, {
-        z: 0.12,
+        z: openDockZ,
         duration: 2,
         ease: 'power2.out',
       })
@@ -35,9 +34,17 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
       })
     }
   }
+  
+  // Add cd player ref to global state (for outlining)
+  const cdPlayerRef = useRef<THREE.Mesh>(null);
+  useEffect(() => {
+    if (cdPlayerRef.current) {
+      dispatch(setCdPlayer(cdPlayerRef.current));
+    }
+  }, [dispatch]);
 
   return (
-    <group {...props} dispose={null}>
+    <group ref={cdPlayerRef} {...props} dispose={null}>
       <Body />
       <Dock ref={dockRef} position={[0, 0, 0]} />
       <DockBtn />

@@ -5,9 +5,11 @@ Files: cdplayer.glb [592.53KB] > /home/alean/apps/popcast-ai/frontend/public/obj
 */
 
 import * as THREE from 'three'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
+import { useDispatch } from 'react-redux'
+import { setCdPlayer } from '@/reducers/outlineSlice' // Import the Redux action
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -22,10 +24,11 @@ export default function Body(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/cdplayer-transformed.glb',
   ) as GLTFResult
+
   return (
     <group {...props} dispose={null}>
       <mesh
-        name='cdplayer'
+        name='cdplayer_body'
         castShadow
         receiveShadow
         geometry={nodes.cdplayer.geometry}

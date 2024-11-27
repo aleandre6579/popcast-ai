@@ -9,7 +9,7 @@ import {
   Text,
 } from '@react-three/drei'
 import * as THREE from 'three'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { EffectComposer, Bloom, Outline } from '@react-three/postprocessing'
 import {
   BlurPass,
   Resizer,
@@ -22,6 +22,8 @@ import { clamp } from 'three/src/math/MathUtils.js'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 const cameraPositions: Record<string, THREE.Vector3> = {
   home: new THREE.Vector3(0, 0, 10),
@@ -30,16 +32,35 @@ const cameraPositions: Record<string, THREE.Vector3> = {
 }
 
 function PostProcess() {
+  const outlinedObjects = useSelector(
+    (state: RootState) => state.outline.outlinedObjects,
+  )
+
   return (
-    <EffectComposer multisampling={0} stencilBuffer={false}>
+    <EffectComposer
+      enabled
+      multisampling={0}
+      stencilBuffer={false}
+      autoClear={false}
+    >
       <Bloom
         luminanceThreshold={10}
-        luminanceSmoothing={0.025}
+        luminanceSmoothing={0.1}
         intensity={1}
-        resolutionX={300}
-        resolutionY={300}
-        kernelSize={KernelSize.LARGE}
+        resolutionX={240}
+        resolutionY={240}
+        kernelSize={KernelSize.SMALL}
         mipmapBlurPass={undefined}
+      />
+      <Outline
+        selection={outlinedObjects}
+        visibleEdgeColor={0xffffff}
+        hiddenEdgeColor={0x000000}
+        edgeStrength={3}
+        pulseSpeed={0}
+        blur={true}
+        xRay={false}
+        kernelSize={KernelSize.VERY_SMALL}
       />
     </EffectComposer>
   )
