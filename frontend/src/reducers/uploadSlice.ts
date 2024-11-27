@@ -4,18 +4,23 @@ interface UploadState {
   uploaded: boolean
   uploadedFileName: string | null
   openDock: boolean
+  isDraggingAudioFile: boolean
 }
 
 const initialState: UploadState = {
   uploaded: false,
   uploadedFileName: null,
   openDock: false,
+  isDraggingAudioFile: false
 }
 
 const uploadSlice = createSlice({
   name: 'upload',
   initialState,
   reducers: {
+    setIsDraggingAudioFile: (state, action: PayloadAction<boolean>) => {
+      state.isDraggingAudioFile = action.payload
+    },
     setFileUploaded: (state, action: PayloadAction<string>) => {
       state.uploaded = true
       state.uploadedFileName = action.payload
@@ -33,7 +38,7 @@ const uploadSlice = createSlice({
   },
 })
 
-export const { setFileUploaded, resetFileUploaded, openDock, closeDock } =
+export const { setIsDraggingAudioFile, setFileUploaded, resetFileUploaded, openDock, closeDock } =
   uploadSlice.actions
 
 export default uploadSlice.reducer

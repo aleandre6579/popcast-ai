@@ -28,10 +28,10 @@ const Footer: React.FC<FooterProps> = () => {
   const footerWidth = (width * 4) / 6
   const sliderWidth = footerWidth - 40
   const sliderSectionWidth = (sliderWidth / 1.314 - 30) / 3
-  const sliderSectionGap = 18.3
+  const sliderSectionGap = 18
   const markerLeftBase =
-    (footerWidth - (sliderSectionWidth + sliderSectionGap * 2) * 3) / 2 +
-    sliderSectionGap + 4
+    (footerWidth - (sliderSectionWidth + sliderSectionGap * 2.06) * 3) / 2 +
+    sliderSectionGap + 3
 
   // Animate marker
   const markerRef = useRef(null)
@@ -62,15 +62,15 @@ const Footer: React.FC<FooterProps> = () => {
                 }
               >
                 {page.name === 'Support' ?
-                <span className='text-red-600 w-full flex flex-col items-center'>
-                  {page.name}
-                  <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid dark:border-white absolute size-5 block' />
-                </span>
-                  : 
-                  <span className='w-full flex flex-col items-center'>
-                  {page.name}
-                  <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
-                </span>
+                  <span className='text-red-600 w-full flex flex-col items-center'>
+                    {page.name}
+                    <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block' />
+                  </span>
+                    : 
+                    <span className='w-full flex flex-col items-center'>
+                    {page.name}
+                    <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
+                  </span>
                 }
               </NavLink>
             </div>
@@ -97,7 +97,7 @@ const Footer: React.FC<FooterProps> = () => {
           <span
             ref={markerRef}
             style={{ left: markerLeftBase }}
-            className={clsx(location.pathname === '/support' ? 'bg-red-600' : 'bg-black', 'dark:bg-white absolute top-[-6px] rounded-full dark:bg-white size-4 block')}
+            className={clsx(location.pathname === '/support' ? 'bg-red-600' : 'bg-black dark:bg-white', 'absolute top-[-6px] rounded-full size-[17px] block')}
           />
         </div>
       </div>

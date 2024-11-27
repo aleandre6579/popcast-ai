@@ -98,13 +98,8 @@ function Scene() {
         <CDPlayer scale={[5, 5, 5]} position={[0, 0, 0]} />
 
         <CD
-          position={[-0.03, 0, 1.3]}
-          rotation={[
-            degreesToRadians(100),
-            degreesToRadians(-29),
-            degreesToRadians(40),
-          ]}
-          scale={[0.1, 0.1, 0.1]}
+          position={[0, 0, 0]}
+          scale={[5, 5, 5]}
         />
       </group>
     </>

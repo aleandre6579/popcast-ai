@@ -10,6 +10,7 @@ import gsap from 'gsap'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { setCdPlayer } from '@/reducers/outlineSlice'
+import Screen from './Screen'
 
 function CDPlayer(props: JSX.IntrinsicElements['group']) {
   const dispatch = useDispatch()
@@ -52,6 +53,7 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
       <Speaker position={[-0.16, 0, 0]} />
       <Speaker position={[0.16, 0, 0]} />
       <VolumeKnob />
+      <Screen position={[-0.0765, 0.0876, 0.097]} />
     </group>
   )
 }

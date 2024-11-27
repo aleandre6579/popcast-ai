@@ -18,7 +18,7 @@ type GLTFResult = GLTF & {
   }
 }
 
-export default function Model(props: JSX.IntrinsicElements['group']) {
+export default function CD(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/cd-transformed.glb',
   ) as GLTFResult
