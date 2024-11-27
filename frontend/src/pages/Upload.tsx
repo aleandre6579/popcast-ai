@@ -36,13 +36,13 @@ const Upload: React.FC<UploadProps> = () => {
   const uploadBoxHeight = width * 0.1 + height * 0.14 + 60
 
   useEffect(() => {
-    const timeline = gsap.timeline({ repeat: -1, yoyo: true, ease: 'linear' })
+    const timeline = gsap.timeline({ repeat: -1, ease: 'linear' })
 
-    timeline.fromTo('.animateUpDown', { y: -10 }, { y: 10, duration: 2 }, 0)
-
+    timeline.fromTo('.tooltip', { y: -10 }, { y: 10, duration: 1 }, 0)
+    timeline.to('.tooltip', { y: -10, duration: 1, delay: 2 })
+    
     timeline
-      .fromTo('.downArrow', { y: 0 }, { y: 10, duration: 0.5 }, 0)
-      .to('.chevron', { y: 0, duration: 0.5 })
+      .fromTo('.downArrow', { y: -5 }, { y: 5, duration: 0.5, repeat: 11, yoyo: true }, 0)
   }, [])
 
   return (
@@ -58,9 +58,9 @@ const Upload: React.FC<UploadProps> = () => {
         style={{ width: uploadBoxWidth, height: uploadBoxHeight }}
         className='absolute top-[calc(50%+22px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2'
       >
-        <p className='animateUpDown flex justify-center gap-5 text-center absolute top-[-50px] w-full'>
+        <p className='tooltip flex justify-center gap-4 text-center absolute top-[-50px] w-full'>
           <ChevronDown className='downArrow' />
-          <span>Click the CD player or drag an audio file to get started!</span>
+          <span>Click on the CD player or drag an audio file to get started!</span>
           <ChevronDown className='downArrow' />
         </p>
 
@@ -72,7 +72,7 @@ const Upload: React.FC<UploadProps> = () => {
               handleFileUpload(e.target.files[0])
             }
           }}
-          className='opacity-0 absolute top-0 w-full h-full'
+          className='opacity-0 absolute top-0 w-full h-full cursor-pointer'
           type='file'
         />
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import useSize from '../hooks/useSize.ts'
 import { gsap } from 'gsap'
+import clsx from 'clsx'
 
 interface FooterProps {}
 
@@ -30,7 +31,7 @@ const Footer: React.FC<FooterProps> = () => {
   const sliderSectionGap = 18.3
   const markerLeftBase =
     (footerWidth - (sliderSectionWidth + sliderSectionGap * 2) * 3) / 2 +
-    sliderSectionGap
+    sliderSectionGap + 4
 
   // Animate marker
   const markerRef = useRef(null)
@@ -53,15 +54,24 @@ const Footer: React.FC<FooterProps> = () => {
               <NavLink
                 to={page.path}
                 className={({ isActive }) =>
-                  `text-sm font-medium flex flex-col items-center ${
+                  `text-sm font-medium ${
                     isActive
-                      ? 'font-[800]'
+                      ? 'font-[900]'
                       : 'hover:text-gray-900 dark:hover:text-gray-100'
                   }`
                 }
               >
-                {page.name}
-                <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
+                {page.name === 'Support' ?
+                <span className='text-red-600 w-full flex flex-col items-center'>
+                  {page.name}
+                  <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid dark:border-white absolute size-5 block' />
+                </span>
+                  : 
+                  <span className='w-full flex flex-col items-center'>
+                  {page.name}
+                  <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
+                </span>
+                }
               </NavLink>
             </div>
           ))}
@@ -87,7 +97,7 @@ const Footer: React.FC<FooterProps> = () => {
           <span
             ref={markerRef}
             style={{ left: markerLeftBase }}
-            className='absolute top-[-8px] rounded-full bg-black dark:bg-white size-5 block'
+            className={clsx(location.pathname === '/support' ? 'bg-red-600' : 'bg-black', 'dark:bg-white absolute top-[-6px] rounded-full dark:bg-white size-4 block')}
           />
         </div>
       </div>

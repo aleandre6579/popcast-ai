@@ -56,9 +56,8 @@ function PostProcess() {
         selection={outlinedObjects}
         visibleEdgeColor={0xffffff}
         hiddenEdgeColor={0x000000}
-        edgeStrength={3}
+        edgeStrength={2}
         pulseSpeed={0}
-        blur={true}
         xRay={false}
         kernelSize={KernelSize.VERY_SMALL}
       />
