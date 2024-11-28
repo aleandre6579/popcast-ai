@@ -6,7 +6,6 @@ import { ThemeProvider } from './components/theme-provider'
 import { Canvas } from '@react-three/fiber'
 import Scene from './components/threejs/Scene'
 import * as THREE from 'three'
-import { OrbitControls } from '@react-three/drei'
 
 function App() {
   return (
@@ -28,7 +27,8 @@ function App() {
               }}
               onCreated={state => {
                 state.gl.shadowMap.enabled = true
-                state.gl.shadowMap.type = THREE.VSMShadowMap // Or your preferred shadow map type
+                state.gl.shadowMap.needsUpdate = true
+                state.gl.shadowMap.type = THREE.VSMShadowMap
               }}
             >
               <Scene />

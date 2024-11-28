@@ -66,10 +66,6 @@ function PostProcess() {
 }
 
 function Scene() {
-  useEffect(() => {
-    console.log('ASD')
-  }, [])
-
   const { width, height } = useThree(state => state.viewport)
   const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100)
 
@@ -87,7 +83,12 @@ function Scene() {
         rotation={[-Math.PI / 16, 0, 0]}
       />
       <ambientLight intensity={0.28} />
-      <pointLight position={[-0, 1.5, 2.5]} power={100} castShadow />
+      <pointLight
+        position={[-0, 1.5, 2.5]}
+        power={100}
+        castShadow
+        shadow-bias={-0.0001}
+      />
 
       {/* Scene Objects */}
       <group>

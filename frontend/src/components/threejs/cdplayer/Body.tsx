@@ -25,6 +25,8 @@ export default function Body(props: JSX.IntrinsicElements['group']) {
     '/objects/cdplayer/cdplayer-transformed.glb',
   ) as GLTFResult
 
+  materials['panasonic_sa-pm02-player'].shadowSide = THREE.DoubleSide
+
   return (
     <group {...props} dispose={null}>
       <mesh

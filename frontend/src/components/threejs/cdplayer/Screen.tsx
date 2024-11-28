@@ -58,7 +58,6 @@ export default function Screen(props: MeshProps) {
 
   return (
     <mesh
-      
       receiveShadow
       scale={[0.1, 0.1, 0]}
       ref={meshRef}
