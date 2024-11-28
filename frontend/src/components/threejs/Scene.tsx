@@ -6,37 +6,17 @@ import {
   AdaptiveDpr,
   OrbitControls,
   PerspectiveCamera,
-  Text,
 } from '@react-three/drei'
 import * as THREE from 'three'
 import { EffectComposer, Bloom, Outline } from '@react-three/postprocessing'
-import {
-  BlurPass,
-  Resizer,
-  KernelSize,
-  Resolution,
-  MipmapBlurPass,
-} from 'postprocessing'
-import { useFrame, useThree } from '@react-three/fiber'
+import { KernelSize } from 'postprocessing'
+import { useThree } from '@react-three/fiber'
 import { clamp } from 'three/src/math/MathUtils.js'
-import { useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import gsap from 'gsap'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { useEffect, useRef } from 'react'
 import { useTheme } from '../theme-provider'
-
-const cameraPositions: Record<string, THREE.Vector3> = {
-  home: new THREE.Vector3(0, 0, 10),
-  about: new THREE.Vector3(10, 5, 10),
-  contact: new THREE.Vector3(-10, 5, 10),
-}
+import gsap from 'gsap'
 
 function PostProcess() {
-  const outlinedObjects = useSelector(
-    (state: RootState) => state.outline.outlinedObjects,
-  )
-
   return (
     <EffectComposer
       enabled
@@ -51,10 +31,9 @@ function PostProcess() {
         resolutionX={240}
         resolutionY={240}
         kernelSize={KernelSize.SMALL}
-        mipmapBlurPass={undefined}
       />
       <Outline
-        selection={outlinedObjects}
+        selection={[]}
         visibleEdgeColor={0xffffff}
         hiddenEdgeColor={0x000000}
         edgeStrength={2}
@@ -68,26 +47,20 @@ function PostProcess() {
 
 function Scene() {
   const { theme } = useTheme()
-  const { width, height } = useThree(state => state.viewport)
-
+  const { width, height } = useThree((state) => state.viewport)
   const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100)
-
-  const degreesToRadians = (degrees: number): number =>
-    degrees * (Math.PI / 180)
-
   const pointLightRef = useRef<THREE.PointLight>(null)
 
   useEffect(() => {
-    if(!pointLightRef.current)
-      return
+    if (!pointLightRef.current) return
 
-    if (theme === 'dark') {
-      pointLightRef.current.power=700
-      
-    } else {
-      pointLightRef.current.power=500
-      
-    }
+    const targetPower = theme === 'dark' ? 700 : 500
+
+    gsap.to(pointLightRef.current, {
+      power: targetPower,
+      duration: 0.8,
+      ease: 'power4',
+    })
   }, [theme])
 
   return (
@@ -103,7 +76,7 @@ function Scene() {
       <ambientLight intensity={0.25} />
       <pointLight
         ref={pointLightRef}
-        position={[-0, 3, 3]}
+        position={[0, 3, 3]}
         power={700}
         castShadow
         shadow-bias={-0.0001}
