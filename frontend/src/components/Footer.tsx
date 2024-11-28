@@ -57,8 +57,8 @@ const Footer: React.FC<FooterProps> = () => {
                 className={({ isActive }) =>
                   `text-sm font-medium ${
                     isActive
-                      ? 'font-[900]'
-                      : 'hover:text-gray-900 dark:hover:text-gray-100'
+                      ? 'font-[1000]'
+                      : 'font-[300] hover:text-gray-900 dark:hover:text-gray-100'
                   }`
                 }
               >

@@ -11,10 +11,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { setCdPlayer } from '@/reducers/outlineSlice'
 import Screen from './Screen'
+import CD from '../CD'
 
 function CDPlayer(props: JSX.IntrinsicElements['group']) {
   const dispatch = useDispatch()
-  const { openDock } = useSelector((state: RootState) => state.upload)
+  const { openDock, uploaded } = useSelector((state: RootState) => state.upload)
 
   const openDockZ = 0.12
   const dockRef = useRef<THREE.Group>(null)
@@ -37,7 +38,7 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
   }
 
   // Add cd player ref to global state (for outlining)
-  const cdPlayerRef = useRef<THREE.Mesh>(null)
+  const cdPlayerRef = useRef<THREE.Group>(null)
   useEffect(() => {
     if (cdPlayerRef.current) {
       dispatch(setCdPlayer(cdPlayerRef.current))
@@ -47,7 +48,11 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
   return (
     <group ref={cdPlayerRef} {...props} dispose={null}>
       <Body />
-      <Dock ref={dockRef} position={[0, 0, 0]} />
+
+      <group ref={dockRef}>
+        <Dock position={[0, 0, 0]} />
+        <CD visible={uploaded} />
+      </group>
       <DockBtn />
       <PlayBtn />
       <Speaker position={[-0.16, 0, 0]} />

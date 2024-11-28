@@ -1,9 +1,11 @@
 import { useRef } from 'react'
 import { MeshProps, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { Html } from '@react-three/drei'
+import ScreenUI from './ScreenUI'
 
 export default function Screen(props: MeshProps) {
-  const meshRef = useRef<THREE.Mesh>(null) // Explicitly typing the ref
+  const materialRef = useRef<THREE.ShaderMaterial>(null) // Explicitly typing the ref
 
   const vertexShader = `
     varying vec2 vUv;
@@ -51,8 +53,8 @@ export default function Screen(props: MeshProps) {
   }
 
   useFrame(({ clock }) => {
-    if (meshRef.current && meshRef.current.material) {
-      meshRef.current.material.uniforms.time.value = clock.getElapsedTime()
+    if (materialRef.current && materialRef.current) {
+      materialRef.current.uniforms.time.value = clock.getElapsedTime()
     }
   })
 
@@ -60,11 +62,12 @@ export default function Screen(props: MeshProps) {
     <mesh
       receiveShadow
       scale={[0.1, 0.1, 0]}
-      ref={meshRef}
       {...props}
       geometry={ScreenShape()}
     >
-      <shaderMaterial
+      
+      <ScreenUI material={<shaderMaterial
+        ref={materialRef}
         attach='material'
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
@@ -73,7 +76,7 @@ export default function Screen(props: MeshProps) {
         }}
         transparent={true} // Enable transparency
         opacity={0.8} // Set opacity
-      />
+      />}/>
     </mesh>
   )
 }

@@ -5,9 +5,11 @@ Files: cd.glb [100.84KB] > /home/alean/apps/popcast-ai/frontend/public/objects/c
 */
 
 import * as THREE from 'three'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -22,6 +24,7 @@ export default function CD(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/cd-transformed.glb',
   ) as GLTFResult
+
   return (
     <group {...props} dispose={null}>
       <mesh

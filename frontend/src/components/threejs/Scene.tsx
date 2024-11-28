@@ -2,9 +2,7 @@ import Room from './Room'
 import CDPlayer from './cdplayer/CDPlayer'
 import CD from './CD'
 import {
-  Environment,
   AdaptiveDpr,
-  OrbitControls,
   PerspectiveCamera,
 } from '@react-three/drei'
 import * as THREE from 'three'
@@ -15,8 +13,14 @@ import { clamp } from 'three/src/math/MathUtils.js'
 import { useEffect, useRef } from 'react'
 import { useTheme } from '../theme-provider'
 import gsap from 'gsap'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 function PostProcess() {
+  const outlinedObjects = useSelector(
+    (state: RootState) => state.outline.outlinedObjects,
+  )
+
   return (
     <EffectComposer
       enabled
@@ -33,7 +37,7 @@ function PostProcess() {
         kernelSize={KernelSize.SMALL}
       />
       <Outline
-        selection={[]}
+        selection={outlinedObjects}
         visibleEdgeColor={0xffffff}
         hiddenEdgeColor={0x000000}
         edgeStrength={2}
@@ -86,7 +90,6 @@ function Scene() {
       <group>
         <Room position={[0, 0, 0]} scale={[2, 2, 2]} />
         <CDPlayer scale={[5, 5, 5]} position={[0, 0, 0]} />
-        <CD position={[0, 0, 0]} scale={[5, 5, 5]} />
       </group>
     </>
   )
