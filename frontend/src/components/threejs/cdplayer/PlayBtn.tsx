@@ -26,7 +26,7 @@ export default function PlayBtn(props: JSX.IntrinsicElements['group']) {
     <group {...props} dispose={null}>
       <mesh
         name='play_btn'
-        castShadow
+        
         receiveShadow
         geometry={nodes.play_btn.geometry}
         material={materials['panasonic_sa-pm02-player']}

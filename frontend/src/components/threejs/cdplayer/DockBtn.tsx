@@ -26,7 +26,7 @@ export default function DockBtn(props: JSX.IntrinsicElements['group']) {
     <group {...props} dispose={null}>
       <mesh
         name='dock_btn'
-        castShadow
+        
         receiveShadow
         geometry={nodes.dock_btn.geometry}
         material={materials['panasonic_sa-pm02-player']}

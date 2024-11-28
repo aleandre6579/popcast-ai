@@ -16,7 +16,6 @@ type GLTFResult = GLTF & {
   materials: {
     Material: THREE.MeshStandardMaterial
   }
-  animations: GLTFAction[]
 }
 
 export default function Room(props: JSX.IntrinsicElements['group']) {

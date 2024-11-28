@@ -39,7 +39,7 @@ function PostProcess() {
   return (
     <EffectComposer
       enabled
-      multisampling={0}
+      multisampling={4}
       stencilBuffer={false}
       autoClear={false}
     >
@@ -66,6 +66,10 @@ function PostProcess() {
 }
 
 function Scene() {
+  useEffect(() => {
+    console.log('ASD')
+  }, [])
+
   const { width, height } = useThree(state => state.viewport)
   const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100)
 
@@ -82,14 +86,8 @@ function Scene() {
         fov={scaledFov}
         rotation={[-Math.PI / 16, 0, 0]}
       />
-      <ambientLight intensity={0.35} />
-      <pointLight
-        position={[-0.5, 3, 1]}
-        decay={1.2}
-        distance={20}
-        intensity={12}
-        castShadow
-      />
+      <ambientLight intensity={0.28} />
+      <pointLight position={[-0, 1.5, 2.5]} power={100} castShadow />
 
       {/* Scene Objects */}
       <group>

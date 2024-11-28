@@ -29,7 +29,7 @@ const Dock = forwardRef<THREE.Group, JSX.IntrinsicElements['group']>(
       <group ref={ref} {...props} dispose={null}>
         <mesh
           name='dock_front'
-          castShadow
+          
           receiveShadow
           geometry={nodes.dock_front.geometry}
           material={materials['Material.004']}
@@ -37,7 +37,7 @@ const Dock = forwardRef<THREE.Group, JSX.IntrinsicElements['group']>(
         />
         <mesh
           name='dock_center'
-          castShadow
+          
           receiveShadow
           geometry={nodes.dock_center.geometry}
           material={materials['Material.003']}

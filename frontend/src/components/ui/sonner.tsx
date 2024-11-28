@@ -1,26 +1,26 @@
-import { useEffect } from "react"
-import { Toaster as Sonner } from "sonner"
-import { useTheme } from "../theme-provider"
-import { switchTheme } from "@/utils/theme"
+import { useEffect } from 'react'
+import { Toaster as Sonner } from 'sonner'
+import { useTheme } from '../theme-provider'
+import { switchTheme } from '@/utils/theme'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
   let { theme } = useTheme()
-  
+
   return (
     <Sonner
-      theme={switchTheme(theme) as ToasterProps["theme"]}
-      className="toaster group"
+      theme={switchTheme(theme) as ToasterProps['theme']}
+      className='toaster group'
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-          description: "group-[.toast]:text-muted-foreground",
+            'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+          description: 'group-[.toast]:text-muted-foreground',
           actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
+            'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
           cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+            'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
         },
       }}
       {...props}
