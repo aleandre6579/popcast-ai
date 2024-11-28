@@ -82,7 +82,7 @@ const Upload: React.FC<UploadProps> = () => {
         <p className='tooltip flex justify-center gap-3 text-center absolute top-[-50px] w-full'>
           <ChevronDown className='downArrow' />
           <span>
-            Click on the CD player or drag an audio file to get started!
+            Click on the CD player or drop an audio file to get started!
           </span>
           <ChevronDown className='downArrow' />
         </p>

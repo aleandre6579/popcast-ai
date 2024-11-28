@@ -5,9 +5,10 @@ Files: public/objects/room/room.glb [1.98KB] > /home/alean/stuff/apps/popcast-ai
 */
 
 import * as THREE from 'three'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
+import { useTheme } from '../theme-provider'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -19,9 +20,22 @@ type GLTFResult = GLTF & {
 }
 
 export default function Room(props: JSX.IntrinsicElements['group']) {
+  const { theme } = useTheme()
+
   const { nodes, materials } = useGLTF(
     '/objects/room/room-transformed.glb',
   ) as GLTFResult
+
+  const lightColor = new THREE.Color(0xffffff)
+  const darkColor = new THREE.Color(0x242424)
+  
+  useEffect(() => {
+    if (theme === 'dark') {
+      materials.Material.color = darkColor
+    } else {
+      materials.Material.color = lightColor
+    }
+  }, [theme])
 
   return (
     <group {...props} dispose={null}>

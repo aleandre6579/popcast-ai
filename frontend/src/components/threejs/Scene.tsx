@@ -24,6 +24,7 @@ import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import { useTheme } from '../theme-provider'
 
 const cameraPositions: Record<string, THREE.Vector3> = {
   home: new THREE.Vector3(0, 0, 10),
@@ -66,11 +67,28 @@ function PostProcess() {
 }
 
 function Scene() {
+  const { theme } = useTheme()
   const { width, height } = useThree(state => state.viewport)
+
   const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100)
 
   const degreesToRadians = (degrees: number): number =>
     degrees * (Math.PI / 180)
+
+  const pointLightRef = useRef<THREE.PointLight>(null)
+
+  useEffect(() => {
+    if(!pointLightRef.current)
+      return
+
+    if (theme === 'dark') {
+      pointLightRef.current.power=700
+      
+    } else {
+      pointLightRef.current.power=500
+      
+    }
+  }, [theme])
 
   return (
     <>
@@ -82,10 +100,11 @@ function Scene() {
         fov={scaledFov}
         rotation={[-Math.PI / 16, 0, 0]}
       />
-      <ambientLight intensity={0.28} />
+      <ambientLight intensity={0.25} />
       <pointLight
-        position={[-0, 1.5, 2.5]}
-        power={100}
+        ref={pointLightRef}
+        position={[-0, 3, 3]}
+        power={700}
         castShadow
         shadow-bias={-0.0001}
       />
@@ -93,9 +112,7 @@ function Scene() {
       {/* Scene Objects */}
       <group>
         <Room position={[0, 0, 0]} scale={[2, 2, 2]} />
-
         <CDPlayer scale={[5, 5, 5]} position={[0, 0, 0]} />
-
         <CD position={[0, 0, 0]} scale={[5, 5, 5]} />
       </group>
     </>
