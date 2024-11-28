@@ -1,57 +1,75 @@
 import { Button } from '@/components/ui/button'
 import { UserIcon } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ModeToggle } from './ModeToggle'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import { setIsDraggingAudioFile } from '@/reducers/uploadSlice'
+import {
+  closeDock,
+  openDock,
+  setFileUploaded,
+  setIsDraggingAudioFile,
+} from '@/reducers/uploadSlice'
+import { handleUpload } from '@/utils/upload'
 
 interface DragDetectorProps {}
 
 const DragDetector: React.FC<DragDetectorProps> = () => {
-
-  const handleDragEnter = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (isAudioFile(e)) {
-      setIsDraggingAudioFile(true);
-    }
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    console.log("ASDASD");
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDraggingAudioFile(false);
-  };
-
-  const isAudioFile = (e: React.DragEvent): boolean => {
-    const files = e.dataTransfer.files;
-    if (files.length) {
-      return Array.from(files).some((item) => 
-        item.type.startsWith("audio/")
-      );
-    }
-    return false;
-  };
-
-  document.body.addEventListener("dragenter", handleDragEnter);
-    document.body.addEventListener("dragover", handleDragOver);
-    document.body.addEventListener("dragleave", handleDragLeave);
-    document.body.addEventListener("drop", handleDrop);
-
-    <div
-      onDragEnter={handleDragEnter}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      className='absolute top-0 left-0 w-full h-full z-50 pointer-events-auto'
-    />
+  const dispatch = useDispatch()
+  const { isDraggingAudioFile } = useSelector(
+    (state: RootState) => state.upload,
   )
+
+  let dragCounter = 0
+
+  const handleDragEnter = (e: DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    dragCounter++
+    if (dragCounter === 1) dispatch(setIsDraggingAudioFile(true))
+  }
+
+  const handleDragOver = (e: DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  const handleDragLeave = (e: DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    dragCounter--
+    if (dragCounter === 0) dispatch(setIsDraggingAudioFile(false))
+  }
+
+  const handleDrop = (e: DragEvent) => {
+    dragCounter = 0
+    handleUpload(e, dispatch)
+  }
+
+  useEffect(() => {
+    document.body.addEventListener('dragenter', handleDragEnter)
+    document.body.addEventListener('dragover', handleDragOver)
+    document.body.addEventListener('dragleave', handleDragLeave)
+    document.body.addEventListener('drop', handleDrop)
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.removeEventListener('dragenter', handleDragEnter)
+      document.body.removeEventListener('dragover', handleDragOver)
+      document.body.removeEventListener('dragleave', handleDragLeave)
+      document.body.removeEventListener('drop', handleDrop)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isDraggingAudioFile) {
+      dispatch(openDock())
+    } else {
+      dispatch(closeDock())
+    }
+  }, [isDraggingAudioFile])
+
+  return <></>
 }
 
 export default DragDetector

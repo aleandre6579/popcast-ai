@@ -31,7 +31,8 @@ const Footer: React.FC<FooterProps> = () => {
   const sliderSectionGap = 18
   const markerLeftBase =
     (footerWidth - (sliderSectionWidth + sliderSectionGap * 2.06) * 3) / 2 +
-    sliderSectionGap + 3
+    sliderSectionGap +
+    3
 
   // Animate marker
   const markerRef = useRef(null)
@@ -61,17 +62,17 @@ const Footer: React.FC<FooterProps> = () => {
                   }`
                 }
               >
-                {page.name === 'Support' ?
+                {page.name === 'Support' ? (
                   <span className='text-red-600 w-full flex flex-col items-center'>
                     {page.name}
                     <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block' />
                   </span>
-                    : 
-                    <span className='w-full flex flex-col items-center'>
+                ) : (
+                  <span className='w-full flex flex-col items-center'>
                     {page.name}
                     <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
                   </span>
-                }
+                )}
               </NavLink>
             </div>
           ))}
@@ -97,7 +98,12 @@ const Footer: React.FC<FooterProps> = () => {
           <span
             ref={markerRef}
             style={{ left: markerLeftBase }}
-            className={clsx(location.pathname === '/support' ? 'bg-red-600' : 'bg-black dark:bg-white', 'absolute top-[-6px] rounded-full size-[17px] block')}
+            className={clsx(
+              location.pathname === '/support'
+                ? 'bg-red-600'
+                : 'bg-black dark:bg-white',
+              'absolute top-[-6px] rounded-full size-[17px] block',
+            )}
           />
         </div>
       </div>

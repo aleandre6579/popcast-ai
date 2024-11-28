@@ -2,7 +2,12 @@ import { Input } from '@/components/ui/input'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store'
-import { setFileUploaded, openDock, closeDock, setIsDraggingAudioFile } from '../reducers/uploadSlice'
+import {
+  setFileUploaded,
+  openDock,
+  closeDock,
+  setIsDraggingAudioFile,
+} from '../reducers/uploadSlice'
 import { addOutline, removeOutline } from '../reducers/outlineSlice'
 import useSize from '@/hooks/useSize'
 import { clamp } from 'three/src/math/MathUtils.js'
@@ -10,6 +15,8 @@ import gsap from 'gsap'
 import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import DragDetector from '@/components/DragDetector'
+import { handleUpload } from '@/utils/upload'
+import { Toaster } from 'sonner'
 
 interface UploadProps {}
 
@@ -17,41 +24,29 @@ const Upload: React.FC<UploadProps> = () => {
   const dispatch = useDispatch()
   const { cdPlayer } = useSelector((state: RootState) => state.outline)
 
-  const handleUploadOnHover = () => {
+  const handleUploadOnHover = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (cdPlayer === null) return
     dispatch(addOutline(cdPlayer))
     dispatch(openDock())
   }
 
-  const handleUploadOffHover = () => {
+  const handleUploadOffHover = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (cdPlayer === null) return
     dispatch(removeOutline(cdPlayer))
     dispatch(closeDock())
   }
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDraggingAudioFile(false);
-    const audioFile = getAudioFile(e)
-    if(audioFile) {
-      console.log("Audio file dropped:", audioFile);
-      dispatch(setFileUploaded(audioFile.name))
-    } else {
-      console.log("Dropped item is not an audio file.");
-    }
-  };
-
-  const getAudioFile = (e: React.ChangeEvent<HTMLInputElement>): File | undefined => {
-    const files = e.target.files
-    if (files && files.length) {
-        for(let file of Array.from(files)) {
-            if(file.type.startsWith("audio/")) {
-                return file
-            }
-        }
-    }
-  };
+  const handleDrop = (e: DragEvent | React.ChangeEvent) => {
+    handleUpload(e, dispatch)
+  }
 
   const [width, height] = useSize()
   const uploadBoxWidth = width * 0.23 + height * 0.4 - 10
@@ -62,9 +57,13 @@ const Upload: React.FC<UploadProps> = () => {
 
     timeline.fromTo('.tooltip', { y: -10 }, { y: 10, duration: 1 }, 0)
     timeline.to('.tooltip', { y: -10, duration: 1, delay: 2 })
-    
-    timeline
-      .fromTo('.downArrow', { y: -5 }, { y: 5, duration: 0.5, repeat: 11, yoyo: true }, 0)
+
+    timeline.fromTo(
+      '.downArrow',
+      { y: -5 },
+      { y: 5, duration: 0.5, repeat: 11, yoyo: true },
+      0,
+    )
   }, [])
 
   return (
@@ -82,14 +81,22 @@ const Upload: React.FC<UploadProps> = () => {
       >
         <p className='tooltip flex justify-center gap-3 text-center absolute top-[-50px] w-full'>
           <ChevronDown className='downArrow' />
-          <span>Click on the CD player or drag an audio file to get started!</span>
+          <span>
+            Click on the CD player or drag an audio file to get started!
+          </span>
           <ChevronDown className='downArrow' />
         </p>
 
         <Input
-          onMouseEnter={handleUploadOnHover}
-          onMouseLeave={handleUploadOffHover}
-          onChange={e => {handleFileUpload(e)}}
+          onMouseEnter={e => {
+            handleUploadOnHover(e)
+          }}
+          onMouseLeave={e => {
+            handleUploadOffHover(e)
+          }}
+          onChange={e => {
+            handleDrop(e)
+          }}
           className='opacity-0 absolute top-0 w-full h-full cursor-pointer'
           type='file'
         />
@@ -101,7 +108,6 @@ const Upload: React.FC<UploadProps> = () => {
       </div>
 
       <DragDetector />
-      
     </div>
   )
 }

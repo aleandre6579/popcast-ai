@@ -11,7 +11,7 @@ const initialState: UploadState = {
   uploaded: false,
   uploadedFileName: null,
   openDock: false,
-  isDraggingAudioFile: false
+  isDraggingAudioFile: false,
 }
 
 const uploadSlice = createSlice({
@@ -38,7 +38,12 @@ const uploadSlice = createSlice({
   },
 })
 
-export const { setIsDraggingAudioFile, setFileUploaded, resetFileUploaded, openDock, closeDock } =
-  uploadSlice.actions
+export const {
+  setIsDraggingAudioFile,
+  setFileUploaded,
+  resetFileUploaded,
+  openDock,
+  closeDock,
+} = uploadSlice.actions
 
 export default uploadSlice.reducer

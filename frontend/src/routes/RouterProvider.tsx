@@ -5,6 +5,7 @@ import Scene from '../components/threejs/Scene'
 import Upload from '@/pages/Upload'
 import Header from '../components/Header'
 import Footer from '@/components/Footer'
+import { Toaster } from '@/components/ui/sonner'
 
 const About: React.FC = () => <h1 className='text-black'>About Page</h1>
 const Contact: React.FC = () => <h1 className='text-black'>Contact Page</h1>
@@ -43,6 +44,7 @@ const RouterProvider: React.FC = () => {
           </div>
 
           <Footer />
+          <Toaster richColors />
         </div>
       </div>
     </Router>
