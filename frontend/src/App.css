@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 @layer base {
   :root {
     --radius: 0.5rem;

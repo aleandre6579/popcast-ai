@@ -37,17 +37,67 @@ type GLTFResult = GLTF & {
 }
 
 export default function TVs(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/objects/tvs/tvs-transformed.glb') as GLTFResult
+  const { nodes, materials } = useGLTF(
+    '/objects/tvs/tvs-transformed.glb',
+  ) as GLTFResult
   return (
     <group {...props} dispose={null}>
-      <mesh castShadow receiveShadow geometry={nodes.Object_2.geometry} material={materials.Holzverkleidung} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_3.geometry} material={materials.GlowLampBlue} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_4.geometry} material={materials.HolzverkleidungDark} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_5.geometry} material={materials.blackScreen} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_6.geometry} material={materials.metallArm} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_7.geometry} material={materials.monitoHuelle} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_8.geometry} material={materials.monitoHuelle2} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh castShadow receiveShadow geometry={nodes.Object_9.geometry} material={materials.monitoHuelle2dark} rotation={[-Math.PI / 2, 0, 0]} />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_2.geometry}
+        material={materials.Holzverkleidung}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_3.geometry}
+        material={materials.GlowLampBlue}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_4.geometry}
+        material={materials.HolzverkleidungDark}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_5.geometry}
+        material={materials.blackScreen}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_6.geometry}
+        material={materials.metallArm}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_7.geometry}
+        material={materials.monitoHuelle}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_8.geometry}
+        material={materials.monitoHuelle2}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_9.geometry}
+        material={materials.monitoHuelle2dark}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
     </group>
   )
 }

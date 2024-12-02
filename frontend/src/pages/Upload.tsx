@@ -18,6 +18,7 @@ import DragDetector from '@/components/DragDetector'
 import { handleUpload } from '@/utils/upload'
 import { Toaster } from 'sonner'
 import { useNavigate } from 'react-router-dom'
+import AnimatedTooltip from '@/components/ui/animated-tooltip'
 
 interface UploadProps {}
 
@@ -56,21 +57,6 @@ const Upload: React.FC<UploadProps> = () => {
   const uploadBoxWidth = width * 0.23 + height * 0.4 - 10
   const uploadBoxHeight = width * 0.1 + height * 0.14 + 60
 
-  // Tooltip animation
-  useEffect(() => {
-    const timeline = gsap.timeline({ repeat: -1, ease: 'linear' })
-
-    timeline.fromTo('.tooltip', { y: -10 }, { y: 10, duration: 1 }, 0)
-    timeline.to('.tooltip', { y: -10, duration: 1, delay: 2 })
-
-    timeline.fromTo(
-      '.downArrow',
-      { y: -5 },
-      { y: 5, duration: 0.5, repeat: 11, yoyo: true },
-      0,
-    )
-  }, [])
-
   const titleInputRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!titleInputRef.current) return
@@ -95,13 +81,7 @@ const Upload: React.FC<UploadProps> = () => {
         style={{ width: uploadBoxWidth, height: uploadBoxHeight }}
         className='absolute top-[calc(50%+22px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2'
       >
-        <p className='tooltip flex justify-center gap-3 text-center absolute top-[-50px] w-full'>
-          <ChevronDown className='downArrow' />
-          <span>
-            Click on the CD player or drop an audio file to get started!
-          </span>
-          <ChevronDown className='downArrow' />
-        </p>
+        <AnimatedTooltip/>
 
         <Input
           onMouseEnter={e => {

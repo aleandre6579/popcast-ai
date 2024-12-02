@@ -21,7 +21,7 @@ const cameraRotations = {
   '/': [-Math.PI / 16, 0, 0],
   '/analysis': [0, -Math.PI / 2, 0],
   '/results': [0, Math.PI / 2, 0],
-  '/support': [Math.PI/2, 0, 0],
+  '/support': [Math.PI / 2, 0, 0],
 }
 
 function Camera({ scaledFov }: CameraProps) {

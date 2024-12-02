@@ -17,7 +17,6 @@ const Footer: React.FC<FooterProps> = () => {
     { name: 'Support', path: '/support' },
   ]
 
-  
   // Draw footer
   const footerWidth = (width * 4) / 6
   const sliderWidth = footerWidth - 40
@@ -44,7 +43,6 @@ const Footer: React.FC<FooterProps> = () => {
       duration: 0.75,
       ease: 'power3',
     })
-    
   }, [location.pathname])
 
   return (
