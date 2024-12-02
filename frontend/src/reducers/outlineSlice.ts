@@ -16,7 +16,6 @@ const outlineSlice = createSlice({
   initialState,
   reducers: {
     addOutline: (state, action: PayloadAction<Object3D>) => {
-      
       const object = action.payload
       object.traverse(child => {
         if (child instanceof Mesh && !state.outlinedObjects.includes(child)) {

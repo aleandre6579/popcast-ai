@@ -65,18 +65,21 @@ export default function Screen(props: MeshProps) {
       {...props}
       geometry={ScreenShape()}
     >
-      
-      <ScreenUI material={<shaderMaterial
-        ref={materialRef}
-        attach='material'
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={{
-          time: { value: 0 },
-        }}
-        transparent={true} // Enable transparency
-        opacity={0.8} // Set opacity
-      />}/>
+      <ScreenUI
+        material={
+          <shaderMaterial
+            ref={materialRef}
+            attach='material'
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+            uniforms={{
+              time: { value: 0 },
+            }}
+            transparent={true} // Enable transparency
+            opacity={0.8} // Set opacity
+          />
+        }
+      />
     </mesh>
   )
 }

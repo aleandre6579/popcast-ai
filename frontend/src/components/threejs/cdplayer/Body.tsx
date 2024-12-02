@@ -30,7 +30,8 @@ export default function Body(props: JSX.IntrinsicElements['group']) {
   return (
     <group {...props} dispose={null}>
       <mesh
-      material-depthWrite={true} material-depthTest={true}
+        material-depthWrite={true}
+        material-depthTest={true}
         name='cdplayer_body'
         castShadow
         receiveShadow

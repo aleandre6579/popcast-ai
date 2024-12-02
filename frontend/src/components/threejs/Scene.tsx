@@ -1,10 +1,7 @@
 import Room from './Room'
 import CDPlayer from './cdplayer/CDPlayer'
 import CD from './CD'
-import {
-  AdaptiveDpr,
-  PerspectiveCamera,
-} from '@react-three/drei'
+import { AdaptiveDpr, PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
 import { EffectComposer, Bloom, Outline } from '@react-three/postprocessing'
 import { KernelSize } from 'postprocessing'
@@ -51,7 +48,7 @@ function PostProcess() {
 
 function Scene() {
   const { theme } = useTheme()
-  const { width, height } = useThree((state) => state.viewport)
+  const { width, height } = useThree(state => state.viewport)
   const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100)
   const pointLightRef = useRef<THREE.PointLight>(null)
 
@@ -81,9 +78,9 @@ function Scene() {
       <pointLight
         ref={pointLightRef}
         position={[0, 3, 3]}
-        power={700}
+        decay={1.3}
         castShadow
-        shadow-bias={-0.0001}
+        shadow-bias={-0.0005}
       />
 
       {/* Scene Objects */}
