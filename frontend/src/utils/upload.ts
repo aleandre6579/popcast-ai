@@ -35,3 +35,7 @@ export const handleUpload = (
     }
   }
 }
+
+export const cutExtension = (filename: string) => {
+  return filename.substring(0, filename.lastIndexOf('.'));
+}
