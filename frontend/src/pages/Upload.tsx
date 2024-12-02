@@ -73,13 +73,12 @@ const Upload: React.FC<UploadProps> = () => {
 
   const titleInputRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (!titleInputRef.current) 
-      return
+    if (!titleInputRef.current) return
 
     if (!uploadedFileName) {
-      titleInputRef.current.style.display = "none"
+      titleInputRef.current.style.display = 'none'
     } else {
-      titleInputRef.current.style.display = "flex"
+      titleInputRef.current.style.display = 'flex'
     }
   }, [uploadedFileName])
 
@@ -118,9 +117,15 @@ const Upload: React.FC<UploadProps> = () => {
           type='file'
         />
 
-        <div ref={titleInputRef} className='absolute bottom-[-55px] flex justify-center w-full gap-2'>
-          <Input value={uploadedFileName} className='w-[250px] border-black dark:border-white' />
-          <Button onClick={() => navigate('/analysis')} >Analyze</Button>
+        <div
+          ref={titleInputRef}
+          className='absolute bottom-[-55px] flex justify-center w-full gap-2'
+        >
+          <Input
+            value={uploadedFileName}
+            className='w-[250px] border-black dark:border-white'
+          />
+          <Button onClick={() => navigate('/analysis')}>Analyze</Button>
         </div>
       </div>
 

@@ -12,6 +12,7 @@ import { useTheme } from '../theme-provider'
 import gsap from 'gsap'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import Camera from './Camera'
 
 function PostProcess() {
   const outlinedObjects = useSelector(
@@ -68,12 +69,7 @@ function Scene() {
     <>
       <AdaptiveDpr pixelated />
       <PostProcess />
-      <PerspectiveCamera
-        makeDefault
-        position={[0, 1.4, 4]}
-        fov={scaledFov}
-        rotation={[-Math.PI / 16, 0, 0]}
-      />
+      <Camera scaledFov={scaledFov} />
       <ambientLight intensity={0.25} />
       <pointLight
         ref={pointLightRef}

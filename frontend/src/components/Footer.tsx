@@ -17,13 +17,7 @@ const Footer: React.FC<FooterProps> = () => {
     { name: 'Support', path: '/support' },
   ]
 
-  let pageIndex = 0
-  for (let i = 0; i < pages.length; i++) {
-    if (pages[i].path === location.pathname) {
-      pageIndex = i
-    }
-  }
-
+  
   // Draw footer
   const footerWidth = (width * 4) / 6
   const sliderWidth = footerWidth - 40
@@ -36,12 +30,22 @@ const Footer: React.FC<FooterProps> = () => {
 
   // Animate marker
   const markerRef = useRef(null)
-  let markerTween = gsap.to(markerRef.current, {
-    x: pageIndex * (sliderSectionWidth + sliderSectionGap - 0.75),
-    duration: 0.75,
-    ease: 'power3',
-  })
-  markerTween.play()
+
+  useEffect(() => {
+    let pageIndex = 0
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i].path === location.pathname) {
+        pageIndex = i
+      }
+    }
+
+    gsap.to(markerRef.current, {
+      x: pageIndex * (sliderSectionWidth + sliderSectionGap - 0.75),
+      duration: 0.75,
+      ease: 'power3',
+    })
+    
+  }, [location.pathname])
 
   return (
     <footer className='w-full p-10 flex flex-col items-center'>
