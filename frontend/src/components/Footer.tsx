@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import useSize from '../hooks/useSize.ts'
 import { gsap } from 'gsap'
@@ -17,18 +17,19 @@ const Footer: React.FC<FooterProps> = () => {
     { name: 'Support', path: '/support' },
   ]
 
-  // Draw footer
-  const footerWidth = (width * 4) / 6
-  const sliderWidth = footerWidth - 40
-  const sliderSectionWidth = (sliderWidth / 1.314 - 30) / 3
-  const sliderSectionGap = 18
-  const markerLeftBase =
-    (footerWidth - (sliderSectionWidth + sliderSectionGap * 2.06) * 3) / 2 +
-    sliderSectionGap +
-    3
+  const footerWidth = Math.min(width * 5/9, 600)
+  const footerSectionGap = 16.5
+  const footerSectionWidth = footerWidth / 3 - footerSectionGap * 2
 
-  // Animate marker
-  const markerRef = useRef(null)
+  const markerRef = useRef<HTMLSpanElement>(null)
+  const markerLeft =
+    (footerWidth - footerSectionWidth * 3 - footerSectionGap * 4) / 2
+
+  useEffect(() => {
+    if (markerRef.current) {
+      markerRef.current.style.left = `${markerLeft}px`
+    }
+  }, [markerLeft])
 
   useEffect(() => {
     let pageIndex = 0
@@ -39,21 +40,21 @@ const Footer: React.FC<FooterProps> = () => {
     }
 
     gsap.to(markerRef.current, {
-      x: pageIndex * (sliderSectionWidth + sliderSectionGap - 0.75),
+      x: pageIndex * (footerSectionWidth + footerSectionGap - 0.75),
       duration: 0.75,
       ease: 'power3',
     })
-  }, [location.pathname])
+  }, [location.pathname, footerSectionWidth, footerSectionGap])
 
   return (
-    <footer className='w-full p-10 flex flex-col items-center'>
+    <footer className="w-full p-10 flex flex-col items-center">
       <div
-        style={{ width: footerWidth }}
-        className='flex flex-col items-center gap-4 relative'
+      style={{width: footerWidth}}
+        className="flex flex-col gap-4 relative"
       >
-        <nav className='w-full flex justify-between relative'>
-          {pages.map(page => (
-            <div key={page.name} className='w-full'>
+        <nav className="w-full flex justify-between relative">
+          {pages.map((page) => (
+            <div key={page.name}>
               <NavLink
                 to={page.path}
                 className={({ isActive }) =>
@@ -65,14 +66,14 @@ const Footer: React.FC<FooterProps> = () => {
                 }
               >
                 {page.name === 'Support' ? (
-                  <span className='text-red-600 w-full flex flex-col items-center'>
+                  <span className="text-red-600 w-full flex flex-col items-center">
                     {page.name}
-                    <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block' />
+                    <span className="z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block" />
                   </span>
                 ) : (
-                  <span className='w-full flex flex-col items-center'>
+                  <span className="w-full flex flex-col items-center">
                     {page.name}
-                    <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
+                    <span className="z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block" />
                   </span>
                 )}
               </NavLink>
@@ -81,30 +82,29 @@ const Footer: React.FC<FooterProps> = () => {
         </nav>
 
         <div
-          style={{ gap: sliderSectionGap }}
-          className='w-full flex justify-center relative'
+          style={{ gap: footerSectionGap }}
+          className="w-full flex justify-center relative"
         >
           <span
-            style={{ width: sliderSectionWidth }}
-            className='bg-black dark:bg-white h-1'
+            style={{ width: footerSectionWidth }}
+            className="bg-black dark:bg-white h-1"
           />
           <span
-            style={{ width: sliderSectionWidth }}
-            className='bg-black dark:bg-white h-1'
+            style={{ width: footerSectionWidth }}
+            className="bg-black dark:bg-white h-1"
           />
           <span
-            style={{ width: sliderSectionWidth }}
-            className='bg-black dark:bg-white h-1'
+            style={{ width: footerSectionWidth }}
+            className="bg-black dark:bg-white h-1"
           />
 
           <span
             ref={markerRef}
-            style={{ left: markerLeftBase }}
             className={clsx(
               location.pathname === '/support'
                 ? 'bg-red-600'
                 : 'bg-black dark:bg-white',
-              'absolute top-[-6px] rounded-full size-[17px] block',
+              'absolute top-[-6px] rounded-full size-[17px] block'
             )}
           />
         </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ChevronDown } from 'lucide-react'
 
-
 interface AnimatedTooltipProps {}
 
 const AnimatedTooltip: React.FC<AnimatedTooltipProps> = () => {

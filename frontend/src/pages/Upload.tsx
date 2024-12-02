@@ -81,7 +81,7 @@ const Upload: React.FC<UploadProps> = () => {
         style={{ width: uploadBoxWidth, height: uploadBoxHeight }}
         className='absolute top-[calc(50%+22px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2'
       >
-        <AnimatedTooltip/>
+        <AnimatedTooltip />
 
         <Input
           onMouseEnter={e => {
