@@ -17,7 +17,7 @@ const Footer: React.FC<FooterProps> = () => {
     { name: 'Support', path: '/support' },
   ]
 
-  const footerWidth = Math.min(width * 5/9, 600)
+  const footerWidth = Math.min((width * 5) / 9, 600)
   const footerSectionGap = 16.5
   const footerSectionWidth = footerWidth / 3 - footerSectionGap * 2
 
@@ -47,13 +47,13 @@ const Footer: React.FC<FooterProps> = () => {
   }, [location.pathname, footerSectionWidth, footerSectionGap])
 
   return (
-    <footer className="w-full p-10 flex flex-col items-center">
+    <footer className='w-full p-10 flex flex-col items-center'>
       <div
-      style={{width: footerWidth}}
-        className="flex flex-col gap-4 relative"
+        style={{ width: footerWidth }}
+        className='flex flex-col gap-4 relative'
       >
-        <nav className="w-full flex justify-between relative">
-          {pages.map((page) => (
+        <nav className='w-full flex justify-between relative'>
+          {pages.map(page => (
             <div key={page.name}>
               <NavLink
                 to={page.path}
@@ -66,14 +66,14 @@ const Footer: React.FC<FooterProps> = () => {
                 }
               >
                 {page.name === 'Support' ? (
-                  <span className="text-red-600 w-full flex flex-col items-center">
+                  <span className='text-red-600 w-full flex flex-col items-center'>
                     {page.name}
-                    <span className="z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block" />
+                    <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block' />
                   </span>
                 ) : (
-                  <span className="w-full flex flex-col items-center">
+                  <span className='w-full flex flex-col items-center'>
                     {page.name}
-                    <span className="z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block" />
+                    <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
                   </span>
                 )}
               </NavLink>
@@ -83,19 +83,19 @@ const Footer: React.FC<FooterProps> = () => {
 
         <div
           style={{ gap: footerSectionGap }}
-          className="w-full flex justify-center relative"
+          className='w-full flex justify-center relative'
         >
           <span
             style={{ width: footerSectionWidth }}
-            className="bg-black dark:bg-white h-1"
+            className='bg-black dark:bg-white h-1'
           />
           <span
             style={{ width: footerSectionWidth }}
-            className="bg-black dark:bg-white h-1"
+            className='bg-black dark:bg-white h-1'
           />
           <span
             style={{ width: footerSectionWidth }}
-            className="bg-black dark:bg-white h-1"
+            className='bg-black dark:bg-white h-1'
           />
 
           <span
@@ -104,7 +104,7 @@ const Footer: React.FC<FooterProps> = () => {
               location.pathname === '/support'
                 ? 'bg-red-600'
                 : 'bg-black dark:bg-white',
-              'absolute top-[-6px] rounded-full size-[17px] block'
+              'absolute top-[-6px] rounded-full size-[17px] block',
             )}
           />
         </div>
