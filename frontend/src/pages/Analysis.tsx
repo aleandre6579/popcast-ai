@@ -12,11 +12,9 @@ const Analysis: React.FC<AnalysisProps> = () => {
   return (
     <div>
       <h1 className='text-4xl font-extrabold text-center mt-8 tracking-tight'>
-        AI insights for your next big hit!
+        Analyzing...
       </h1>
-      <p className='text-sm text-center mt-2'>
-        Submit your songs and receive quick and meaningful feedback.
-      </p>
+ 
     </div>
   )
 }

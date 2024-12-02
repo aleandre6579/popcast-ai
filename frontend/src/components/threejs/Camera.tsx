@@ -12,16 +12,16 @@ type CameraProps = {
 
 const cameraPositions = {
   '/': [0, 1.4, 4],
-  '/analysis': [0, 2.4, 4],
+  '/analysis': [10, 2.4, 4.4],
   '/results': [0, 3.4, 4],
-  '/support': [0, 4.4, 4],
+  '/support': [0, 12, 4],
 }
 
 const cameraRotations = {
   '/': [-Math.PI / 16, 0, 0],
   '/analysis': [0, -Math.PI / 2, 0],
   '/results': [0, Math.PI / 2, 0],
-  '/support': [0, Math.PI / 2, 0],
+  '/support': [Math.PI/2, 0, 0],
 }
 
 function Camera({ scaledFov }: CameraProps) {
