@@ -12,7 +12,7 @@ type CameraProps = {
 
 const cameraPositions = {
   '/': [0, 1.4, 4],
-  '/analysis': [10, 2.4, 4.4],
+  '/analysis': [9.5, 2.4, 4.4],
   '/results': [0, 3.4, 4],
   '/support': [0, 12, 4],
 }

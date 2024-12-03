@@ -41,4 +41,4 @@ export default function CD(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/cd-transformed.glb')
+useGLTF.preload('/objects/cdplayer/cd-transformed.glb')

@@ -47,6 +47,6 @@ const Dock = forwardRef<THREE.Group, JSX.IntrinsicElements['group']>(
   },
 )
 
-useGLTF.preload('/dock-transformed.glb')
+useGLTF.preload('/objects/cdplayer/dock-transformed.glb')
 
 export default Dock

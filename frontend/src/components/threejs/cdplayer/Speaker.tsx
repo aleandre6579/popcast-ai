@@ -36,4 +36,4 @@ export default function Speaker(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/speaker-transformed.glb')
+useGLTF.preload('/objects/cdplayer/speaker-transformed.glb')

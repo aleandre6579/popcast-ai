@@ -35,4 +35,4 @@ export default function PlayBtn(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/play_btn-transformed.glb')
+useGLTF.preload('/objects/cdplayer/play_btn-transformed.glb')

@@ -13,7 +13,7 @@ import gsap from 'gsap'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import Camera from './Camera'
-import TVs from './TVs'
+import TVs from './tvs/TVs'
 
 function PostProcess() {
   const outlinedObjects = useSelector(
@@ -85,9 +85,9 @@ function Scene() {
         <Room position={[0, 0, 0]} scale={[2, 2, 2]} />
         <CDPlayer scale={[5, 5, 5]} position={[0, 0, 0]} />
         <TVs
-          position={[14.5, 2, 3.5]}
+          position={[14.1, 2.1, 4.4]}
           rotation={[0, Math.PI / 2, 0]}
-          scale={0.4}
+          scale={0.5}
         />
       </group>
     </>

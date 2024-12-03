@@ -43,4 +43,4 @@ export default function Body(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/cdplayer-transformed.glb')
+useGLTF.preload('/objects/cdplayer/cdplayer-transformed.glb')

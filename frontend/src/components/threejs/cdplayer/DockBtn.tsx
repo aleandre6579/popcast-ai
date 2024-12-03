@@ -35,4 +35,4 @@ export default function DockBtn(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/dock_btn-transformed.glb')
+useGLTF.preload('/objects/cdplayer/dock_btn-transformed.glb')

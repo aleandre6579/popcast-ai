@@ -6,18 +6,18 @@ import { Card } from '@/components/ui/card'
 
 interface AnalysisProps {}
 
+export const channels = [
+  { name: 'Time Estimation' },
+  { name: 'Advertisement' },
+  { name: 'Information' },
+  { name: 'TheAppventurer' },
+  { name: 'Pollssss' },
+  { name: 'Achivements' },
+]
+
 const Analysis: React.FC<AnalysisProps> = () => {
   const dispatch = useDispatch()
   const { cdPlayer } = useSelector((state: RootState) => state.outline)
-
-  const channels = [
-    { name: 'Time Estimation' },
-    { name: 'Advertisement' },
-    { name: 'Information' },
-    { name: 'TheAppventurer' },
-    { name: 'Pollssss' },
-    { name: 'Achivements' },
-  ]
 
   return (
     <div>

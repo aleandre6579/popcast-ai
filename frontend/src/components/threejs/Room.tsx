@@ -50,4 +50,4 @@ export default function Room(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/room-transformed.glb')
+useGLTF.preload('/objects/room/room-transformed.glb')

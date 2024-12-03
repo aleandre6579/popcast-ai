@@ -36,4 +36,4 @@ export default function VolumeKnob(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/volume_knob-transformed.glb')
+useGLTF.preload('/objects/cdplayer/volume_knob-transformed.glb')
