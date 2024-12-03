@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Button } from './button'
+import { ChevronRight, ChevronLeft } from 'lucide-react'
 
-type CarouselProps = {
+type FactsCarouselProps = {
   children: React.ReactNode
   showArrows?: boolean
   autoScroll?: boolean
   autoScrollInterval?: number
 }
 
-const Carousel: React.FC<CarouselProps> = ({
+const FactsCarousel: React.FC<FactsCarouselProps> = ({
   children,
   showArrows = true,
   autoScroll = false,
@@ -20,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const scrollToIndex = (index: number) => {
     const carousel = carouselRef.current
     if (carousel) {
-      const scrollPosition = carousel.clientWidth * index
+      const scrollPosition = (carousel.clientWidth + 4.48) * index
       carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' })
     }
     setCurrentIndex(index)
@@ -47,42 +49,41 @@ const Carousel: React.FC<CarouselProps> = ({
   }, [currentIndex, autoScroll, autoScrollInterval])
 
   return (
-    <div className='relative overflow-hidden'>
-      {showArrows && (
-        <button
-          className='absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full'
-          onClick={scrollPrev}
-          aria-label='Previous'
-        >
-          &larr;
-        </button>
-      )}
-      <div
-        ref={carouselRef}
-        className='flex overflow-hidden snap-x snap-mandatory'
-        style={{ scrollSnapType: 'x mandatory' }}
-      >
+    <div className='flex flex-col items-center gap-2'>
+      <div ref={carouselRef} className='flex overflow-hidden gap-1 w-full items-center'>
         {items.map((item, index) => (
           <div
             key={index}
-            className='flex-shrink-0 w-full snap-start'
-            style={{ width: '100%' }}
+            className='flex-shrink-0 w-full'
           >
             {item}
           </div>
         ))}
       </div>
       {showArrows && (
-        <button
-          className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full'
-          onClick={scrollNext}
-          aria-label='Next'
-        >
-          &rarr;
-        </button>
+        <div className='flex gap-4'>
+          <Button
+            variant={'outline'}
+            size={'icon'}
+            className='rounded-full'
+            onClick={scrollPrev}
+            aria-label='Previous'
+          >
+            <ChevronLeft />
+          </Button>
+          <Button
+            variant={'outline'}
+            size={'icon'}
+            className='rounded-full'
+            onClick={scrollNext}
+            aria-label='Next'
+          >
+            <ChevronRight />
+          </Button>
+        </div>
       )}
     </div>
   )
 }
 
-export default Carousel
+export default FactsCarousel

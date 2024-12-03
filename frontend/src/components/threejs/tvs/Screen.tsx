@@ -4,22 +4,30 @@ import InformationScreen from './InformationScreen'
 
 type ScreenProps = {
   position: [number, number, number]
-  text: string
   channelNum: number
 }
 
-export default function Screen({ position, text, channelNum }: ScreenProps) {
-  const channel = channels[channelNum]
+const channelScreens: Record<number, React.FC> = {
+  0: () => <div>Time Estimation Screen</div>,
+  1: () => <div>Advertisement Screen</div>,
+  2: InformationScreen,
+  3: () => <div>TheAppventurer Screen</div>,
+  4: () => <div>Pollssss Screen</div>,
+  5: () => <div>Achievements Screen</div>,
+}
+
+export default function Screen({ position, channelNum }: ScreenProps) {
+  const ChannelScreen = channelScreens[channelNum]
 
   return (
     <Html
       position={position}
       transform
       rotation={[Math.PI / 2, Math.PI, 0]}
-      className='bg-gradient-to-b from-gray-100 to-gray-300 dark:from-gray-700 dark:to-gray-900 w-[147px] h-[88px] rounded-[1px] overflow-hidden'
+      className='bg-white dark:bg-black w-[147px] h-[88px] rounded-[1px] overflow-hidden'
     >
       <div className='p-2 origin-top-left scale-[0.333] w-[441px] h-[264px]'>
-        <InformationScreen />
+        {ChannelScreen ? <ChannelScreen /> : <div>No channel selected</div>}
       </div>
     </Html>
   )
