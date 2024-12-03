@@ -1,6 +1,7 @@
 # Project-specific files
 models/audioset-vggish-3.pb
 data/song_embeddings*
+data/songs_data_*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
