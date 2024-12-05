@@ -14,7 +14,7 @@ const facts = [
 
 const InformationScreen: React.FC = () => {
   return (
-    <div className='relative w-full h-full flex flex-col items-center justify-evenly'>
+    <div className='relative w-full h-full flex flex-col items-center justify-center gap-2'>
       <h1 className='text-2xl font-bold text-center'>PopcastAI Facts</h1>
 
       <div className='w-11/12'>
