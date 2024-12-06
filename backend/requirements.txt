@@ -9,3 +9,7 @@ alembic
 passlib
 librosa
 python-multipart
+black==23.12.1
+flake8==7.0.0
+isort==5.13.2
+pre-commit

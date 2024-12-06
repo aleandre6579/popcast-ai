@@ -1,8 +1,4 @@
-# Use an official Python image
 FROM python:3.12-slim
-
-# Set the working directory
-WORKDIR /app
 
 # Install dependencies
 COPY requirements.txt .
