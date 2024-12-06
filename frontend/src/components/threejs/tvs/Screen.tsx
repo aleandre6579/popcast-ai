@@ -1,4 +1,3 @@
-import { channels } from '@/pages/Analysis'
 import { Html } from '@react-three/drei'
 import InformationScreen from './InformationScreen'
 import TheAppventurerScreen from './TheAppventurer'
@@ -12,7 +11,7 @@ const channelScreens: Record<number, React.FC> = {
   0: () => <div>Time Estimation Screen</div>,
   1: () => <div>Advertisement Screen</div>,
   2: InformationScreen,
-  3: () => <TheAppventurerScreen/>,
+  3: () => <TheAppventurerScreen />,
   4: () => <div>Pollssss Screen</div>,
   5: () => <div>Achievements Screen</div>,
 }

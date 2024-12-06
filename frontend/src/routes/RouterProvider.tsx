@@ -1,19 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
 } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '@/components/Footer'
 import { Toaster } from '@/components/ui/sonner'
-import Upload from '@/pages/Upload'
-import Analysis from '@/pages/Analysis'
-import Results from '@/pages/Results'
-import Support from '@/pages/Support'
-import { useDispatch } from 'react-redux'
-import { setRoutePath } from '@/reducers/routerSlice'
 import RoutesProvider from './RoutesProvider'
 
 const RouterProvider: React.FC = () => {

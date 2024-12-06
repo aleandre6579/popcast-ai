@@ -2,7 +2,6 @@ import { RootState } from '@/store'
 import { PerspectiveCamera } from '@react-three/drei'
 import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
 import * as THREE from 'three'
 import gsap from 'gsap'
 

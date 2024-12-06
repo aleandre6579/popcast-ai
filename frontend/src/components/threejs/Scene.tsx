@@ -1,7 +1,6 @@
 import Room from './Room'
 import CDPlayer from './cdplayer/CDPlayer'
-import CD from './CD'
-import { AdaptiveDpr, PerspectiveCamera } from '@react-three/drei'
+import { AdaptiveDpr } from '@react-three/drei'
 import * as THREE from 'three'
 import { EffectComposer, Bloom, Outline } from '@react-three/postprocessing'
 import { KernelSize } from 'postprocessing'

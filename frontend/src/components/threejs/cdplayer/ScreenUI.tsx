@@ -1,6 +1,4 @@
-import React, { useRef } from 'react'
-import { MeshProps, useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
+import React from 'react'
 import { Html } from '@react-three/drei'
 
 type ScreenUIProps = {

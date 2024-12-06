@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Body from './Body'
 import Dock from './Dock'
 import DockBtn from './DockBtn'

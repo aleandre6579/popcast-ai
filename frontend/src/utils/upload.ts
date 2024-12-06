@@ -1,7 +1,6 @@
 import { setFileUploaded, setIsDraggingAudioFile } from '@/reducers/uploadSlice'
 import { Dispatch } from '@reduxjs/toolkit'
 import React from 'react'
-import { toast } from 'sonner'
 import { fileUploadErrorToast, fileUploadSuccessToast } from './toasts'
 
 export const handleUpload = (

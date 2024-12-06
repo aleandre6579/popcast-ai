@@ -3,20 +3,14 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store'
 import {
-  setFileUploaded,
   openDock,
   closeDock,
-  setIsDraggingAudioFile,
 } from '../reducers/uploadSlice'
 import { addOutline, removeOutline } from '../reducers/outlineSlice'
 import useSize from '@/hooks/useSize'
-import { clamp } from 'three/src/math/MathUtils.js'
-import gsap from 'gsap'
-import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import DragDetector from '@/components/DragDetector'
 import { handleUpload } from '@/utils/upload'
-import { Toaster } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import AnimatedTooltip from '@/components/ui/animated-tooltip'
 

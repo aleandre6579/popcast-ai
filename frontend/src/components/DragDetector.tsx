@@ -1,13 +1,9 @@
-import { Button } from '@/components/ui/button'
-import { UserIcon } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
-import { ModeToggle } from './ModeToggle'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import {
   closeDock,
   openDock,
-  setFileUploaded,
   setIsDraggingAudioFile,
 } from '@/reducers/uploadSlice'
 import { handleUpload } from '@/utils/upload'

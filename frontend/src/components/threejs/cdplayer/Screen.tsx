@@ -1,11 +1,10 @@
 import { useRef } from 'react'
 import { MeshProps, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import { Html } from '@react-three/drei'
 import ScreenUI from './ScreenUI'
 
 export default function Screen(props: MeshProps) {
-  const materialRef = useRef<THREE.ShaderMaterial>(null) // Explicitly typing the ref
+  const materialRef = useRef<THREE.ShaderMaterial>(null)
 
   const vertexShader = `
     varying vec2 vUv;

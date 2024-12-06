@@ -50,12 +50,12 @@ const FactsCarousel: React.FC<FactsCarouselProps> = ({
 
   return (
     <div className='flex flex-col items-center gap-2'>
-      <div ref={carouselRef} className='flex overflow-hidden gap-1 w-full items-center'>
+      <div
+        ref={carouselRef}
+        className='flex overflow-hidden gap-1 w-full items-center'
+      >
         {items.map((item, index) => (
-          <div
-            key={index}
-            className='flex-shrink-0 w-full'
-          >
+          <div key={index} className='flex-shrink-0 w-full'>
             {item}
           </div>
         ))}

@@ -1,5 +1,4 @@
 import React from 'react'
-import Carousel from '@/components/ui/facts-carousel'
 import { Card, CardContent } from '@/components/ui/card'
 import FactsCarousel from '@/components/ui/facts-carousel'
 
@@ -20,7 +19,7 @@ const InformationScreen: React.FC = () => {
       <div className='w-11/12'>
         <FactsCarousel autoScroll autoScrollInterval={5000}>
           {facts.map((fact, index) => (
-            <Card key={'fact-'+index}>
+            <Card key={'fact-' + index}>
               <CardContent className='flex items-center justify-center p-4'>
                 <p className='text-lg font-medium text-center'>{fact}</p>
               </CardContent>

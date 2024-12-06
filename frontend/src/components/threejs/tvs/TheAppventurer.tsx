@@ -3,10 +3,30 @@ import { Youtube } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const videos = [
-  { title: 'Title', views: '100,000', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s' },
-  { title: 'Title', views: '100,000', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s' },
-  { title: 'Title', views: '100,000', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s' },
-  { title: 'Title', views: '100,000', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s' },
+  {
+    title: 'Title',
+    views: '100,000',
+    thumbnail:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s',
+  },
+  {
+    title: 'Title',
+    views: '100,000',
+    thumbnail:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s',
+  },
+  {
+    title: 'Title',
+    views: '100,000',
+    thumbnail:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s',
+  },
+  {
+    title: 'Title',
+    views: '100,000',
+    thumbnail:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s',
+  },
 ]
 
 const TheAppventurerScreen: React.FC = () => {
@@ -19,7 +39,9 @@ const TheAppventurerScreen: React.FC = () => {
         rel='noopener noreferrer'
       >
         <Youtube color='red' size={35} />
-        <h1 className='text-2xl font-bold text-center text-red-600'>The Appventurer</h1>
+        <h1 className='text-2xl font-bold text-center text-red-600'>
+          The Appventurer
+        </h1>
       </a>
 
       <div className='w-full scrollbar rounded-md flex flex-col items-center'>
