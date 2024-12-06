@@ -1,0 +1,107 @@
+name: Frontend CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches-ignore:
+      - main
+  workflow_call:
+    outputs:
+      image_tag:
+        value: '${{ jobs.build-and-upload.outputs.image_tag }}'
+
+env:
+  NODE_VERSION: "20.12.2"
+  REGISTRY: ghcr.io
+  BASE_IMG_NAME: ${{ github.repository }}
+
+defaults:
+  run:
+    working-directory: ./frontend/app
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies with PNPM
+        run: pnpm install
+
+      - name: Lint with ESLint
+        run: pnpm eslint "src/**/*.{ts,tsx}"
+
+      - name: Format with Prettier
+        run: pnpm prettier --check "src/**/*.{ts,tsx}"
+
+  test-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies with PNPM
+        run: pnpm install
+
+      - name: Run Tests with Coverage
+        run: CI=true pnpm test -- --coverage
+
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage-report
+          path: ./frontend/app/coverage/lcov.info
+          retention-days: 14
+
+  build-and-upload:
+    needs: test-and-coverage
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image_tag: '${{ steps.image-tag.outputs.image_tag }}'
+
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v4
+
+      - name: Log in to the container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive image tag from commit ID
+        id: image-tag
+        run: echo "image_tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Build the Docker image
+        run: |
+          cd .. && \
+          docker build . --file Dockerfile \
+          --tag ghcr.io/${{ env.BASE_IMG_NAME }}/frontend:${{ env.image_tag }} \
+          --tag ghcr.io/${{ env.BASE_IMG_NAME }}/frontend:latest
+
+      - name: Publish the images
+        run: |
+          docker push ghcr.io/${{ env.BASE_IMG_NAME }}/frontend:${{ env.image_tag }} && \
+          docker push ghcr.io/${{ env.BASE_IMG_NAME }}/frontend:latest
