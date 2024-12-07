@@ -1,4 +1,4 @@
-import { setFileUploaded, setIsDraggingAudioFile } from '@/reducers/uploadSlice'
+import { setAudioFileUploaded, setIsDraggingAudioFile } from '@/reducers/uploadSlice'
 import { Dispatch } from '@reduxjs/toolkit'
 import React from 'react'
 import { fileUploadErrorToast, fileUploadSuccessToast } from './toasts'
@@ -28,7 +28,7 @@ export const handleUpload = (
     )
     if (audioFile) {
       fileUploadSuccessToast()
-      dispatch(setFileUploaded(audioFile.name))
+      dispatch(setAudioFileUploaded({audioFile: audioFile, audioFileName: audioFile.name}))
     } else {
       fileUploadErrorToast('The file you uploaded is not audio!')
     }

@@ -1,9 +1,15 @@
 import { cutExtension } from '@/utils/upload'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+type SetAudioFileUploadedPayload = {
+  audioFileName: string,
+  audioFile: File
+}
+
 interface UploadState {
   uploaded: boolean
   uploadedFileName: string | undefined
+  uploadedFile: File | undefined
   openDock: boolean
   isDraggingAudioFile: boolean
 }
@@ -11,6 +17,7 @@ interface UploadState {
 const initialState: UploadState = {
   uploaded: false,
   uploadedFileName: undefined,
+  uploadedFile: undefined,
   openDock: false,
   isDraggingAudioFile: false,
 }
@@ -22,13 +29,15 @@ const uploadSlice = createSlice({
     setIsDraggingAudioFile: (state, action: PayloadAction<boolean>) => {
       state.isDraggingAudioFile = action.payload
     },
-    setFileUploaded: (state, action: PayloadAction<string>) => {
+    setAudioFileUploaded: (state, action: PayloadAction<SetAudioFileUploadedPayload>) => {
       state.uploaded = true
-      state.uploadedFileName = cutExtension(action.payload)
+      state.uploadedFileName = cutExtension(action.payload.audioFileName)
+      state.uploadedFile = action.payload.audioFile
     },
     resetFileUploaded: state => {
       state.uploaded = false
       state.uploadedFileName = undefined
+      state.uploadedFile = undefined
     },
     openDock: state => {
       state.openDock = true
@@ -41,7 +50,7 @@ const uploadSlice = createSlice({
 
 export const {
   setIsDraggingAudioFile,
-  setFileUploaded,
+  setAudioFileUploaded,
   resetFileUploaded,
   openDock,
   closeDock,

@@ -13,13 +13,14 @@ import DragDetector from '@/components/DragDetector'
 import { handleUpload } from '@/utils/upload'
 import { useNavigate } from 'react-router-dom'
 import AnimatedTooltip from '@/components/ui/animated-tooltip'
+import axiosReq from '@/axios'
 
 interface UploadProps {}
 
 const Upload: React.FC<UploadProps> = () => {
   const dispatch = useDispatch()
   const { cdPlayer } = useSelector((state: RootState) => state.outline)
-  const { uploadedFileName } = useSelector((state: RootState) => state.upload)
+  const { uploadedFile, uploadedFileName } = useSelector((state: RootState) => state.upload)
 
   const navigate = useNavigate()
 
@@ -45,6 +46,13 @@ const Upload: React.FC<UploadProps> = () => {
 
   const handleDrop = (e: DragEvent | React.ChangeEvent) => {
     handleUpload(e, dispatch)
+  }
+
+  async function handleAnalyzePress() {
+    const res = await axiosReq.post('/analyze', uploadedFile)
+    console.log(res)
+    
+    navigate('/analysis')
   }
 
   const [width, height] = useSize()
@@ -99,7 +107,7 @@ const Upload: React.FC<UploadProps> = () => {
             value={uploadedFileName}
             className='w-[250px] border-black dark:border-white'
           />
-          <Button onClick={() => navigate('/analysis')}>Analyze</Button>
+          <Button onClick={() => handleAnalyzePress()}>Analyze</Button>
         </div>
       </div>
 
