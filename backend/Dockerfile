@@ -1,11 +1,12 @@
 FROM python:3.12-slim
 
-# Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR /backend
 
 # Copy the app code
-COPY . .
+COPY . /backend
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8000

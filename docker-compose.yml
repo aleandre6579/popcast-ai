@@ -1,24 +1,16 @@
-version: "3.9"
+version: "3"
 
 services:
-  proxy:
-    image: nginx:1.21
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-      - frontend
-    volumes:
-      - "./proxy/default.conf:/etc/nginx/conf.d/default.conf"
-    networks:
-      - user-facing
-
   backend:
     build: ./backend
     container_name: popcast_backend
     restart: always
-    env_file:
-      - backend/.env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DB_URL=${DB_URL}
+      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - db
     ports:
@@ -35,6 +27,8 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    networks:
+      - user-facing
 
   db:
     image: postgres:15
@@ -50,6 +44,18 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - system-facing
+    
+  proxy:
+    image: nginx:1.21
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - "./proxy/default.conf:/etc/nginx/conf.d/default.conf"
+    networks:
+      - user-facing
 
 volumes:
   postgres-data:

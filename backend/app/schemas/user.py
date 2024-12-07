@@ -10,7 +10,7 @@ class UserCreate(UserBase):
     pass
 
 
-class User(UserBase):
+class UserResponse(UserBase):
     id: int
 
     class Config:

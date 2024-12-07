@@ -1,5 +1,5 @@
 # BUILD STAGE
-FROM node:23-slim as builder
+FROM node:23-slim AS builder
 
 WORKDIR app
 
