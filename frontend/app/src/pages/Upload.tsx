@@ -14,6 +14,7 @@ import { handleUpload } from '@/utils/upload'
 import { useNavigate } from 'react-router-dom'
 import AnimatedTooltip from '@/components/ui/animated-tooltip'
 import axiosReq from '@/axios'
+import axios from 'axios'
 
 interface UploadProps {}
 
@@ -49,8 +50,25 @@ const Upload: React.FC<UploadProps> = () => {
   }
 
   async function handleAnalyzePress() {
-    const res = await axiosReq.post('/analyze', uploadedFile)
-    console.log(res)
+    if(!uploadedFile) return 
+
+    const formData = new FormData();
+    formData.append('file', uploadedFile);
+  
+    try {
+      const response = await axiosReq.post('/analysis', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('Response:', response.data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error response:', error.response?.data || error.message);
+      } else {
+        console.error('Unexpected error:', error);
+      }    
+    }
     
     navigate('/analysis')
   }
