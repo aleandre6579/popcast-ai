@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import Screen from './Screen'
+import { useState } from 'react'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -37,6 +38,14 @@ export default function TVs(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/tvs/tvs-transformed.glb',
   ) as GLTFResult
+
+  const [channelNum1, setChannelNum1] = useState(0)
+  const [channelNum2, setChannelNum2] = useState(1)
+  const [channelNum3, setChannelNum3] = useState(2)
+  const [channelNum4, setChannelNum4] = useState(3)
+
+
+
   return (
     <group {...props} dispose={null}>
       <group
@@ -132,28 +141,28 @@ export default function TVs(props: JSX.IntrinsicElements['group']) {
         position={[2.008, 0, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
-        <Screen channelNum={0} position={[0.21, 0, 2.945]} />
+        <Screen channelNum={channelNum1} setChannelNum={setChannelNum1} position={[0.066, 0.6, 2.77]} />
       </mesh>
       <mesh
         name='Screen2'
         position={[2.008, 0, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
-        <Screen channelNum={1} position={[-4.218, 0, 2.945]} />
+        <Screen channelNum={channelNum2} setChannelNum={setChannelNum2} position={[-4.07, 0.6, 2.77]} />
       </mesh>
       <mesh
         name='Screen3'
         position={[2.008, 0, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
-        <Screen channelNum={2} position={[0.21, 0, -0.07]} />
+        <Screen channelNum={channelNum3} setChannelNum={setChannelNum3} position={[0.066, 0.6, -0.026]} />
       </mesh>
       <mesh
         name='Screen4'
         position={[2.008, 0, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
-        <Screen channelNum={3} position={[-4.218, 0, -0.07]} />
+        <Screen channelNum={channelNum4} setChannelNum={setChannelNum4} position={[-4.07, 0.6, -0.026]} />
       </mesh>
 
       <mesh

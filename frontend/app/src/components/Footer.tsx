@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
       window.removeEventListener('wheel', handleScroll);
     };
   }, [isHovering, location.pathname, navigate, pages]);
-
+  
   return (
     <footer
       ref={footerRef}
