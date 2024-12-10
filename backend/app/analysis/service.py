@@ -6,9 +6,7 @@ import numpy as np
 
 def convert_mp3_to_spectrogram(audio, sample_rate):
     # Create a mel-spectrogram (frequently used spectrogram for audio analysis)
-    spectrogram = librosa.feature.melspectrogram(
-        y=audio, sr=sample_rate, n_mels=128, fmax=8000
-    )
+    spectrogram = librosa.feature.melspectrogram(y=audio, sr=sample_rate, n_mels=128, fmax=8000)
 
     # Convert the power spectrogram (amplitude squared) to decibels
     spectrogram_db = librosa.power_to_db(spectrogram, ref=np.max)
