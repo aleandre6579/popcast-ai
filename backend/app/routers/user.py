@@ -4,7 +4,7 @@ from sqlalchemy.future import select
 
 from app.db import get_db
 from app.models.user import User
-from app.schemas.user import UserResponse, UserCreate
+from app.schemas.user import UserCreate, UserResponse
 
 router = APIRouter(prefix="/users", tags=["users"])
 
