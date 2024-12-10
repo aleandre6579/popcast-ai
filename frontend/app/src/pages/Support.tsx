@@ -1,36 +1,33 @@
-import React, { useEffect, useRef } from 'react'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import gsap from 'gsap'
+import React, { useEffect, useRef } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import gsap from 'gsap';
 
 type Supporter = {
-  name: string
-}
+  name: string;
+};
 
 const Support: React.FC = () => {
-  const listRef = useRef<HTMLDivElement>(null)
-  const scrollTimelineRef = useRef<GSAPTimeline | null>(null)
+  const listRef = useRef<HTMLDivElement>(null);
+  const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
 
-  const supporters: Supporter[] = []
+  const supporters: Supporter[] = [];
 
   useEffect(() => {
-    const list = listRef.current
-    if (!list) return
-    if (scrollTimelineRef.current) return
-    
-    let isScrollingDown = true
-    const maxScroll = list.scrollHeight - list.clientHeight
+    const list = listRef.current;
+    if (!list) return;
+    if (scrollTimelineRef.current) return;
+
+    let isScrollingDown = true;
+    const maxScroll = list.scrollHeight - list.clientHeight;
 
     const animateScroll = () => {
-      scrollTimelineRef.current = gsap.timeline({ repeat: -1, repeatDelay: 2 })
-      const scrollDuration = (maxScroll - list.scrollTop) / 30
-      scrollTimelineRef.current?.to(
-        list,
-        {
-          scrollTop: maxScroll,
-          duration: scrollDuration,
-          ease: 'linear',
-        },
-      )
+      scrollTimelineRef.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+      const scrollDuration = (maxScroll - list.scrollTop) / 30;
+      scrollTimelineRef.current?.to(list, {
+        scrollTop: maxScroll,
+        duration: scrollDuration,
+        ease: 'linear',
+      });
       scrollTimelineRef.current?.to(
         list,
         {
@@ -39,40 +36,42 @@ const Support: React.FC = () => {
           ease: 'linear',
         },
         '>1',
-      )
-    }
+      );
+    };
 
     const handleMouseEnter = () => {
       if (scrollTimelineRef.current) {
-        scrollTimelineRef.current.pause()
-        isScrollingDown = scrollTimelineRef.current.progress() < 0.5
+        scrollTimelineRef.current.pause();
+        isScrollingDown = scrollTimelineRef.current.progress() < 0.5;
       }
-    }
+    };
 
     const handleMouseLeave = () => {
       if (scrollTimelineRef.current) {
-        const progress = isScrollingDown ? list.scrollTop / maxScroll / 2 : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5
-        console.log(progress)
-        scrollTimelineRef.current.progress(progress)
-        scrollTimelineRef.current.resume()
+        const progress = isScrollingDown
+          ? list.scrollTop / maxScroll / 2
+          : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5;
+        console.log(progress);
+        scrollTimelineRef.current.progress(progress);
+        scrollTimelineRef.current.resume();
       }
-    }
+    };
 
-    list.addEventListener('mouseenter', handleMouseEnter)
-    list.addEventListener('mouseleave', handleMouseLeave)
+    list.addEventListener('mouseenter', handleMouseEnter);
+    list.addEventListener('mouseleave', handleMouseLeave);
 
-    animateScroll()
+    animateScroll();
 
     return () => {
       if (list) {
-        list.removeEventListener('mouseenter', handleMouseEnter)
-        list.removeEventListener('mouseleave', handleMouseLeave)
+        list.removeEventListener('mouseenter', handleMouseEnter);
+        list.removeEventListener('mouseleave', handleMouseLeave);
       }
       if (scrollTimelineRef.current) {
-        scrollTimelineRef.current.kill()
+        scrollTimelineRef.current.kill();
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div className='p-4 flex flex-col h-full'>
@@ -101,32 +100,28 @@ const Support: React.FC = () => {
             <CardTitle className='text-lg font-semibold'>Supporters</CardTitle>
           </CardHeader>
           <CardContent className='relative'>
-            {
-              supporters.length ? (
-            <div
-              ref={listRef}
-              className='w-full h-40 overflow-auto relative scrollbar'
-            >
-              <ul className='text-sm space-y-2'>
-                {
-                  supporters.map((supporter, index) => (
+            {supporters.length ? (
+              <div
+                ref={listRef}
+                className='w-full h-40 overflow-auto relative scrollbar'
+              >
+                <ul className='text-sm space-y-2'>
+                  {supporters.map((supporter, index) => (
                     <li key={index + supporter.name}>{supporter.name}</li>
-                  ))
-                }
-              </ul>
-            </div>
-              ) : (
-                <div>
-                  <p>Be my first supporter!</p>
-                </div>
-              )
-            }
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div>
+                <p>Be my first supporter!</p>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const SupportCard: React.FC<{ title: string }> = ({ title }) => {
   return (
@@ -135,7 +130,7 @@ const SupportCard: React.FC<{ title: string }> = ({ title }) => {
         <h2 className='text-sm font-medium'>{title}</h2>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default Support
+export default Support;

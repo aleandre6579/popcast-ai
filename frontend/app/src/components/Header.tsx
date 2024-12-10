@@ -3,7 +3,6 @@ import { UserIcon } from 'lucide-react';
 import React from 'react';
 import { ModeToggle } from './ModeToggle';
 
-
 const Header: React.FC = () => {
   return (
     <header className='flex justify-between items-center p-4 bg-transparent'>

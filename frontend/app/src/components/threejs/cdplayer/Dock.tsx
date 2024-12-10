@@ -40,7 +40,7 @@ const Dock = forwardRef<THREE.Group, JSX.IntrinsicElements['group']>(
     );
   },
 );
-Dock.displayName = 'Dock'
+Dock.displayName = 'Dock';
 
 useGLTF.preload('/objects/cdplayer/dock-transformed.glb');
 
