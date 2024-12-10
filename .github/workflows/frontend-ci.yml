@@ -2,15 +2,8 @@ name: Frontend CI
 
 on:
   push:
-    branches-ignore:
-      - main
-  pull_request:
-    branches-ignore:
-      - main
-  workflow_call:
-    outputs:
-      image_tag:
-        value: '${{ jobs.build-and-upload.outputs.image_tag }}'
+    branches:
+      - "**"  # Trigger on push to any branch
 
 env:
   NODE_VERSION: "20.12.2"
