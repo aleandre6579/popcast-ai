@@ -56,13 +56,13 @@ jobs:
           pnpm install
 
       - name: Run Tests with Coverage
-        run: CI=true pnpm test -- --coverage
+        run: CI=true pnpm test:cov
 
       - name: Upload coverage report artifact
         uses: actions/upload-artifact@v4
         with:
           name: frontend-coverage-report
-          path: ./frontend/app/coverage/lcov.info
+          path: ./frontend/app/coverage/coverage-final.json
           retention-days: 14
 
   build-and-upload:
