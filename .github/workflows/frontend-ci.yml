@@ -49,10 +49,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: pnpm
 
-      - name: Install dependencies with PNPM
-        run: pnpm install
+      - name: Install pnpm and dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install
 
       - name: Run Tests with Coverage
         run: CI=true pnpm test -- --coverage
