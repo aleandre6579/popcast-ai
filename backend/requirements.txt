@@ -16,3 +16,4 @@ pre-commit
 pytest
 pytest-cov
 httpx
+jose
