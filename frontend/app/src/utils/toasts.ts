@@ -1,9 +1,9 @@
-import { toast } from 'sonner'
+import { toast } from 'sonner';
 
 export const fileUploadErrorToast = (error_message: string) => {
-  toast.error(error_message, {})
-}
+  toast.error(error_message, {});
+};
 
 export const fileUploadSuccessToast = () => {
-  toast.success('Audio file uploaded!', {})
-}
+  toast.success('Audio file uploaded!', {});
+};

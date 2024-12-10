@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 interface ResultsProps {}
 
 const Results: React.FC<ResultsProps> = () => {
-
   return (
     <div>
       <h1 className='text-4xl font-extrabold text-center mt-8 tracking-tight'>
@@ -13,7 +12,7 @@ const Results: React.FC<ResultsProps> = () => {
         Submit your songs and receive quick and meaningful feedback.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Results
+export default Results;

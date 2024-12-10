@@ -1,20 +1,20 @@
-import * as THREE from 'three'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import * as THREE from 'three';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
   nodes: {
-    cd: THREE.Mesh
-  }
+    cd: THREE.Mesh;
+  };
   materials: {
-    None: THREE.MeshStandardMaterial
-  }
-}
+    None: THREE.MeshStandardMaterial;
+  };
+};
 
 export default function CD(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/cd-transformed.glb',
-  ) as GLTFResult
+  ) as GLTFResult;
 
   return (
     <group {...props} dispose={null}>
@@ -29,7 +29,7 @@ export default function CD(props: JSX.IntrinsicElements['group']) {
         scale={[0.025, 0.025, 0.01]}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/objects/cdplayer/cd-transformed.glb')
+useGLTF.preload('/objects/cdplayer/cd-transformed.glb');

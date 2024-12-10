@@ -1,10 +1,10 @@
-import { useRef } from 'react'
-import { MeshProps, useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
-import ScreenUI from './ScreenUI'
+import { useRef } from 'react';
+import { MeshProps, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+import ScreenUI from './ScreenUI';
 
 export default function Screen(props: MeshProps) {
-  const materialRef = useRef<THREE.ShaderMaterial>(null)
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
 
   const vertexShader = `
     varying vec2 vUv;
@@ -12,7 +12,7 @@ export default function Screen(props: MeshProps) {
       vUv = uv;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
-  `
+  `;
 
   const fragmentShader = `
     varying vec2 vUv;
@@ -30,32 +30,32 @@ export default function Screen(props: MeshProps) {
       vec3 color = vec3(0.0, 0.0, 1.0) * (0.8 + 0.2 * noise);
       gl_FragColor = vec4(color, 1.0);
     }
-  `
+  `;
 
   // Custom shape with left rounded corners for the screen
   const ScreenShape = () => {
-    const shape = new THREE.Shape()
-    const width = 1.19
-    const height = 0.23
-    const cornerRadius = 0.07
+    const shape = new THREE.Shape();
+    const width = 1.19;
+    const height = 0.23;
+    const cornerRadius = 0.07;
 
     // Draw screen shape with rounded corners on the left side
-    shape.moveTo(width, 0)
-    shape.lineTo(width, height)
-    shape.lineTo(cornerRadius, height)
-    shape.quadraticCurveTo(0, height, 0, height - cornerRadius)
-    shape.lineTo(0, cornerRadius)
-    shape.quadraticCurveTo(0, 0, cornerRadius, 0)
-    shape.lineTo(width, 0)
+    shape.moveTo(width, 0);
+    shape.lineTo(width, height);
+    shape.lineTo(cornerRadius, height);
+    shape.quadraticCurveTo(0, height, 0, height - cornerRadius);
+    shape.lineTo(0, cornerRadius);
+    shape.quadraticCurveTo(0, 0, cornerRadius, 0);
+    shape.lineTo(width, 0);
 
-    return new THREE.ShapeGeometry(shape)
-  }
+    return new THREE.ShapeGeometry(shape);
+  };
 
   useFrame(({ clock }) => {
     if (materialRef.current && materialRef.current) {
-      materialRef.current.uniforms.time.value = clock.getElapsedTime()
+      materialRef.current.uniforms.time.value = clock.getElapsedTime();
     }
-  })
+  });
 
   return (
     <mesh
@@ -80,5 +80,5 @@ export default function Screen(props: MeshProps) {
         }
       />
     </mesh>
-  )
+  );
 }

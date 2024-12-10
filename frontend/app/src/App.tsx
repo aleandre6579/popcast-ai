@@ -1,11 +1,11 @@
-import './App.css'
-import { Suspense } from 'react'
-import AuthProvider from './auth/authProvider'
-import RouterProvider from './routes/RouterProvider'
-import { ThemeProvider } from './components/theme-provider'
-import { Canvas } from '@react-three/fiber'
-import Scene from './components/threejs/Scene'
-import * as THREE from 'three'
+import './App.css';
+import { Suspense } from 'react';
+import AuthProvider from './auth/authProvider';
+import RouterProvider from './routes/RouterProvider';
+import { ThemeProvider } from './components/theme-provider';
+import { Canvas } from '@react-three/fiber';
+import Scene from './components/threejs/Scene';
+import * as THREE from 'three';
 
 function App() {
   return (
@@ -26,9 +26,9 @@ function App() {
                 depth: true,
               }}
               onCreated={state => {
-                state.gl.shadowMap.enabled = true
-                state.gl.shadowMap.needsUpdate = true
-                state.gl.shadowMap.type = THREE.VSMShadowMap
+                state.gl.shadowMap.enabled = true;
+                state.gl.shadowMap.needsUpdate = true;
+                state.gl.shadowMap.type = THREE.VSMShadowMap;
               }}
             >
               <Scene />
@@ -38,7 +38,7 @@ function App() {
         </Suspense>
       </AuthProvider>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

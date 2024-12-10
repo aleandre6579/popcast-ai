@@ -1,147 +1,141 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import gsap from "gsap";
+import React, { useEffect, useRef, useState } from 'react'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import gsap from 'gsap'
+
+type Supporter = {
+  name: string
+}
 
 const Support: React.FC = () => {
-  const listRef = useRef<HTMLDivElement>(null);
-  const [isUserScrolling, setIsUserScrolling] = useState(false);
-  const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [isScrollDown, setIsScrollDown] = useState(true)
+  const listRef = useRef<HTMLDivElement>(null)
+  const scrollTimelineRef = useRef<GSAPTimeline | null>(null)
+
+  const supporters: Supporter[] = []
 
   useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-
-    const maxScroll = list.scrollHeight - list.clientHeight;
-    console.log( maxScroll - list.scrollTop / 188);
+    const list = listRef.current
+    if (!list) return
+    if (scrollTimelineRef.current) return
     
+    let isScrollingDown = true
+    const maxScroll = list.scrollHeight - list.clientHeight
 
     const animateScroll = () => {
-      const animateDown = () => {
-        scrollTimelineRef.current?.to(list, {
+      scrollTimelineRef.current = gsap.timeline({ repeat: -1, repeatDelay: 2 })
+      const scrollDuration = (maxScroll - list.scrollTop) / 30
+      scrollTimelineRef.current?.to(
+        list,
+        {
           scrollTop: maxScroll,
-          duration: (maxScroll - list.scrollTop) / 15,
-          ease: "linear",
-        });
-      }
-      const animateUp = () => {
-        scrollTimelineRef.current?.to(list, {
+          duration: scrollDuration,
+          ease: 'linear',
+        },
+      )
+      scrollTimelineRef.current?.to(
+        list,
+        {
           scrollTop: 0,
-          duration: list.scrollTop / 20,
-          ease: "linear",
-        });
-      }
+          duration: scrollDuration,
+          ease: 'linear',
+        },
+        '>1',
+      )
+    }
 
-      // Don't auto-scroll if user is scrolling or GSAP timeline already exists
-      if (isUserScrolling || scrollTimelineRef.current) return;
-
-      scrollTimelineRef.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
-      if(isScrollDown) {
-        animateDown();
-        animateUp();
-      } else {
-        animateUp();
-        animateDown();
-      }
-    };
-
-
-    // Function to handle mouse enter event
     const handleMouseEnter = () => {
-      // Stop the animation when the cursor enters the scrollable area
       if (scrollTimelineRef.current) {
-        scrollTimelineRef.current.kill(); // Pause animation
-        scrollTimelineRef.current = null
+        scrollTimelineRef.current.pause()
+        isScrollingDown = scrollTimelineRef.current.progress() < 0.5
       }
-    };
+    }
 
-    // Function to handle mouse leave event
     const handleMouseLeave = () => {
-      // Resume the animation when the cursor leaves the scrollable area
-      animateScroll();
-    };
+      if (scrollTimelineRef.current) {
+        let progress = isScrollingDown ? list.scrollTop / maxScroll / 2 : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5
+        console.log(progress)
+        scrollTimelineRef.current.progress(progress)
+        scrollTimelineRef.current.resume()
+      }
+    }
 
-    // Add mouse enter and leave listeners to detect cursor hover
-    list.addEventListener("mouseenter", handleMouseEnter);
-    list.addEventListener("mouseleave", handleMouseLeave);
+    list.addEventListener('mouseenter', handleMouseEnter)
+    list.addEventListener('mouseleave', handleMouseLeave)
 
-    animateScroll();
+    animateScroll()
 
-    // Cleanup event listeners on component unmount
     return () => {
       if (list) {
-        list.removeEventListener("mouseenter", handleMouseEnter);
-        list.removeEventListener("mouseleave", handleMouseLeave);
+        list.removeEventListener('mouseenter', handleMouseEnter)
+        list.removeEventListener('mouseleave', handleMouseLeave)
       }
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
       if (scrollTimelineRef.current) {
-        scrollTimelineRef.current.kill(); // Cleanup the GSAP timeline on unmount
+        scrollTimelineRef.current.kill()
       }
-    };
-  }, [isUserScrolling]);
+    }
+  }, [])
 
   return (
-    <div className="p-4">
+    <div className='p-4 flex flex-col h-full'>
       {/* Header */}
-      <h1 className="text-4xl font-extrabold text-center mt-8 tracking-tight">
+      <h1 className='flex-none text-4xl font-extrabold text-center mt-8 tracking-tight'>
         Thank you for using PopcastAI!
       </h1>
-      <p className="text-sm text-center mt-2">
-        Your support allows me to work on my apps fulltime and build more products that I love.
+      <p className='flex-none text-sm text-center mt-2'>
+        Your support allows me to work on my apps fulltime and build more
+        products that I love.
       </p>
 
       {/* Layout */}
-      <div className="flex flex-col lg:flex-row justify-between gap-6 mt-8">
+      <div className='h-full p-12 flex flex-col lg:flex-row justify-between gap-6 mt-8'>
         {/* Main Cards Section */}
-        <div className="grid grid-cols-2 gap-4 flex-1">
-          <SupportCard title="Check out my YouTube channel" />
-          <SupportCard title="Buy me a Coffee" />
-          <SupportCard title="Check out my other products" />
-          <SupportCard title="My Socials" />
+        <div className='grid grid-cols-2 gap-4 flex-1'>
+          <SupportCard title='Check out my YouTube channel' />
+          <SupportCard title='Buy me a Coffee' />
+          <SupportCard title='Check out my other products' />
+          <SupportCard title='My Socials' />
         </div>
 
         {/* Supporters Section */}
-        <Card className="w-full lg:w-1/4 shadow-md text-center overflow-hidden">
+        <Card className='w-full lg:w-1/4 shadow-md text-center overflow-hidden'>
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">Supporters</CardTitle>
+            <CardTitle className='text-lg font-semibold'>Supporters</CardTitle>
           </CardHeader>
-          <CardContent className="relative">
-            {/* Plain Scrollable Container */}
+          <CardContent className='relative'>
+            {
+              supporters.length ? (
             <div
               ref={listRef}
-              className="w-full h-40 overflow-auto relative scrollbar"
+              className='w-full h-40 overflow-auto relative scrollbar'
             >
-              <ul className="text-sm space-y-2">
-                <li>Alexandre Simon</li>
-                <li>Daniel Cruise</li>
-                <li>Mamouchka Simon</li>
-                <li>Alexandra Rodriguez</li>
-                <li>Supporter 1</li>
-                <li>Supporter 2</li>
-                <li>Supporter 3</li>
-                <li>Supporter 4</li>
-                <li>Supporter 5</li>
-                <li>Supporter 6</li>
-                <li>Supporter 7</li>
-                <li>Supporter 8</li>
+              <ul className='text-sm space-y-2'>
+                {
+                  supporters.map((supporter, index) => (
+                    <li key={index + supporter.name}>{supporter.name}</li>
+                  ))
+                }
               </ul>
             </div>
+              ) : (
+                <div>
+                  <p>Be my first supporter!</p>
+                </div>
+              )
+            }
           </CardContent>
         </Card>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const SupportCard: React.FC<{ title: string }> = ({ title }) => {
   return (
-    <Card className="p-6 rounded-lg shadow-md flex items-center justify-center">
+    <Card className='p-6 rounded-lg shadow-md flex items-center justify-center'>
       <CardContent>
-        <h2 className="text-sm font-medium">{title}</h2>
+        <h2 className='text-sm font-medium'>{title}</h2>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default Support;
+export default Support

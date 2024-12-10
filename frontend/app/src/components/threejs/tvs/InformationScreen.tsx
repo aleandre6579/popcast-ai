@@ -1,6 +1,6 @@
-import React from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import FactsCarousel from '@/components/ui/facts-carousel'
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import FactsCarousel from '@/components/ui/facts-carousel';
 
 const facts = [
   'Our AI uses deep learning to predict song viewcounts with remarkable accuracy.',
@@ -9,7 +9,7 @@ const facts = [
   'Our platform integrates seamlessly with a stunning 3D experience.',
   'Experiment with different audio features and see real-time predictions.',
   'Empower your creativity with data-driven songwriting suggestions.',
-]
+];
 
 const InformationScreen: React.FC = () => {
   return (
@@ -28,7 +28,7 @@ const InformationScreen: React.FC = () => {
         </FactsCarousel>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InformationScreen
+export default InformationScreen;

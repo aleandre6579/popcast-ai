@@ -1,11 +1,9 @@
-import React from 'react'
-import {
-  BrowserRouter as Router,
-} from 'react-router-dom'
-import Header from '../components/Header'
-import Footer from '@/components/Footer'
-import { Toaster } from '@/components/ui/sonner'
-import RoutesProvider from './RoutesProvider'
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '@/components/Footer';
+import { Toaster } from '@/components/ui/sonner';
+import RoutesProvider from './RoutesProvider';
 
 const RouterProvider: React.FC = () => {
   return (
@@ -17,7 +15,7 @@ const RouterProvider: React.FC = () => {
         <Toaster richColors />
       </div>
     </Router>
-  )
-}
+  );
+};
 
-export default RouterProvider
+export default RouterProvider;

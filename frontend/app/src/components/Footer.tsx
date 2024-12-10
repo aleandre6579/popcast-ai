@@ -33,9 +33,7 @@ const Footer: React.FC = () => {
   }, [markerLeft]);
 
   useEffect(() => {
-    const pageIndex = pages.findIndex(
-      (page) => page.path === location.pathname
-    );
+    const pageIndex = pages.findIndex(page => page.path === location.pathname);
 
     gsap.to(markerRef.current, {
       x: pageIndex * (footerSectionWidth + footerSectionGap - 0.75),
@@ -51,7 +49,7 @@ const Footer: React.FC = () => {
         e.preventDefault();
 
         const pageIndex = pages.findIndex(
-          (page) => page.path === location.pathname
+          page => page.path === location.pathname,
         );
 
         if (e.deltaY > 0 && pageIndex < pages.length - 1) {
@@ -70,20 +68,20 @@ const Footer: React.FC = () => {
       window.removeEventListener('wheel', handleScroll);
     };
   }, [isHovering, location.pathname, navigate, pages]);
-  
+
   return (
     <footer
       ref={footerRef}
-      className="w-full p-10 flex flex-col items-center"
+      className='w-full p-10 flex flex-col items-center'
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
       <div
         style={{ width: footerWidth }}
-        className="flex flex-col gap-4 relative"
+        className='flex flex-col gap-4 relative'
       >
-        <nav className="w-full flex justify-between relative">
-          {pages.map((page) => (
+        <nav className='w-full flex justify-between relative'>
+          {pages.map(page => (
             <div key={page.name}>
               <NavLink
                 to={page.path}
@@ -96,14 +94,14 @@ const Footer: React.FC = () => {
                 }
               >
                 {page.name === 'Support' ? (
-                  <span className="text-red-600 w-full flex flex-col items-center">
+                  <span className='text-red-600 w-full flex flex-col items-center'>
                     {page.name}
-                    <span className="z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block" />
+                    <span className='z-10 top-7 rounded-full border-4 border-red-600 border-solid absolute size-5 block' />
                   </span>
                 ) : (
-                  <span className="w-full flex flex-col items-center">
+                  <span className='w-full flex flex-col items-center'>
                     {page.name}
-                    <span className="z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block" />
+                    <span className='z-10 top-7 rounded-full border-4 border-black border-solid dark:border-white absolute size-5 block' />
                   </span>
                 )}
               </NavLink>
@@ -113,19 +111,19 @@ const Footer: React.FC = () => {
 
         <div
           style={{ gap: footerSectionGap }}
-          className="w-full flex justify-center relative"
+          className='w-full flex justify-center relative'
         >
           <span
             style={{ width: footerSectionWidth }}
-            className="bg-black dark:bg-white h-1"
+            className='bg-black dark:bg-white h-1'
           />
           <span
             style={{ width: footerSectionWidth }}
-            className="bg-black dark:bg-white h-1"
+            className='bg-black dark:bg-white h-1'
           />
           <span
             style={{ width: footerSectionWidth }}
-            className="bg-black dark:bg-white h-1"
+            className='bg-black dark:bg-white h-1'
           />
 
           <span
@@ -134,7 +132,7 @@ const Footer: React.FC = () => {
               location.pathname === '/support'
                 ? 'bg-red-600'
                 : 'bg-black dark:bg-white',
-              'absolute top-[-6px] rounded-full size-[17px] block'
+              'absolute top-[-6px] rounded-full size-[17px] block',
             )}
           />
         </div>

@@ -1,24 +1,26 @@
-import * as THREE from 'three'
-import { useEffect, useRef } from 'react'
-import Body from './Body'
-import Dock from './Dock'
-import DockBtn from './DockBtn'
-import PlayBtn from './PlayBtn'
-import Speaker from './Speaker'
-import VolumeKnob from './VolumeKnob'
-import gsap from 'gsap'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store'
-import { setCdPlayer } from '@/reducers/outlineSlice'
-import Screen from './Screen'
-import CD from '../CD'
+import * as THREE from 'three';
+import { useEffect, useRef } from 'react';
+import Body from './Body';
+import Dock from './Dock';
+import DockBtn from './DockBtn';
+import PlayBtn from './PlayBtn';
+import Speaker from './Speaker';
+import VolumeKnob from './VolumeKnob';
+import gsap from 'gsap';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { setCdPlayer } from '@/reducers/outlineSlice';
+import Screen from './Screen';
+import CD from '../CD';
 
 function CDPlayer(props: JSX.IntrinsicElements['group']) {
-  const dispatch = useDispatch()
-  const { openDock, uploaded } = useSelector((state: RootState) => state.upload)
+  const dispatch = useDispatch();
+  const { openDock, uploaded } = useSelector(
+    (state: RootState) => state.upload,
+  );
 
-  const openDockZ = 0.12
-  const dockRef = useRef<THREE.Group>(null)
+  const openDockZ = 0.12;
+  const dockRef = useRef<THREE.Group>(null);
 
   // Animate the dock opening
   if (dockRef?.current) {
@@ -27,23 +29,23 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
         z: openDockZ,
         duration: 2,
         ease: 'power2.out',
-      })
+      });
     } else {
       gsap.to(dockRef.current.position, {
         z: 0,
         duration: 2,
         ease: 'power2.out',
-      })
+      });
     }
   }
 
   // Add cd player ref to global state (for outlining)
-  const cdPlayerRef = useRef<THREE.Group>(null)
+  const cdPlayerRef = useRef<THREE.Group>(null);
   useEffect(() => {
     if (cdPlayerRef.current) {
-      dispatch(setCdPlayer(cdPlayerRef.current))
+      dispatch(setCdPlayer(cdPlayerRef.current));
     }
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <group ref={cdPlayerRef} {...props} dispose={null}>
@@ -60,7 +62,7 @@ function CDPlayer(props: JSX.IntrinsicElements['group']) {
       <VolumeKnob />
       <Screen position={[-0.0765, 0.0876, 0.097]} />
     </group>
-  )
+  );
 }
 
-export default CDPlayer
+export default CDPlayer;

@@ -1,20 +1,20 @@
-import * as THREE from 'three'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import * as THREE from 'three';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
   nodes: {
-    speaker_left: THREE.Mesh
-  }
+    speaker_left: THREE.Mesh;
+  };
   materials: {
-    ['panasonic_sa-pm02-speaker']: THREE.MeshStandardMaterial
-  }
-}
+    ['panasonic_sa-pm02-speaker']: THREE.MeshStandardMaterial;
+  };
+};
 
 export default function Speaker(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/speaker-transformed.glb',
-  ) as GLTFResult
+  ) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -26,7 +26,7 @@ export default function Speaker(props: JSX.IntrinsicElements['group']) {
         rotation={[-Math.PI / 2, 0, 0]}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/objects/cdplayer/speaker-transformed.glb')
+useGLTF.preload('/objects/cdplayer/speaker-transformed.glb');

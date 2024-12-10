@@ -21,7 +21,11 @@ const channelScreens: Record<number, React.FC> = {
   5: () => <div>Achievements Screen</div>,
 };
 
-export default function Screen({ position, channelNum, setChannelNum }: ScreenProps) {
+export default function Screen({
+  position,
+  channelNum,
+  setChannelNum,
+}: ScreenProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [glitchActive, setGlitchActive] = useState(false);
   const glitchMaterial = useRef<ShaderMaterial>(null);
@@ -32,9 +36,9 @@ export default function Screen({ position, channelNum, setChannelNum }: ScreenPr
     const handleKeyDown = (event: KeyboardEvent) => {
       const key = Number(event.key);
       if (key >= 0 && key <= 5 && key !== channelNum) {
-        setChannelNum(key)
-        setGlitchActive(true)
-        setTimeout(() => setGlitchActive(false), 200)
+        setChannelNum(key);
+        setGlitchActive(true);
+        setTimeout(() => setGlitchActive(false), 200);
       }
     };
 
@@ -44,9 +48,10 @@ export default function Screen({ position, channelNum, setChannelNum }: ScreenPr
     };
   }, [isHovered, setChannelNum]);
 
-  useFrame((state) => {
+  useFrame(state => {
     if (glitchMaterial.current) {
-      glitchMaterial.current.uniforms.u_time.value = state.clock.getElapsedTime();
+      glitchMaterial.current.uniforms.u_time.value =
+        state.clock.getElapsedTime();
     }
   });
 
@@ -57,12 +62,14 @@ export default function Screen({ position, channelNum, setChannelNum }: ScreenPr
       {/* Glitch Effect */}
       {glitchActive && (
         <mesh position={position} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[3.5, 2]}  />
+          <planeGeometry args={[3.5, 2]} />
           <shaderMaterial
             ref={glitchMaterial}
-            attach="material"
+            attach='material'
             args={[GlitchShader]}
-            uniforms-u_resolution-value={new Vector2(window.innerWidth, window.innerHeight)}
+            uniforms-u_resolution-value={
+              new Vector2(window.innerWidth, window.innerHeight)
+            }
             transparent
           />
         </mesh>
@@ -74,10 +81,10 @@ export default function Screen({ position, channelNum, setChannelNum }: ScreenPr
         transform
         occlude
         rotation={[Math.PI / 2, Math.PI, 0]}
-        className="bg-white dark:bg-black w-[137px] h-[80px] rounded-[1px] overflow-hidden"
+        className='bg-white dark:bg-black w-[137px] h-[80px] rounded-[1px] overflow-hidden'
       >
         <div
-          className="p-2 origin-top-left scale-[0.333] w-[414px] h-[240px]"
+          className='p-2 origin-top-left scale-[0.333] w-[414px] h-[240px]'
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Button } from './button'
-import { ChevronRight, ChevronLeft } from 'lucide-react'
+import React, { useState, useRef, useEffect } from 'react';
+import { Button } from './button';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 type FactsCarouselProps = {
-  children: React.ReactNode
-  showArrows?: boolean
-  autoScroll?: boolean
-  autoScrollInterval?: number
-}
+  children: React.ReactNode;
+  showArrows?: boolean;
+  autoScroll?: boolean;
+  autoScrollInterval?: number;
+};
 
 const FactsCarousel: React.FC<FactsCarouselProps> = ({
   children,
@@ -15,38 +15,38 @@ const FactsCarousel: React.FC<FactsCarouselProps> = ({
   autoScroll = false,
   autoScrollInterval = 3000,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const carouselRef = useRef<HTMLDivElement>(null)
-  const items = React.Children.toArray(children)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const items = React.Children.toArray(children);
 
   const scrollToIndex = (index: number) => {
-    const carousel = carouselRef.current
+    const carousel = carouselRef.current;
     if (carousel) {
-      const scrollPosition = (carousel.clientWidth + 4.48) * index
-      carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' })
+      const scrollPosition = (carousel.clientWidth + 4.48) * index;
+      carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' });
     }
-    setCurrentIndex(index)
-  }
+    setCurrentIndex(index);
+  };
 
   const scrollPrev = () => {
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1
-    scrollToIndex(prevIndex)
-  }
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+    scrollToIndex(prevIndex);
+  };
 
   const scrollNext = () => {
-    const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0
-    scrollToIndex(nextIndex)
-  }
+    const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+    scrollToIndex(nextIndex);
+  };
 
   useEffect(() => {
-    if (!autoScroll) return
+    if (!autoScroll) return;
 
     const interval = setInterval(() => {
-      scrollNext()
-    }, autoScrollInterval)
+      scrollNext();
+    }, autoScrollInterval);
 
-    return () => clearInterval(interval)
-  }, [currentIndex, autoScroll, autoScrollInterval])
+    return () => clearInterval(interval);
+  }, [currentIndex, autoScroll, autoScrollInterval]);
 
   return (
     <div className='flex flex-col items-center gap-2'>
@@ -83,7 +83,7 @@ const FactsCarousel: React.FC<FactsCarouselProps> = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default FactsCarousel
+export default FactsCarousel;

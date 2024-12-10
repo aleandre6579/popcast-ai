@@ -1,6 +1,6 @@
-import React from 'react'
-import { Youtube } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import React from 'react';
+import { Youtube } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const videos = [
   {
@@ -27,7 +27,7 @@ const videos = [
     thumbnail:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsLbc504oVyiQUG3WdWsBbbJdI2a-t8-OYxA&s',
   },
-]
+];
 
 const TheAppventurerScreen: React.FC = () => {
   return (
@@ -62,7 +62,7 @@ const TheAppventurerScreen: React.FC = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TheAppventurerScreen
+export default TheAppventurerScreen;

@@ -1,22 +1,22 @@
-import * as THREE from 'three'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import * as THREE from 'three';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
   nodes: {
-    cdplayer: THREE.Mesh
-  }
+    cdplayer: THREE.Mesh;
+  };
   materials: {
-    ['panasonic_sa-pm02-player']: THREE.MeshPhysicalMaterial
-  }
-}
+    ['panasonic_sa-pm02-player']: THREE.MeshPhysicalMaterial;
+  };
+};
 
 export default function Body(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/cdplayer-transformed.glb',
-  ) as GLTFResult
+  ) as GLTFResult;
 
-  materials['panasonic_sa-pm02-player'].shadowSide = THREE.DoubleSide
+  materials['panasonic_sa-pm02-player'].shadowSide = THREE.DoubleSide;
 
   return (
     <group {...props} dispose={null}>
@@ -31,7 +31,7 @@ export default function Body(props: JSX.IntrinsicElements['group']) {
         rotation={[-Math.PI / 2, 0, 0]}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/objects/cdplayer/cdplayer-transformed.glb')
+useGLTF.preload('/objects/cdplayer/cdplayer-transformed.glb');

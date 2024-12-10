@@ -1,20 +1,20 @@
-import * as THREE from 'three'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import * as THREE from 'three';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
   nodes: {
-    play_btn: THREE.Mesh
-  }
+    play_btn: THREE.Mesh;
+  };
   materials: {
-    ['panasonic_sa-pm02-player']: THREE.MeshPhysicalMaterial
-  }
-}
+    ['panasonic_sa-pm02-player']: THREE.MeshPhysicalMaterial;
+  };
+};
 
 export default function PlayBtn(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/objects/cdplayer/play_btn-transformed.glb',
-  ) as GLTFResult
+  ) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -25,7 +25,7 @@ export default function PlayBtn(props: JSX.IntrinsicElements['group']) {
         rotation={[-Math.PI / 2, 0, 0]}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/objects/cdplayer/play_btn-transformed.glb')
+useGLTF.preload('/objects/cdplayer/play_btn-transformed.glb');

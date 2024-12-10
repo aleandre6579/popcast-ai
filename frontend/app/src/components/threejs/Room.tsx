@@ -1,31 +1,31 @@
-import * as THREE from 'three'
-import { useEffect } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
-import { useTheme } from '../theme-provider'
-import gsap from 'gsap'
+import * as THREE from 'three';
+import { useEffect } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
+import { useTheme } from '../theme-provider';
+import gsap from 'gsap';
 
 type GLTFResult = GLTF & {
   nodes: {
-    Cube: THREE.Mesh
-  }
+    Cube: THREE.Mesh;
+  };
   materials: {
-    Material: THREE.MeshStandardMaterial
-  }
-}
+    Material: THREE.MeshStandardMaterial;
+  };
+};
 
 export default function Room(props: JSX.IntrinsicElements['group']) {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   const { nodes, materials } = useGLTF(
     '/objects/room/room-transformed.glb',
-  ) as GLTFResult
+  ) as GLTFResult;
 
-  const lightColor = new THREE.Color(0xffffff)
-  const darkColor = new THREE.Color(0x242424)
+  const lightColor = new THREE.Color(0xffffff);
+  const darkColor = new THREE.Color(0x242424);
 
   useEffect(() => {
-    const targetColor = theme === 'dark' ? darkColor : lightColor
+    const targetColor = theme === 'dark' ? darkColor : lightColor;
 
     gsap.to(materials.Material.color, {
       r: targetColor.r,
@@ -33,8 +33,8 @@ export default function Room(props: JSX.IntrinsicElements['group']) {
       b: targetColor.b,
       duration: 0.8,
       ease: 'power4',
-    })
-  }, [theme])
+    });
+  }, [theme]);
 
   return (
     <group {...props} dispose={null}>
@@ -47,7 +47,7 @@ export default function Room(props: JSX.IntrinsicElements['group']) {
         scale={[8, 4, 8]}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/objects/room/room-transformed.glb')
+useGLTF.preload('/objects/room/room-transformed.glb');

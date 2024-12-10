@@ -1,60 +1,59 @@
-import { Input } from '@/components/ui/input'
-import React, { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../store'
-import {
-  openDock,
-  closeDock,
-} from '../reducers/uploadSlice'
-import { addOutline, removeOutline } from '../reducers/outlineSlice'
-import useSize from '@/hooks/useSize'
-import { Button } from '@/components/ui/button'
-import DragDetector from '@/components/DragDetector'
-import { handleUpload } from '@/utils/upload'
-import { useNavigate } from 'react-router-dom'
-import AnimatedTooltip from '@/components/ui/animated-tooltip'
-import axiosReq from '@/axios'
-import axios from 'axios'
+import { Input } from '@/components/ui/input';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store';
+import { openDock, closeDock } from '../reducers/uploadSlice';
+import { addOutline, removeOutline } from '../reducers/outlineSlice';
+import useSize from '@/hooks/useSize';
+import { Button } from '@/components/ui/button';
+import DragDetector from '@/components/DragDetector';
+import { handleUpload } from '@/utils/upload';
+import { useNavigate } from 'react-router-dom';
+import AnimatedTooltip from '@/components/ui/animated-tooltip';
+import axiosReq from '@/axios';
+import axios from 'axios';
 
 interface UploadProps {}
 
 const Upload: React.FC<UploadProps> = () => {
-  const dispatch = useDispatch()
-  const { cdPlayer } = useSelector((state: RootState) => state.outline)
-  const { uploadedFile, uploadedFileName } = useSelector((state: RootState) => state.upload)
+  const dispatch = useDispatch();
+  const { cdPlayer } = useSelector((state: RootState) => state.outline);
+  const { uploadedFile, uploadedFileName } = useSelector(
+    (state: RootState) => state.upload,
+  );
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleUploadOnHover = (
     e: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (cdPlayer === null) return
-    dispatch(addOutline(cdPlayer))
-    dispatch(openDock())
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    if (cdPlayer === null) return;
+    dispatch(addOutline(cdPlayer));
+    dispatch(openDock());
+  };
 
   const handleUploadOffHover = (
     e: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (cdPlayer === null) return
-    dispatch(removeOutline(cdPlayer))
-    dispatch(closeDock())
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    if (cdPlayer === null) return;
+    dispatch(removeOutline(cdPlayer));
+    dispatch(closeDock());
+  };
 
   const handleDrop = (e: DragEvent | React.ChangeEvent) => {
-    handleUpload(e, dispatch)
-  }
+    handleUpload(e, dispatch);
+  };
 
   async function handleAnalyzePress() {
-    if(!uploadedFile) return 
+    if (!uploadedFile) return;
 
     const formData = new FormData();
     formData.append('file', uploadedFile);
-  
+
     try {
       const response = await axiosReq.post('/analysis', formData, {
         headers: {
@@ -64,29 +63,32 @@ const Upload: React.FC<UploadProps> = () => {
       console.log('Response:', response.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error('Axios error response:', error.response?.data || error.message);
+        console.error(
+          'Axios error response:',
+          error.response?.data || error.message,
+        );
       } else {
         console.error('Unexpected error:', error);
-      }    
+      }
     }
-    
-    navigate('/analysis')
+
+    navigate('/analysis');
   }
 
-  const [width, height] = useSize()
-  const uploadBoxWidth = width * 0.23 + height * 0.4 - 10
-  const uploadBoxHeight = width * 0.1 + height * 0.14 + 60
+  const [width, height] = useSize();
+  const uploadBoxWidth = width * 0.23 + height * 0.4 - 10;
+  const uploadBoxHeight = width * 0.1 + height * 0.14 + 60;
 
-  const titleInputRef = useRef<HTMLDivElement>(null)
+  const titleInputRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!titleInputRef.current) return
+    if (!titleInputRef.current) return;
 
     if (!uploadedFileName) {
-      titleInputRef.current.style.display = 'none'
+      titleInputRef.current.style.display = 'none';
     } else {
-      titleInputRef.current.style.display = 'flex'
+      titleInputRef.current.style.display = 'flex';
     }
-  }, [uploadedFileName])
+  }, [uploadedFileName]);
 
   return (
     <div>
@@ -105,13 +107,13 @@ const Upload: React.FC<UploadProps> = () => {
 
         <Input
           onMouseEnter={e => {
-            handleUploadOnHover(e)
+            handleUploadOnHover(e);
           }}
           onMouseLeave={e => {
-            handleUploadOffHover(e)
+            handleUploadOffHover(e);
           }}
           onChange={e => {
-            handleDrop(e)
+            handleDrop(e);
           }}
           className='opacity-0 absolute top-0 w-full h-full cursor-pointer'
           type='file'
@@ -131,7 +133,7 @@ const Upload: React.FC<UploadProps> = () => {
 
       <DragDetector />
     </div>
-  )
-}
+  );
+};
 
-export default Upload
+export default Upload;

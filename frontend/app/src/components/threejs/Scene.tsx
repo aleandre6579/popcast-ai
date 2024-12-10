@@ -1,23 +1,23 @@
-import Room from './Room'
-import CDPlayer from './cdplayer/CDPlayer'
-import { AdaptiveDpr } from '@react-three/drei'
-import * as THREE from 'three'
-import { EffectComposer, Bloom, Outline } from '@react-three/postprocessing'
-import { KernelSize } from 'postprocessing'
-import { useThree } from '@react-three/fiber'
-import { clamp } from 'three/src/math/MathUtils.js'
-import { useEffect, useRef } from 'react'
-import { useTheme } from '../theme-provider'
-import gsap from 'gsap'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
-import Camera from './Camera'
-import TVs from './tvs/TVs'
+import Room from './Room';
+import CDPlayer from './cdplayer/CDPlayer';
+import { AdaptiveDpr } from '@react-three/drei';
+import * as THREE from 'three';
+import { EffectComposer, Bloom, Outline } from '@react-three/postprocessing';
+import { KernelSize } from 'postprocessing';
+import { useThree } from '@react-three/fiber';
+import { clamp } from 'three/src/math/MathUtils.js';
+import { useEffect, useRef } from 'react';
+import { useTheme } from '../theme-provider';
+import gsap from 'gsap';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import Camera from './Camera';
+import TVs from './tvs/TVs';
 
 function PostProcess() {
   const outlinedObjects = useSelector(
     (state: RootState) => state.outline.outlinedObjects,
-  )
+  );
 
   return (
     <EffectComposer
@@ -44,26 +44,26 @@ function PostProcess() {
         kernelSize={KernelSize.VERY_SMALL}
       />
     </EffectComposer>
-  )
+  );
 }
 
 function Scene() {
-  const { theme } = useTheme()
-  const { width, height } = useThree(state => state.viewport)
-  const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100)
-  const pointLightRef = useRef<THREE.PointLight>(null)
+  const { theme } = useTheme();
+  const { width, height } = useThree(state => state.viewport);
+  const scaledFov = clamp(70 - (width / (height * 3)) * 45, 10, 100);
+  const pointLightRef = useRef<THREE.PointLight>(null);
 
   useEffect(() => {
-    if (!pointLightRef.current) return
+    if (!pointLightRef.current) return;
 
-    const targetPower = theme === 'dark' ? 300 : 500
+    const targetPower = theme === 'dark' ? 300 : 500;
 
     gsap.to(pointLightRef.current, {
       power: targetPower,
       duration: 0.8,
       ease: 'power4',
-    })
-  }, [theme])
+    });
+  }, [theme]);
 
   return (
     <>
@@ -90,7 +90,7 @@ function Scene() {
         />
       </group>
     </>
-  )
+  );
 }
 
-export default Scene
+export default Scene;

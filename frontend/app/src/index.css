@@ -28,9 +28,8 @@ body {
 .scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
-  width: 200px;
-  height: 200px;
   padding: 10px;
+  padding-left: 20px;
   &::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8 !important;
   }

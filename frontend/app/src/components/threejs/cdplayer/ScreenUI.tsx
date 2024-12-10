@@ -1,9 +1,9 @@
-import React from 'react'
-import { Html } from '@react-three/drei'
+import React from 'react';
+import { Html } from '@react-three/drei';
 
 type ScreenUIProps = {
-  material: React.ReactNode
-}
+  material: React.ReactNode;
+};
 
 export default function ScreenUI(props: ScreenUIProps) {
   return (
@@ -16,5 +16,5 @@ export default function ScreenUI(props: ScreenUIProps) {
     >
       Hello
     </Html>
-  )
+  );
 }

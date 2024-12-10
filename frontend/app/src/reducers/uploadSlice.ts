@@ -1,17 +1,17 @@
-import { cutExtension } from '@/utils/upload'
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { cutExtension } from '@/utils/upload';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type SetAudioFileUploadedPayload = {
-  audioFileName: string,
-  audioFile: File
-}
+  audioFileName: string;
+  audioFile: File;
+};
 
 interface UploadState {
-  uploaded: boolean
-  uploadedFileName: string | undefined
-  uploadedFile: File | undefined
-  openDock: boolean
-  isDraggingAudioFile: boolean
+  uploaded: boolean;
+  uploadedFileName: string | undefined;
+  uploadedFile: File | undefined;
+  openDock: boolean;
+  isDraggingAudioFile: boolean;
 }
 
 const initialState: UploadState = {
@@ -20,33 +20,36 @@ const initialState: UploadState = {
   uploadedFile: undefined,
   openDock: false,
   isDraggingAudioFile: false,
-}
+};
 
 const uploadSlice = createSlice({
   name: 'upload',
   initialState,
   reducers: {
     setIsDraggingAudioFile: (state, action: PayloadAction<boolean>) => {
-      state.isDraggingAudioFile = action.payload
+      state.isDraggingAudioFile = action.payload;
     },
-    setAudioFileUploaded: (state, action: PayloadAction<SetAudioFileUploadedPayload>) => {
-      state.uploaded = true
-      state.uploadedFileName = cutExtension(action.payload.audioFileName)
-      state.uploadedFile = action.payload.audioFile
+    setAudioFileUploaded: (
+      state,
+      action: PayloadAction<SetAudioFileUploadedPayload>,
+    ) => {
+      state.uploaded = true;
+      state.uploadedFileName = cutExtension(action.payload.audioFileName);
+      state.uploadedFile = action.payload.audioFile;
     },
     resetFileUploaded: state => {
-      state.uploaded = false
-      state.uploadedFileName = undefined
-      state.uploadedFile = undefined
+      state.uploaded = false;
+      state.uploadedFileName = undefined;
+      state.uploadedFile = undefined;
     },
     openDock: state => {
-      state.openDock = true
+      state.openDock = true;
     },
     closeDock: state => {
-      state.openDock = false
+      state.openDock = false;
     },
   },
-})
+});
 
 export const {
   setIsDraggingAudioFile,
@@ -54,6 +57,6 @@ export const {
   resetFileUploaded,
   openDock,
   closeDock,
-} = uploadSlice.actions
+} = uploadSlice.actions;
 
-export default uploadSlice.reducer
+export default uploadSlice.reducer;

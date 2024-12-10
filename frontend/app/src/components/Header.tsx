@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
-import { UserIcon } from 'lucide-react'
-import React from 'react'
-import { ModeToggle } from './ModeToggle'
+import { Button } from '@/components/ui/button';
+import { UserIcon } from 'lucide-react';
+import React from 'react';
+import { ModeToggle } from './ModeToggle';
 
 interface HeaderProps {}
 
@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = () => {
         </Button>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Card } from '@/components/ui/card'
+import React from 'react';
+import { Card } from '@/components/ui/card';
 
 interface AnalysisProps {}
 
@@ -10,10 +10,9 @@ export const channels = [
   { name: 'TheAppventurer' },
   { name: 'Pollssss' },
   { name: 'Achivements' },
-]
+];
 
 const Analysis: React.FC<AnalysisProps> = () => {
-
   return (
     <div>
       <Card className='absolute -bottom-2 -left-2 flex flex-col gap-2 p-4 pl-6'>
@@ -28,7 +27,7 @@ const Analysis: React.FC<AnalysisProps> = () => {
         ))}
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default Analysis
+export default Analysis;

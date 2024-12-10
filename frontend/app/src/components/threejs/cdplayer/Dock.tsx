@@ -1,24 +1,24 @@
-import * as THREE from 'three'
-import { forwardRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import * as THREE from 'three';
+import { forwardRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
   nodes: {
-    dock_front: THREE.Mesh
-    dock_center: THREE.Mesh
-  }
+    dock_front: THREE.Mesh;
+    dock_center: THREE.Mesh;
+  };
   materials: {
-    ['Material.004']: THREE.MeshStandardMaterial
-    ['Material.003']: THREE.MeshStandardMaterial
-  }
-}
+    ['Material.004']: THREE.MeshStandardMaterial;
+    ['Material.003']: THREE.MeshStandardMaterial;
+  };
+};
 
 const Dock = forwardRef<THREE.Group, JSX.IntrinsicElements['group']>(
   (props, ref) => {
     const { nodes, materials } = useGLTF(
       '/objects/cdplayer/dock-transformed.glb',
-    ) as GLTFResult
+    ) as GLTFResult;
     return (
       <group ref={ref} {...props} dispose={null}>
         <mesh
@@ -37,10 +37,10 @@ const Dock = forwardRef<THREE.Group, JSX.IntrinsicElements['group']>(
           scale={[0.008, 0.002, 0.008]}
         />
       </group>
-    )
+    );
   },
-)
+);
 
-useGLTF.preload('/objects/cdplayer/dock-transformed.glb')
+useGLTF.preload('/objects/cdplayer/dock-transformed.glb');
 
-export default Dock
+export default Dock;
