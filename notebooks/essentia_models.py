@@ -103,12 +103,13 @@ def run_essentia_models(audio16k, audio44k):
     sad = np.median(sad_predictions, axis=0)[0]
 
     # Jamendo labels
-    jamendo_predictions = TensorflowPredict2D(graphFilename=MODELS_PATH + "/mtg_jamendo_moodtheme-discogs-effnet-1.pb")(
-        discogs_embeddings
-    )
+    jamendo_predictions = TensorflowPredict2D(
+        graphFilename=MODELS_PATH + "/mtg_jamendo_moodtheme-discogs-effnet-1.pb"
+    )(discogs_embeddings)
     jamendo_values = np.median(jamendo_predictions, axis=0)
     jamendo_dict = {
-        jamendo_class: jamendo_value for (jamendo_class, jamendo_value) in zip(jamendo_classes, jamendo_values)
+        jamendo_class: jamendo_value
+        for (jamendo_class, jamendo_value) in zip(jamendo_classes, jamendo_values)
     }
 
     # Jamendo instrument labels
@@ -118,7 +119,9 @@ def run_essentia_models(audio16k, audio44k):
     jamendo_instrument_values = np.median(jamendo_instrument_predictions, axis=0)
     jamendo_instrument_dict = {
         jamendo_class: jamendo_value
-        for (jamendo_class, jamendo_value) in zip(jamendo_instrument_classes, jamendo_instrument_values)
+        for (jamendo_class, jamendo_value) in zip(
+            jamendo_instrument_classes, jamendo_instrument_values
+        )
     }
 
     # Acoustic
@@ -247,7 +250,10 @@ def process_song(song_path):
 
 def process_songs(embeddings_filepath, lower, upper):
     song_paths = np.array(
-        [os.path.join(DOWNLOAD_FOLDER, song_filename) for song_filename in os.listdir(DOWNLOAD_FOLDER)]
+        [
+            os.path.join(DOWNLOAD_FOLDER, song_filename)
+            for song_filename in os.listdir(DOWNLOAD_FOLDER)
+        ]
     )
 
     songs_data_lower, songs_data_higher = [
@@ -271,14 +277,20 @@ def process_songs(embeddings_filepath, lower, upper):
                     try:
                         song_video_id = songs_data_full.iloc[song_index]["videoID"]
                         if str(song_video_id) in hdf5_file:
-                            print(f"Dataset for {song_video_id} already exists, skipping.")
+                            print(
+                                f"Dataset for {song_video_id} already exists, skipping."
+                            )
                             continue
-                        hdf5_file.create_dataset(song_video_id, data=value, compression="gzip")
+                        hdf5_file.create_dataset(
+                            song_video_id, data=value, compression="gzip"
+                        )
                         continue
                     except Exception as e:
                         print(f"ERROR: {e}. VideoID: {song_video_id}")
 
-                if feature not in songs_data_full.columns and isinstance(value, (tuple, set, list, np.ndarray, dict)):
+                if feature not in songs_data_full.columns and isinstance(
+                    value, (tuple, set, list, np.ndarray, dict)
+                ):
                     songs_data_full[feature] = np.nan
                     songs_data_full[feature] = songs_data_full[feature].astype(object)
                 songs_data_full.at[song_index, feature] = value
@@ -287,6 +299,8 @@ def process_songs(embeddings_filepath, lower, upper):
 
 
 lower, upper = [4, 12]
-embeddings_filepath = f"/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5"
+embeddings_filepath = (
+    f"/mnt/f/Alex Stuff/Songs/Embeddings/song_embeddings_{lower}_{upper}.h5"
+)
 songs_data_full = process_songs(embeddings_filepath, lower, upper)
 songs_data_full.to_csv(f"data/songs_data_models_{lower}_{upper}.csv", index=True)
