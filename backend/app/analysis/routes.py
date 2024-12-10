@@ -1,7 +1,7 @@
 from fastapi import APIRouter, File, HTTPException, UploadFile
 import logging
 
-from app.analysis.utils import analyze_audio
+from app.analysis.service import analyze_audio
 
 analysis_router = APIRouter()
 logging.basicConfig(level=logging.DEBUG)

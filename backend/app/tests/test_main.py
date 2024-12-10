@@ -1,8 +1,7 @@
 from fastapi.testclient import TestClient
-from main import app  # Replace with the actual file where your FastAPI app is defined
+from app.main import app
 
 client = TestClient(app)
-
 
 def test_read_root():
     """Test the root endpoint."""
@@ -10,4 +9,4 @@ def test_read_root():
     assert response.status_code == 200
     assert response.json() == {
         "message": "Hello, World!"
-    }  # Replace with the actual response of your root endpoint
+    }
