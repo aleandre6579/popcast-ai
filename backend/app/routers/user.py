@@ -22,8 +22,6 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/", response_model=list[UserResponse])
-async def read_users(
-    skip: int = 0, limit: int = 10, db: AsyncSession = Depends(get_db)
-):
+async def read_users(skip: int = 0, limit: int = 10, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).offset(skip).limit(limit))
     return result.scalars().all()
