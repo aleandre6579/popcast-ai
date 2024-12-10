@@ -1,4 +1,5 @@
-fastapi 
+fastapi
+python-multipart
 pytest
 pytest-cov
 httpx
