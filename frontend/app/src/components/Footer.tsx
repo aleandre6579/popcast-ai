@@ -7,7 +7,7 @@ import clsx from 'clsx';
 const Footer: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [width, _] = useSize();
+  const [width] = useSize();
   const footerRef = useRef<HTMLElement>(null);
   const [isHovering, setIsHovering] = useState(false);
 

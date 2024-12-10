@@ -13,9 +13,7 @@ import AnimatedTooltip from '@/components/ui/animated-tooltip';
 import axiosReq from '@/axios';
 import axios from 'axios';
 
-interface UploadProps {}
-
-const Upload: React.FC<UploadProps> = () => {
+const Upload: React.FC = () => {
   const dispatch = useDispatch();
   const { cdPlayer } = useSelector((state: RootState) => state.outline);
   const { uploadedFile, uploadedFileName } = useSelector(

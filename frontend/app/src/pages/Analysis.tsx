@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 
-interface AnalysisProps {}
-
 export const channels = [
   { name: 'Time Estimation' },
   { name: 'Advertisement' },
@@ -12,7 +10,7 @@ export const channels = [
   { name: 'Achivements' },
 ];
 
-const Analysis: React.FC<AnalysisProps> = () => {
+const Analysis: React.FC = () => {
   return (
     <div>
       <Card className='absolute -bottom-2 -left-2 flex flex-col gap-2 p-4 pl-6'>

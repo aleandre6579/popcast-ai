@@ -10,4 +10,11 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/no-unknown-property': 'off',
+      'react/prop-types': 'off',
+    },
+  },
 ];

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import gsap from 'gsap'
 
@@ -51,7 +51,7 @@ const Support: React.FC = () => {
 
     const handleMouseLeave = () => {
       if (scrollTimelineRef.current) {
-        let progress = isScrollingDown ? list.scrollTop / maxScroll / 2 : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5
+        const progress = isScrollingDown ? list.scrollTop / maxScroll / 2 : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5
         console.log(progress)
         scrollTimelineRef.current.progress(progress)
         scrollTimelineRef.current.resume()

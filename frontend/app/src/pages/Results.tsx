@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface ResultsProps {}
-
-const Results: React.FC<ResultsProps> = () => {
+const Results: React.FC = () => {
   return (
     <div>
       <h1 className='text-4xl font-extrabold text-center mt-8 tracking-tight'>

@@ -8,9 +8,7 @@ import {
 } from '@/reducers/uploadSlice';
 import { handleUpload } from '@/utils/upload';
 
-interface DragDetectorProps {}
-
-const DragDetector: React.FC<DragDetectorProps> = () => {
+const DragDetector: React.FC = () => {
   const dispatch = useDispatch();
   const { isDraggingAudioFile } = useSelector(
     (state: RootState) => state.upload,

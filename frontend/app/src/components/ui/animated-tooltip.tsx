@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ChevronDown } from 'lucide-react';
 
-interface AnimatedTooltipProps {}
-
-const AnimatedTooltip: React.FC<AnimatedTooltipProps> = () => {
+const AnimatedTooltip: React.FC = () => {
   // Tooltip animation
   useEffect(() => {
     const timeline = gsap.timeline({ repeat: -1, ease: 'linear' });

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Html } from '@react-three/drei';
-import { extend, useFrame } from '@react-three/fiber';
-import { PlaneGeometry, ShaderMaterial, Vector2 } from 'three';
+import { useFrame } from '@react-three/fiber';
+import { ShaderMaterial, Vector2 } from 'three';
 import { GlitchShader } from './GlitchShader'; // Import the glitch shader
 import InformationScreen from './InformationScreen';
 import TheAppventurerScreen from './TheAppventurer';
