@@ -36,13 +36,11 @@ jobs:
         uses: isort/isort-action@master
         with:
           isortVersion: "5.13.2"
-          sortPaths: "./backend/*"
 
       - name: Lint with black
         uses: psf/black@stable
         with:
           version: "23.12.1"
-          src: "./backend"
 
       - name: Lint with flake8
         run: |
