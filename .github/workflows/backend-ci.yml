@@ -108,3 +108,11 @@ jobs:
         run: |
           docker push ghcr.io/${{ env.BASE_IMG_NAME }}/backend:${{ env.image_tag }} && \
           docker push ghcr.io/${{ env.BASE_IMG_NAME }}/backend:latest
+
+      - name: Deploy Image to CapRrover
+        uses: caprover/deploy-from-github@v1.1.2
+        with:
+          server: "${{ secrets.CAPROVER_SERVER }}"
+          app: "${{ secrets.APP_NAME }}"
+          token: "${{ secrets.APP_TOKEN }}"
+          image: "ghcr.io/${{ env.BASE_IMG_NAME }}/backend:${{ env.image_tag }}"
