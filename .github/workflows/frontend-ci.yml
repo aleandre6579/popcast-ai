@@ -105,6 +105,6 @@ jobs:
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: "${{ secrets.CAPROVER_SERVER }}"
-          app: "${{ secrets.APP_NAME }}"
-          token: "${{ secrets.APP_TOKEN }}"
+          app: "${{ secrets.FRONTEND_APP_NAME }}"
+          token: "${{ secrets.FRONTEND_APP_TOKEN }}"
           image: "ghcr.io/${{ env.BASE_IMG_NAME }}/frontend:${{ env.image_tag }}"
