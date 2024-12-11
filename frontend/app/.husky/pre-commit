@@ -1,0 +1,3 @@
+cd frontend/app
+pnpm run lint
+pnpm run format
