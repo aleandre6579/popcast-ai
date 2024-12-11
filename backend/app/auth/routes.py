@@ -21,7 +21,9 @@ fake_user_db = {
 @auth_router.post("/login")
 def login(user: UserLogin):
     user_data = fake_user_db.get(user.username)
-    if not user_data or not verify_password(user.password, user_data["hashed_password"]):
+    if not user_data or not verify_password(
+        user.password, user_data["hashed_password"]
+    ):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     token = create_access_token(
         data={"sub": user.username}, expires_delta=timedelta(hours=1)
