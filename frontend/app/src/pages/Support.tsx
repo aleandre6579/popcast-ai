@@ -9,28 +9,36 @@ type Supporter = {
 const Support: React.FC = () => {
   //GSAP animations on render
   useEffect(() => {
-    const onRenderTimeline = gsap.timeline()
-    onRenderTimeline.fromTo(
-      '.supportCard',
-      { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
-      { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1},
-    ).fromTo(
-      '.supportersCard',
-      { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
-      { scale: 1, y: 0, opacity: 1, duration: 0.8},
-      0.5
-    ).fromTo(
-      '.supporter',
-      { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
-      { opacity: 1, y: 0, duration: 0.8, scale: 1, stagger: 0.1},
-      1.2,
-    )
-  }, [])
+    const onRenderTimeline = gsap.timeline();
+    onRenderTimeline
+      .fromTo(
+        '.supportCard',
+        { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
+        { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
+      )
+      .fromTo(
+        '.supportersCard',
+        { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
+        { scale: 1, y: 0, opacity: 1, duration: 0.8 },
+        0.5,
+      )
+      .fromTo(
+        '.supporter',
+        { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
+        { opacity: 1, y: 0, duration: 0.8, scale: 1, stagger: 0.1 },
+        1.2,
+      );
+  }, []);
 
   const listRef = useRef<HTMLDivElement>(null);
   const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
 
-  const supporters: Supporter[] = [{name: 'Alex'}, {name: 'Alex'}, {name: 'Alex'}, {name: 'Alex'}];
+  const supporters: Supporter[] = [
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
+  ];
 
   useEffect(() => {
     const list = listRef.current;
@@ -100,15 +108,22 @@ const Support: React.FC = () => {
         Thank you for using PopcastAI!
       </h1>
       <p className='flex-none text-sm text-center mt-2'>
-        Your support allows me to work on my apps fulltime and build more awesome products.
+        Your support allows me to work on my apps fulltime and build more
+        awesome products.
       </p>
 
       {/* Layout */}
       <div className='h-full p-12 flex flex-col lg:flex-row justify-between gap-6 mt-8'>
         {/* Main Cards Section */}
         <div className='grid grid-cols-2 gap-4 flex-1'>
-          <SupportCard link='https://www.youtube.com/@TheAppventurer' title='Check out my YouTube channel' />
-          <SupportCard link='https://www.buymeacoffee.com/theappventurer' title='Buy me a Coffee' />
+          <SupportCard
+            link='https://www.youtube.com/@TheAppventurer'
+            title='Check out my YouTube channel'
+          />
+          <SupportCard
+            link='https://www.buymeacoffee.com/theappventurer'
+            title='Buy me a Coffee'
+          />
           <SupportCard title='Check out my other products' />
           <SupportCard title='My Socials' />
         </div>
@@ -126,7 +141,9 @@ const Support: React.FC = () => {
               >
                 <ul className='text-sm space-y-2'>
                   {supporters.map((supporter, index) => (
-                    <li className='supporter' key={index + supporter.name}>{supporter.name}</li>
+                    <li className='supporter' key={index + supporter.name}>
+                      {supporter.name}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -142,9 +159,12 @@ const Support: React.FC = () => {
   );
 };
 
-const SupportCard: React.FC<{ title: string, link?: string }> = ({ title, link }) => {
+const SupportCard: React.FC<{ title: string; link?: string }> = ({
+  title,
+  link,
+}) => {
   return (
-    <a href={link} target='_blank'>
+    <a href={link} target='_blank' rel="noreferrer">
       <Card className='supportCard border-2 border-transparent hover:shadow-inner hover:border-black p-6 rounded-lg shadow-md transition flex items-center justify-center'>
         <CardContent>
           <h2 className='text-sm font-medium'>{title}</h2>

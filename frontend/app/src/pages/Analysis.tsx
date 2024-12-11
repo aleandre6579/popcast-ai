@@ -17,7 +17,7 @@ const Analysis: React.FC = () => {
     gsap.fromTo(
       '.channels',
       { y: '+=random(100, 400)', x: '-=random(10, 200)', opacity: 0 },
-      { y: 0, x: 0, opacity: 1, duration: 1},
+      { y: 0, x: 0, opacity: 1, duration: 1 },
     );
   }, []);
 

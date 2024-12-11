@@ -88,7 +88,9 @@ export default function Screen({
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <p className='absolute border-black border-solid rounded border-2 px-2'>{channelNum}</p>
+          <p className='absolute border-black border-solid rounded border-2 px-2'>
+            {channelNum}
+          </p>
           {ChannelScreen ? <ChannelScreen /> : <div>No channel selected</div>}
         </div>
       </Html>
