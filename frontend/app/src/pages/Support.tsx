@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from 'react'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import gsap from 'gsap'
+import React, { useEffect, useRef } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import gsap from 'gsap';
 
 type Supporter = {
-  name: string
-}
+  name: string;
+};
 
 const Support: React.FC = () => {
   //GSAP animations on render
   useEffect(() => {
-    const onRenderTimeline = gsap.timeline()
+    const onRenderTimeline = gsap.timeline();
     onRenderTimeline
       .fromTo(
         '.supportCard',
@@ -27,35 +27,35 @@ const Support: React.FC = () => {
         { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
         { opacity: 1, y: 0, duration: 0.8, scale: 1, stagger: 0.1 },
         1.2,
-      )
-  }, [])
+      );
+  }, []);
 
-  const listRef = useRef<HTMLDivElement>(null)
-  const scrollTimelineRef = useRef<GSAPTimeline | null>(null)
+  const listRef = useRef<HTMLDivElement>(null);
+  const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
 
   const supporters: Supporter[] = [
     { name: 'Alex' },
     { name: 'Alex' },
     { name: 'Alex' },
     { name: 'Alex' },
-  ]
+  ];
 
   useEffect(() => {
-    const list = listRef.current
-    if (!list) return
-    if (scrollTimelineRef.current) return
+    const list = listRef.current;
+    if (!list) return;
+    if (scrollTimelineRef.current) return;
 
-    let isScrollingDown = true
-    const maxScroll = list.scrollHeight - list.clientHeight
+    let isScrollingDown = true;
+    const maxScroll = list.scrollHeight - list.clientHeight;
 
     const animateScroll = () => {
-      scrollTimelineRef.current = gsap.timeline({ repeat: -1, repeatDelay: 2 })
-      const scrollDuration = (maxScroll - list.scrollTop) / 30
+      scrollTimelineRef.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+      const scrollDuration = (maxScroll - list.scrollTop) / 30;
       scrollTimelineRef.current?.to(list, {
         scrollTop: maxScroll,
         duration: scrollDuration,
         ease: 'linear',
-      })
+      });
       scrollTimelineRef.current?.to(
         list,
         {
@@ -64,42 +64,42 @@ const Support: React.FC = () => {
           ease: 'linear',
         },
         '>1',
-      )
-    }
+      );
+    };
 
     const handleMouseEnter = () => {
       if (scrollTimelineRef.current) {
-        scrollTimelineRef.current.pause()
-        isScrollingDown = scrollTimelineRef.current.progress() < 0.5
+        scrollTimelineRef.current.pause();
+        isScrollingDown = scrollTimelineRef.current.progress() < 0.5;
       }
-    }
+    };
 
     const handleMouseLeave = () => {
       if (scrollTimelineRef.current) {
         const progress = isScrollingDown
           ? list.scrollTop / maxScroll / 2
-          : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5
-        console.log(progress)
-        scrollTimelineRef.current.progress(progress)
-        scrollTimelineRef.current.resume()
+          : (maxScroll - list.scrollTop) / maxScroll / 2 + 0.5;
+        console.log(progress);
+        scrollTimelineRef.current.progress(progress);
+        scrollTimelineRef.current.resume();
       }
-    }
+    };
 
-    list.addEventListener('mouseenter', handleMouseEnter)
-    list.addEventListener('mouseleave', handleMouseLeave)
+    list.addEventListener('mouseenter', handleMouseEnter);
+    list.addEventListener('mouseleave', handleMouseLeave);
 
-    animateScroll()
+    animateScroll();
 
     return () => {
       if (list) {
-        list.removeEventListener('mouseenter', handleMouseEnter)
-        list.removeEventListener('mouseleave', handleMouseLeave)
+        list.removeEventListener('mouseenter', handleMouseEnter);
+        list.removeEventListener('mouseleave', handleMouseLeave);
       }
       if (scrollTimelineRef.current) {
-        scrollTimelineRef.current.kill()
+        scrollTimelineRef.current.kill();
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div className='p-4 flex flex-col h-full'>
@@ -156,10 +156,10 @@ const Support: React.FC = () => {
         </Card>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const SupportCard: React.FC<{ title: string, link?: string }> = ({
+const SupportCard: React.FC<{ title: string; link?: string }> = ({
   title,
   link,
 }) => {
@@ -171,7 +171,7 @@ const SupportCard: React.FC<{ title: string, link?: string }> = ({
         </CardContent>
       </Card>
     </a>
-  )
-}
+  );
+};
 
-export default Support
+export default Support;
