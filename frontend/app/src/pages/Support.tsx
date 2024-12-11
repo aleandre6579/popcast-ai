@@ -107,8 +107,8 @@ const Support: React.FC = () => {
       <div className='h-full p-12 flex flex-col lg:flex-row justify-between gap-6 mt-8'>
         {/* Main Cards Section */}
         <div className='grid grid-cols-2 gap-4 flex-1'>
-          <SupportCard title='Check out my YouTube channel' />
-          <SupportCard title='Buy me a Coffee' />
+          <SupportCard link='https://www.youtube.com/@TheAppventurer' title='Check out my YouTube channel' />
+          <SupportCard link='https://www.buymeacoffee.com/theappventurer' title='Buy me a Coffee' />
           <SupportCard title='Check out my other products' />
           <SupportCard title='My Socials' />
         </div>
@@ -142,13 +142,15 @@ const Support: React.FC = () => {
   );
 };
 
-const SupportCard: React.FC<{ title: string }> = ({ title }) => {
+const SupportCard: React.FC<{ title: string, link?: string }> = ({ title, link }) => {
   return (
-    <Card className='supportCard p-6 rounded-lg shadow-md flex items-center justify-center'>
-      <CardContent>
-        <h2 className='text-sm font-medium'>{title}</h2>
-      </CardContent>
-    </Card>
+    <a href={link} target='_blank'>
+      <Card className='supportCard border-2 border-transparent hover:shadow-inner hover:border-black p-6 rounded-lg shadow-md transition flex items-center justify-center'>
+        <CardContent>
+          <h2 className='text-sm font-medium'>{title}</h2>
+        </CardContent>
+      </Card>
+    </a>
   );
 };
 
