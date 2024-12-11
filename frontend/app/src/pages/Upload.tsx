@@ -21,16 +21,16 @@ const Upload: React.FC = () => {
     onRenderTimeline.fromTo(
       '.title',
       { y: '-=50', opacity: 0 },
-      { y: 0, opacity: 1, duration: 1},
+      { y: 0, opacity: 1, duration: 0.8},
     ).fromTo(
       '.subtitle',
       { y: '-=50', opacity: 0 },
-      { y: 0, opacity: 1, duration: 1},
-      0.5
+      { y: 0, opacity: 1, duration: 0.8},
+      0.3
     ).fromTo(
       '.tooltip',
       { opacity: 0, ease: 'elastic.inOut' },
-      { opacity: 1, duration: 1},
+      { opacity: 1, duration: 0.8},
       1
     )
   }, [])

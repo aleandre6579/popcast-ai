@@ -27,7 +27,7 @@ const Analysis: React.FC = () => {
         <h6 className='text-xl font-bold'>Channels</h6>
         {channels.map((channel, index) => (
           <div key={channel.name} className='flex gap-6'>
-            <span className='w-2  text-center' key={'channel_index-' + index}>
+            <span className='w-2 text-center' key={'channel_index-' + index}>
               {index}
             </span>
             <span key={'channel_name-' + index}>{channel.name}</span>

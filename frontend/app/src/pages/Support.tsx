@@ -13,17 +13,17 @@ const Support: React.FC = () => {
     onRenderTimeline.fromTo(
       '.supportCard',
       { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
-      { scale: 1, y: 0, opacity: 1, duration: 1, stagger: 0.1},
+      { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1},
     ).fromTo(
       '.supportersCard',
       { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
-      { scale: 1, y: 0, opacity: 1, duration: 1},
+      { scale: 1, y: 0, opacity: 1, duration: 0.8},
       0.5
     ).fromTo(
       '.supporter',
       { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
-      { opacity: 1, y: 0, duration: 1, scale: 1, stagger: 0.1},
-      1,
+      { opacity: 1, y: 0, duration: 0.8, scale: 1, stagger: 0.1},
+      1.2,
     )
   }, [])
 
@@ -100,8 +100,7 @@ const Support: React.FC = () => {
         Thank you for using PopcastAI!
       </h1>
       <p className='flex-none text-sm text-center mt-2'>
-        Your support allows me to work on my apps fulltime and build more
-        products that I love.
+        Your support allows me to work on my apps fulltime and build more awesome products.
       </p>
 
       {/* Layout */}
