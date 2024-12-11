@@ -164,7 +164,7 @@ const SupportCard: React.FC<{ title: string; link?: string }> = ({
   link,
 }) => {
   return (
-    <a href={link} target='_blank' rel="noreferrer">
+    <a href={link} target='_blank' rel='noreferrer'>
       <Card className='supportCard border-2 border-transparent hover:shadow-inner hover:border-black p-6 rounded-lg shadow-md transition flex items-center justify-center'>
         <CardContent>
           <h2 className='text-sm font-medium'>{title}</h2>
