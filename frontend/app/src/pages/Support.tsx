@@ -7,10 +7,30 @@ type Supporter = {
 };
 
 const Support: React.FC = () => {
+  //GSAP animations on render
+  useEffect(() => {
+    const onRenderTimeline = gsap.timeline()
+    onRenderTimeline.fromTo(
+      '.supportCard',
+      { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
+      { scale: 1, y: 0, opacity: 1, duration: 1, stagger: 0.1},
+    ).fromTo(
+      '.supportersCard',
+      { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
+      { scale: 1, y: 0, opacity: 1, duration: 1},
+      0.5
+    ).fromTo(
+      '.supporter',
+      { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
+      { opacity: 1, y: 0, duration: 1, scale: 1, stagger: 0.1},
+      1,
+    )
+  }, [])
+
   const listRef = useRef<HTMLDivElement>(null);
   const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
 
-  const supporters: Supporter[] = [];
+  const supporters: Supporter[] = [{name: 'Alex'}, {name: 'Alex'}, {name: 'Alex'}, {name: 'Alex'}];
 
   useEffect(() => {
     const list = listRef.current;
@@ -95,7 +115,7 @@ const Support: React.FC = () => {
         </div>
 
         {/* Supporters Section */}
-        <Card className='w-full lg:w-1/4 shadow-md text-center overflow-hidden'>
+        <Card className='supportersCard w-full lg:w-1/4 shadow-md text-center overflow-hidden'>
           <CardHeader>
             <CardTitle className='text-lg font-semibold'>Supporters</CardTitle>
           </CardHeader>
@@ -103,11 +123,11 @@ const Support: React.FC = () => {
             {supporters.length ? (
               <div
                 ref={listRef}
-                className='w-full h-40 overflow-auto relative scrollbar'
+                className='w-full h-40 overflow-auto relative scrollbar overflow-x-hidden'
               >
                 <ul className='text-sm space-y-2'>
                   {supporters.map((supporter, index) => (
-                    <li key={index + supporter.name}>{supporter.name}</li>
+                    <li className='supporter' key={index + supporter.name}>{supporter.name}</li>
                   ))}
                 </ul>
               </div>
@@ -125,7 +145,7 @@ const Support: React.FC = () => {
 
 const SupportCard: React.FC<{ title: string }> = ({ title }) => {
   return (
-    <Card className='p-6 rounded-lg shadow-md flex items-center justify-center'>
+    <Card className='supportCard p-6 rounded-lg shadow-md flex items-center justify-center'>
       <CardContent>
         <h2 className='text-sm font-medium'>{title}</h2>
       </CardContent>
