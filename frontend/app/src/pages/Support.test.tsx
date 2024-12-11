@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import Support from './Support';
 
-vi.mock('gsap'); // Mock GSAP to avoid running actual animations in tests
+vi.mock('gsap'); // Mock GSAP to avoid running actual animations in testss
 
 describe('Support Component', () => {
   it('should render the header correctly', () => {
