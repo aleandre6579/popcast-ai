@@ -22,7 +22,7 @@ describe('Support Component', () => {
   it('should render the header correctly', () => {
     render(<Support />);
 
-    // Check if the title and description are rendered 
+    // Check if the title and description are rendered
     expect(
       screen.getByText('Thank you for using PopcastAI!'),
     ).toBeInTheDocument();
