@@ -12,7 +12,7 @@
     "test": "vitest",
     "test:cov": "vitest --coverage",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "cd ../.. && husky frontend/app/.husky"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",
