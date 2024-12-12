@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
       if (isHovering) {
         e.preventDefault();
 
-        let pageIndex = pages.findIndex(
+        const pageIndex = pages.findIndex(
           page => page.path === location.pathname,
         );
 

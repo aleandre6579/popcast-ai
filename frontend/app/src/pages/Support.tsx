@@ -24,7 +24,14 @@ const Support: React.FC = () => {
       .fromTo(
         '.supporter',
         { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, delay: -0.3, stagger: 0.1 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          delay: -0.3,
+          stagger: 0.1,
+        },
       );
   }, []);
 
