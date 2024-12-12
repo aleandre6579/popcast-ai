@@ -32,8 +32,11 @@ const Footer: React.FC = () => {
     }
   }, [markerLeft]);
 
+  // Animate marker
   useEffect(() => {
     const pageIndex = pages.findIndex(page => page.path === location.pathname);
+    if (pageIndex == -1) markerRef.current?.classList.add('hidden');
+    else markerRef.current?.classList.remove('hidden');
 
     gsap.to(markerRef.current, {
       x: pageIndex * (footerSectionWidth + footerSectionGap - 0.75),
@@ -48,9 +51,12 @@ const Footer: React.FC = () => {
       if (isHovering) {
         e.preventDefault();
 
-        const pageIndex = pages.findIndex(
+        let pageIndex = pages.findIndex(
           page => page.path === location.pathname,
         );
+
+        // Edge case for LogIn page
+        if (pageIndex === -1) navigate(pages[0].path);
 
         if (e.deltaY > 0 && pageIndex < pages.length - 1) {
           // Scroll down, go to the next page
@@ -72,7 +78,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className='w-full p-10 flex flex-col items-center'
+      className='w-full p-10 flex flex-col items-center flex-none'
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

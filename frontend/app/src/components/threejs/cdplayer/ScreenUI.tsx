@@ -12,6 +12,7 @@ export default function ScreenUI(props: ScreenUIProps) {
       className='w-[130px] bg-red-200'
       position={[0, 0.23, 0]}
       material={props.material}
+      transform
       occlude
     >
       Hello

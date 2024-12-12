@@ -10,6 +10,7 @@ type CameraProps = {
 
 const cameraPositions = {
   '/': [0, 1.4, 4],
+  '/sign-in': [0, 1.4, 4],
   '/analysis': [9.5, 2.4, 4.4],
   '/results': [0, 3.4, 4],
   '/support': [0, 12, 4],
@@ -17,6 +18,7 @@ const cameraPositions = {
 
 const cameraRotations = {
   '/': [-Math.PI / 16, 0, 0],
+  '/sign-in': [Math.PI / 2, 0, 0],
   '/analysis': [0, -Math.PI / 2, 0],
   '/results': [0, Math.PI / 2, 0],
   '/support': [Math.PI / 2, 0, 0],

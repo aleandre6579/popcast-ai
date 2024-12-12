@@ -5,7 +5,8 @@ import Analysis from '@/pages/Analysis';
 import Results from '@/pages/Results';
 import Support from '@/pages/Support';
 import RootLayout from '@/components/RootLayout';
-import { SignIn, SignUp } from '@clerk/clerk-react';
+import { SignUp } from '@clerk/clerk-react';
+import LogIn from '@/pages/LogIn';
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
       { path: '/analysis', element: <Analysis /> },
       { path: '/results', element: <Results /> },
       { path: '/support', element: <Support /> },
-      { path: '/sign-in/*', element: <SignIn /> },
+      { path: '/sign-in/*', element: <LogIn /> },
       { path: '/sign-up/*', element: <SignUp /> },
     ],
   },

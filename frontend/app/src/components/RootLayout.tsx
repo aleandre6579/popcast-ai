@@ -31,7 +31,7 @@ export default function RootLayout() {
       </Canvas>
       <div className='absolute top-0 left-0 w-full z-10 flex flex-col h-full'>
         <Header />
-        <main className='flex-grow'>
+        <main className='h-full'>
           <Outlet />
         </main>
         <Footer />

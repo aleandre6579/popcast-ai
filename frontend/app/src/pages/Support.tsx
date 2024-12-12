@@ -14,18 +14,17 @@ const Support: React.FC = () => {
       .fromTo(
         '.supportCard',
         { scale: 0, y: '+=100', opacity: 0, ease: 'power1.inOut' },
-        { scale: 1, y: 0, opacity: 1, duration: 0.8, delay: 0.2, stagger: 0.1 },
+        { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
       )
       .fromTo(
         '.supportersCard',
         { scale: 0.1, y: '+=60', opacity: 0, ease: 'power1.inOut' },
-        { scale: 1, y: 0, opacity: 1, delay: 0.5, duration: 0.8 },
+        { scale: 1, y: 0, opacity: 1, delay: -0.6, duration: 0.8 },
       )
       .fromTo(
         '.supporter',
         { opacity: 0, y: '+=30', scale: 2, ease: 'power1.inOut' },
-        { opacity: 1, y: 0, duration: 0.8, scale: 1, stagger: 0.1 },
-        1.2,
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, delay: -0.3, stagger: 0.1 },
       );
   }, []);
 
@@ -101,7 +100,7 @@ const Support: React.FC = () => {
   }, []);
 
   return (
-    <div className='p-4 flex flex-col h-full'>
+    <div>
       {/* Header */}
       <h1 className='flex-none text-4xl font-extrabold text-center mt-8 tracking-tight'>
         Thank you for using PopcastAI!
@@ -112,7 +111,7 @@ const Support: React.FC = () => {
       </p>
 
       {/* Layout */}
-      <div className='h-full p-12 flex flex-col lg:flex-row justify-between gap-6 mt-8'>
+      <div className=' h-2/5  p-12 flex flex-col lg:flex-row justify-between gap-6 mt-8'>
         {/* Main Cards Section */}
         <div className='grid grid-cols-2 gap-4 flex-1'>
           <SupportCard
@@ -128,7 +127,7 @@ const Support: React.FC = () => {
         </div>
 
         {/* Supporters Section */}
-        <Card className='supportersCard w-full lg:w-1/4 shadow-md text-center overflow-hidden'>
+        <Card className='supportersCard grow w-full lg:w-1/4 shadow-md text-center overflow-hidden'>
           <CardHeader>
             <CardTitle className='text-lg font-semibold'>Supporters</CardTitle>
           </CardHeader>
@@ -136,7 +135,7 @@ const Support: React.FC = () => {
             {supporters.length ? (
               <div
                 ref={listRef}
-                className='w-full h-40 overflow-auto relative scrollbar overflow-x-hidden'
+                className='w-full overflow-auto relative scrollbar overflow-x-hidden'
               >
                 <ul className='text-sm space-y-2'>
                   {supporters.map((supporter, index) => (
@@ -164,7 +163,7 @@ const SupportCard: React.FC<{ title: string; link?: string }> = ({
 }) => {
   return (
     <a href={link} target='_blank' rel='noreferrer'>
-      <Card className='supportCard border-2 border-transparent hover:dark:border-white hover:border-black hover:shadow-inner p-6 rounded-lg shadow-md transition flex items-center justify-center'>
+      <Card className='supportCard h-full border-2 border-transparent hover:dark:border-white hover:border-black hover:shadow-inner rounded-lg shadow-md'>
         <CardContent>
           <h2 className='text-sm font-medium'>{title}</h2>
         </CardContent>

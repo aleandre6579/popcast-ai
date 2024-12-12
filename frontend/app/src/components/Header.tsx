@@ -3,8 +3,11 @@ import { UserIcon } from 'lucide-react';
 import React from 'react';
 import { ModeToggle } from './ModeToggle';
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <header className='flex justify-between items-center p-4 bg-transparent'>
       <div className='flex items-center space-x-2'>
@@ -19,7 +22,7 @@ const Header: React.FC = () => {
         </SignedIn>
 
         <SignedOut>
-          <Button>
+          <Button onClick={() => navigate('/sign-in')}>
             <UserIcon />
             <span>Sign In</span>
           </Button>
