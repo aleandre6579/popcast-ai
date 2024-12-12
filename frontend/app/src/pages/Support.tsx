@@ -13,14 +13,13 @@ const Support: React.FC = () => {
     onRenderTimeline
       .fromTo(
         '.supportCard',
-        { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
-        { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
+        { scale: 0, y: '+=100', opacity: 0, ease: 'power1.inOut' },
+        { scale: 1, y: 0, opacity: 1, duration: 0.8, delay: 0.2, stagger: 0.1 },
       )
       .fromTo(
         '.supportersCard',
-        { scale: 0.1, y: '+=60', ease: 'power1.inOut', opacity: 0 },
-        { scale: 1, y: 0, opacity: 1, duration: 0.8 },
-        0.5,
+        { scale: 0.1, y: '+=60', opacity: 0, ease: 'power1.inOut' },
+        { scale: 1, y: 0, opacity: 1, delay: 0.5, duration: 0.8 },
       )
       .fromTo(
         '.supporter',
@@ -165,7 +164,7 @@ const SupportCard: React.FC<{ title: string; link?: string }> = ({
 }) => {
   return (
     <a href={link} target='_blank' rel='noreferrer'>
-      <Card className='supportCard border-2 border-transparent hover:shadow-inner hover:border-black p-6 rounded-lg shadow-md transition flex items-center justify-center'>
+      <Card className='supportCard border-2 border-transparent hover:dark:border-white hover:border-black hover:shadow-inner p-6 rounded-lg shadow-md transition flex items-center justify-center'>
         <CardContent>
           <h2 className='text-sm font-medium'>{title}</h2>
         </CardContent>
