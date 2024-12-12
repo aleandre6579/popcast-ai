@@ -25,6 +25,8 @@ services:
     build: ./frontend
     container_name: popcast_frontend
     restart: always
+    environment:
+      - VITE_CLERK_PUBLISHABLE_KEY=pk_test_a25vd2luZy1kZWVyLTg2LmNsZXJrLmFjY291bnRzLmRldiQ
     ports:
       - "3000:3000"
     networks:

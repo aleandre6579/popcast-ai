@@ -7,7 +7,7 @@ import Support from '@/pages/Support';
 import { useDispatch } from 'react-redux';
 import { setRoutePath } from '@/reducers/routerSlice';
 
-export const routes = [
+const routes = [
   { path: '/', component: <Upload /> },
   { path: '/analysis', component: <Analysis /> },
   { path: '/results', component: <Results /> },

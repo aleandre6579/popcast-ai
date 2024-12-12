@@ -1,21 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '@/components/Footer';
-import { Toaster } from '@/components/ui/sonner';
-import RoutesProvider from './RoutesProvider';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Upload from '@/pages/Upload';
+import Analysis from '@/pages/Analysis';
+import Results from '@/pages/Results';
+import Support from '@/pages/Support';
+import RootLayout from '@/components/RootLayout';
+import { SignIn, SignUp } from '@clerk/clerk-react';
 
-const RouterProvider: React.FC = () => {
-  return (
-    <Router>
-      <div className='absolute top-0 left-0 w-full z-10 flex flex-col h-full'>
-        <Header />
-        <RoutesProvider />
-        <Footer />
-        <Toaster richColors />
-      </div>
-    </Router>
-  );
+export const router = createBrowserRouter([
+  {
+    element: <RootLayout />,
+    children: [
+      { path: '/', element: <Upload /> },
+      { path: '/analysis', element: <Analysis /> },
+      { path: '/results', element: <Results /> },
+      { path: '/support', element: <Support /> },
+      { path: '/sign-in/*', element: <SignIn /> },
+      { path: '/sign-up/*', element: <SignUp /> },
+    ],
+  },
+]);
+
+const Router: React.FC = () => {
+  return <RouterProvider router={router} />;
 };
 
-export default RouterProvider;
+export default Router;

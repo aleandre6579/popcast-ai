@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { UserIcon } from 'lucide-react';
 import React from 'react';
 import { ModeToggle } from './ModeToggle';
+import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 
 const Header: React.FC = () => {
   return (
@@ -12,10 +13,17 @@ const Header: React.FC = () => {
       </div>
       <div className='flex gap-2'>
         <ModeToggle />
-        <Button>
-          <UserIcon />
-          <span>Sign In</span>
-        </Button>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+
+        <SignedOut>
+          <Button>
+            <UserIcon />
+            <span>Sign In</span>
+          </Button>
+        </SignedOut>
       </div>
     </header>
   );

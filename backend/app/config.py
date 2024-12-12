@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
 
+    DATABASE_URL: str = ""
+
 
 # Default values
 POSTGRES_HOST = "localhost"
@@ -26,4 +28,10 @@ settings = Settings(
     POSTGRES_USER=os.getenv("POSTGRES_USER", POSTGRES_USER),
     POSTGRES_PASSWORD=os.getenv("POSTGRES_PASSWORD", POSTGRES_PASSWORD),
     POSTGRES_DB=os.getenv("POSTGRES_DB", POSTGRES_DB),
+)
+
+settings.DATABASE_URL = (
+    f"postgresql+asyncpg://{settings.POSTGRES_USER}:"
+    f"{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST}/"
+    f"{settings.POSTGRES_DB}"
 )
