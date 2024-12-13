@@ -14,22 +14,22 @@ const Support: React.FC = () => {
   useEffect(() => {
     const onRenderTimeline = gsap.timeline();
     onRenderTimeline
-    .fromTo(
-      '.title',
-      { y: '-=50', opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 },
-    )
-    .fromTo(
-      '.subtitle',
-      { y: '-=50', opacity: 0 },
-      { y: 0, opacity: 1,  duration: 0.8 },
-      0.3
-    )
+      .fromTo(
+        '.title',
+        { y: '-=50', opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+      )
+      .fromTo(
+        '.subtitle',
+        { y: '-=50', opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+        0.3,
+      )
       .fromTo(
         '.supportCard',
         { scale: 0, y: '+=100', opacity: 0, ease: 'power1.inOut' },
         { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
-        0.5
+        0.5,
       )
       .fromTo(
         '.supportersCard',
@@ -47,13 +47,16 @@ const Support: React.FC = () => {
           delay: -0.3,
           stagger: 0.1,
           onComplete: () => {
-            if(listRef.current && listRef.current?.scrollHeight > listRef.current?.offsetHeight) {
-              console.log("ASDASD");
-              
-              listRef.current?.classList.remove('overflow-y-hidden')
-              listRef.current?.classList.add('post-scrollbar-animation')
+            if (
+              listRef.current &&
+              listRef.current?.scrollHeight > listRef.current?.offsetHeight
+            ) {
+              console.log('ASDASD');
+
+              listRef.current?.classList.remove('overflow-y-hidden');
+              listRef.current?.classList.add('post-scrollbar-animation');
             }
-          }
+          },
         },
       );
   }, []);
