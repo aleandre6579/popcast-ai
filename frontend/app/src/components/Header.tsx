@@ -14,11 +14,14 @@ const Header: React.FC = () => {
         <img src='/logo.png' alt='Logo' className='h-8 w-8' />
         <span className='text-xl font-bold'>PopcastAI</span>
       </div>
+      
       <div className='flex gap-2'>
         <ModeToggle />
 
         <SignedIn>
-          <UserButton />
+          <div className="scale-125 ml-1 flex items-centers">
+            <UserButton />
+          </div>        
         </SignedIn>
 
         <SignedOut>

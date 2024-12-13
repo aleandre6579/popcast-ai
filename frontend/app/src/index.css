@@ -29,7 +29,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 10px;
-  padding-left: 20px;
   &::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8 !important;
   }
@@ -44,6 +43,10 @@ body {
     background-color: #c1c1c1;
     border-radius: 20px;
   }
+}
+
+.post-scrollbar-animation {
+  padding-left: 20px;
 }
 
 /* Dark Mode */

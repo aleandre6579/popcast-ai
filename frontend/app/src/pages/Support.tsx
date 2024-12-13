@@ -7,14 +7,29 @@ type Supporter = {
 };
 
 const Support: React.FC = () => {
+  const listRef = useRef<HTMLDivElement>(null);
+  const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
+
   //GSAP animations on render
   useEffect(() => {
     const onRenderTimeline = gsap.timeline();
     onRenderTimeline
+    .fromTo(
+      '.title',
+      { y: '-=50', opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 },
+    )
+    .fromTo(
+      '.subtitle',
+      { y: '-=50', opacity: 0 },
+      { y: 0, opacity: 1,  duration: 0.8 },
+      0.3
+    )
       .fromTo(
         '.supportCard',
         { scale: 0, y: '+=100', opacity: 0, ease: 'power1.inOut' },
         { scale: 1, y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
+        0.5
       )
       .fromTo(
         '.supportersCard',
@@ -31,14 +46,26 @@ const Support: React.FC = () => {
           duration: 0.8,
           delay: -0.3,
           stagger: 0.1,
+          onComplete: () => {
+            if(listRef.current && listRef.current?.scrollHeight > listRef.current?.offsetHeight) {
+              console.log("ASDASD");
+              
+              listRef.current?.classList.remove('overflow-y-hidden')
+              listRef.current?.classList.add('post-scrollbar-animation')
+            }
+          }
         },
       );
   }, []);
 
-  const listRef = useRef<HTMLDivElement>(null);
-  const scrollTimelineRef = useRef<GSAPTimeline | null>(null);
-
   const supporters: Supporter[] = [
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
+    { name: 'Alex' },
     { name: 'Alex' },
     { name: 'Alex' },
     { name: 'Alex' },
@@ -107,20 +134,20 @@ const Support: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className='h-full flex flex-col'>
       {/* Header */}
-      <h1 className='flex-none text-4xl font-extrabold text-center mt-8 tracking-tight'>
+      <h1 className='title flex-none text-xl md:text-4xl font-extrabold text-center mt-8 tracking-tight'>
         Thank you for using PopcastAI!
       </h1>
-      <p className='flex-none text-sm text-center mt-2'>
+      <p className='subtitle flex-none text-xs md:text-sm text-center mt-2'>
         Your support allows me to work on my apps fulltime and build more
         awesome products.
       </p>
 
       {/* Layout */}
-      <div className=' h-2/5  p-12 flex flex-col lg:flex-row justify-between gap-6 mt-8'>
+      <div className='p-8 md:px-32 md:py-16 flex flex-col lg:flex-row justify-between gap-8 mt-8'>
         {/* Main Cards Section */}
-        <div className='grid grid-cols-2 gap-4 flex-1'>
+        <div className='grid grid-cols-2 grow gap-4 flex-1'>
           <SupportCard
             link='https://www.youtube.com/@TheAppventurer'
             title='Check out my YouTube channel'
@@ -134,15 +161,15 @@ const Support: React.FC = () => {
         </div>
 
         {/* Supporters Section */}
-        <Card className='supportersCard grow w-full lg:w-1/4 shadow-md text-center overflow-hidden'>
-          <CardHeader>
+        <Card className='supportersCard shrink lg:w-1/4 h-1/3 shadow-md text-center overflow-hidden'>
+          <CardHeader className='pt-6 pb-2'>
             <CardTitle className='text-lg font-semibold'>Supporters</CardTitle>
           </CardHeader>
           <CardContent className='relative'>
             {supporters.length ? (
               <div
                 ref={listRef}
-                className='w-full overflow-auto relative scrollbar overflow-x-hidden'
+                className='scrollbar w-full relative overflow-x-hidden overflow-y-hidden'
               >
                 <ul className='text-sm space-y-2'>
                   {supporters.map((supporter, index) => (
@@ -170,7 +197,7 @@ const SupportCard: React.FC<{ title: string; link?: string }> = ({
 }) => {
   return (
     <a href={link} target='_blank' rel='noreferrer'>
-      <Card className='supportCard h-full border-2 border-transparent hover:dark:border-white hover:border-black hover:shadow-inner rounded-lg shadow-md'>
+      <Card className='supportCard grow h-full border-2 border-transparent hover:dark:border-white hover:border-black hover:shadow-inner rounded-lg shadow-md'>
         <CardContent>
           <h2 className='text-sm font-medium'>{title}</h2>
         </CardContent>

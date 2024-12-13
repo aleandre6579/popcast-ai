@@ -113,7 +113,7 @@ const Upload: React.FC = () => {
   }, [uploadedFileName]);
 
   return (
-    <div className=''>
+    <div>
       <h1 className='title text-4xl font-extrabold text-center mt-8 tracking-tight'>
         AI insights for your next big hit!
       </h1>

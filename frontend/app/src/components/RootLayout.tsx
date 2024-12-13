@@ -29,7 +29,7 @@ export default function RootLayout() {
       >
         <Scene />
       </Canvas>
-      <div className='absolute top-0 left-0 w-full z-10 flex flex-col h-full'>
+      <div style={{ width: '100vw', height: '100vh' }} className='absolute top-0 left-0 z-10 flex flex-col'>
         <Header />
         <main className='h-full'>
           <Outlet />
