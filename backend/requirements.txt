@@ -18,3 +18,5 @@ pytest-cov
 httpx
 jose
 python-dotenv
+essentia-tensorflow
+numpy<2

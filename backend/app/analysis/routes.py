@@ -2,6 +2,8 @@ import logging
 
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
+from app.analysis.service import analyze_audio
+
 analysis_router = APIRouter()
 logging.basicConfig(level=logging.DEBUG)
 
@@ -14,9 +16,9 @@ async def analyze(file: UploadFile = File(...)):
         if file.content_type not in ["audio/mpeg", "audio/wav"]:
             raise HTTPException(status_code=400, detail="Invalid audio file type")
 
-        # content = await file.read()
-        # result = analyze_audio(content)
-        return {"analysis": "yooooo"}
+        content = await file.read()
+        result = analyze_audio(content)
+        return result
     except Exception as e:
         logging.error(f"Error analyzing file: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")

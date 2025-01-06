@@ -6,10 +6,10 @@ from app.db import get_db
 from app.models.user import User
 from app.schemas.user import UserCreate, UserResponse
 
-router = APIRouter(prefix="/users", tags=["users"])
+user_router = APIRouter()
 
 
-@router.post("/", response_model=UserResponse)
+@user_router.post("/", response_model=UserResponse)
 async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     db_user = await db.execute(select(User).where(User.email == user.email))
     if db_user.scalars().first():
@@ -21,9 +21,7 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return new_user
 
 
-@router.get("/", response_model=list[UserResponse])
-async def read_users(
-    skip: int = 0, limit: int = 10, db: AsyncSession = Depends(get_db)
-):
+@user_router.get("/", response_model=list[UserResponse])
+async def read_users(skip: int = 0, limit: int = 10, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).offset(skip).limit(limit))
     return result.scalars().all()
