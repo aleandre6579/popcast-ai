@@ -1,7 +1,8 @@
 import io
-
+import json
 import librosa
 import numpy as np
+from app.analysis.models import *
 from essentia.standard import (
     MonoLoader,
     Danceability,
@@ -30,13 +31,13 @@ from essentia.standard import (
 
 
 with open(
-    "/backend/jamendo_labels/mtg_jamendo_moodtheme-discogs-effnet-1.json", "r"
+    "/backend/data/mtg_jamendo_moodtheme-discogs-effnet-1.json", "r"
 ) as jamendo_file:
     jamendo_metadata = json.load(jamendo_file)
 jamendo_classes = jamendo_metadata["classes"]
 
 with open(
-    "/backend/jamendo_labels/mtg_jamendo_instrument-discogs-effnet-1.json", "r"
+    "/backend/data/mtg_jamendo_instrument-discogs-effnet-1.json", "r"
 ) as jamendo_file:
     jamendo_instrument_metadata = json.load(jamendo_file)
 jamendo_instrument_classes = jamendo_instrument_metadata["classes"]

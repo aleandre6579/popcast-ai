@@ -6,7 +6,7 @@ from essentia.standard import (
 
 
 # Load Essentia models
-MODELS_PATH = "./models"
+MODELS_PATH = "/backend/models"
 discogs_model = TensorflowPredictEffnetDiscogs(
     graphFilename=MODELS_PATH + "/discogs-effnet-bs64-1.pb", output="PartitionedCall:1"
 )

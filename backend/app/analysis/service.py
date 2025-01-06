@@ -24,6 +24,7 @@ def get_similar_songs(audio):
     #   For each user clip, keep the 10,000 highest similarity scores
     #   Count how many times a song is present in the top similarity scores
     #   Return the top 10 songs with the highest count 
+    return None
 
 def analyze_audio(file_bytes: bytes) -> dict:
     audio, sr = librosa.load(io.BytesIO(file_bytes), sr=None)

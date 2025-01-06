@@ -1,12 +1,12 @@
 FROM python:3.11-slim
 
-WORKDIR /home/popcast/backend
+WORKDIR /backend
 
 # Copy the requirements
-COPY requirements.txt /home/popcast/backend
+COPY requirements.txt /backend
 
 # Install dependencies
-RUN pip install -r /home/popcast/backend/requirements.txt
+RUN pip install -r /backend/requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8000

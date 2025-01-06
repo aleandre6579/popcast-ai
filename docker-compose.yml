@@ -17,8 +17,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/home/popcast/backend
-      - /home/popcast/backend/__pycache__
+      - ./backend/:/backend/
+      - /backend/__pycache__
+      - ./notebooks/data/:/backend/data/
+      - ./notebooks/models/:/backend/models/
     networks:
       - user-facing
       - system-facing
