@@ -1,5 +1,6 @@
 # Project-specific files
 models/audioset-vggish-3.pb
+models/music_audioset_epoch_15_esc_90.14.pt
 data/song_embeddings*
 data/songs_data_*
 
