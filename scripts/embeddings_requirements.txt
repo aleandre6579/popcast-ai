@@ -1,0 +1,8 @@
+python-dotenv
+librosa
+torch
+laion-clap
+pgvector
+SQLAlchemy
+torchvision
+psycopg2-binary  

@@ -5,10 +5,11 @@ from dotenv import load_dotenv
 import librosa
 import os
 import torch
-
+import laion_clap
 
 # Constants
 load_dotenv(dotenv_path="../.env")
+load_dotenv()
 AUDIO_DIR = os.getenv('DOWNLOAD_FOLDER')
 POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
 DATABASE_URL = f"postgresql://user:{POSTGRES_PASSWORD}@45.149.206.230:5432/popcastdb"
@@ -38,11 +39,8 @@ class AudioEmbedding(Base):
 
 
 def load_clap_model(model_path):
-    model = CLAPModel()
-    model_checkpoint = torch.load(model_path, map_location=DEVICE)
-    model.load_state_dict(model_checkpoint["state_dict"])
-    model = model.to(DEVICE)
-    model.eval()
+    model = laion_clap.CLAP_Module(enable_fusion=False, device=DEVICE, amodel='HTSAT-base')
+    model.load_ckpt('models/music_audioset_epoch_15_esc_90.14.pt')
     return model
 
 clap_model = load_clap_model(CLAP_MODEL_PATH)
@@ -77,10 +75,11 @@ def preprocess_audio(audio_path, sample_rate=48000):
     return audio_tensor
 
 
-def get_embeddings(model, audio_tensor):
+def get_embeddings(model, audio_paths):
+    print(audio_paths[0])
     with torch.no_grad():
-        embeddings = model(audio_tensor)
-    return embeddings.squeeze().cpu().numpy()
+        embeddings = model.get_audio_embedding_from_filelist(audio_paths, use_tensor=False)
+    return embeddings
 
 
 def process_and_store_audio_files(audio_dir):
@@ -91,8 +90,11 @@ def process_and_store_audio_files(audio_dir):
 
             try:
                 audio_tensor = preprocess_audio(filepath)
-                embeddings = get_embeddings(clap_model, audio_tensor)
-
+                print("AUDIO TENSOR")
+                print(audio_tensor, audio_tensor.shape)
+                embeddings = get_embeddings(clap_model, os.listdir(audio_dir))
+                print("EMBEDDINGS")
+                print(embeddings)
                 # Store embeddings in the database
                 _, videoID, _ = split_text_info(filepath)
                 audio_embedding = AudioEmbedding(
@@ -101,6 +103,9 @@ def process_and_store_audio_files(audio_dir):
                     audio=audio_tensor.tolist(),
                     vector=embeddings.tolist(),
                 )
+                print("AUDIO EMBEDDING")
+                print(audio_embedding)
+                return
                 session.add(audio_embedding)
                 session.commit()
                 print(f"Stored embeddings for {filename}.")
@@ -109,5 +114,8 @@ def process_and_store_audio_files(audio_dir):
                 print(f"Error processing {filename}: {e}")
 
 
-process_and_store_audio_files(AUDIO_DIR)
+#process_and_store_audio_files(AUDIO_DIR)
+embeddings = get_embeddings(clap_model, audio_paths[:2])
+print(len(embeddings))
+print(embeddings[0], embeddings[0].shape)
 session.close()
