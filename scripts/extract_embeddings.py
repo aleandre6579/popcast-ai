@@ -6,6 +6,7 @@ import librosa
 import os
 import torch
 import laion_clap
+from tqdm import tqdm
 
 # Constants
 load_dotenv(dotenv_path="../.env")
@@ -34,9 +35,7 @@ class AudioEmbedding(Base):
     id = Column(Integer, primary_key=True)
     video_id = Column(String, unique=True, nullable=False)
     filename = Column(String, unique=True, nullable=False)
-    audio = Column(Vector(512), nullable=False)
-    vector = Column(Vector(512), nullable=False)
-
+    embedding = Column(Vector(512), nullable=False)
 
 def load_clap_model(model_path):
     model = laion_clap.CLAP_Module(enable_fusion=False, device=DEVICE, amodel='HTSAT-base')
@@ -45,7 +44,6 @@ def load_clap_model(model_path):
 
 clap_model = load_clap_model(CLAP_MODEL_PATH)
 
-
 def connect_to_database():
     engine = create_engine(DATABASE_URL)
     Base.metadata.create_all(engine)
@@ -53,7 +51,6 @@ def connect_to_database():
     return Session()
 
 session = connect_to_database()
-
 
 def split_text_info(filepath):
     try:
@@ -71,51 +68,45 @@ def preprocess_audio(audio_path, sample_rate=48000):
     audio, sr = librosa.load(audio_path, sr=sample_rate, mono=True)
     if sr != sample_rate:
         raise ValueError(f"Audio sample rate {sr} doesn't match required rate {sample_rate}.")
-    audio_tensor = torch.tensor(audio).unsqueeze(0)  # Add batch dimension
-    return audio_tensor
-
+    return audio
 
 def get_embeddings(model, audio_paths):
-    print(audio_paths[0])
     with torch.no_grad():
         embeddings = model.get_audio_embedding_from_filelist(audio_paths, use_tensor=False)
     return embeddings
 
+def process_and_store_audio_files_in_batches(audio_dir, batch_size=10):
+    audio_paths = [os.path.join(audio_dir, filename) for filename in os.listdir(audio_dir) if filename.endswith(".mp3")]
 
-def process_and_store_audio_files(audio_dir):
-    for filename in os.listdir(audio_dir):
-        if filename.endswith(".mp3"):
-            filepath = os.path.join(audio_dir, filename)
-            print(f"Processing {filename}...")
-
-            try:
-                audio_tensor = preprocess_audio(filepath)
-                print("AUDIO TENSOR")
-                print(audio_tensor, audio_tensor.shape)
-                embeddings = get_embeddings(clap_model, os.listdir(audio_dir))
-                print("EMBEDDINGS")
-                print(embeddings)
-                # Store embeddings in the database
-                _, videoID, _ = split_text_info(filepath)
+    # Process audio files in batches with progress bar
+    for i in tqdm(range(0, len(audio_paths), batch_size), desc="Processing batches"):
+        batch_num = i // batch_size + 1
+        if batch_num < 83:
+            continue
+        batch_paths = audio_paths[i:i + batch_size]
+        print(f"Processing batch {i // batch_size + 1} with {len(batch_paths)} files...")
+        
+        try:
+            embeddings = get_embeddings(clap_model, batch_paths)
+            
+            for filepath, embedding in zip(batch_paths, embeddings):
+                filename = os.path.basename(filepath)
+                _, videoID, _ = split_text_info(filename)
+                
                 audio_embedding = AudioEmbedding(
                     filename=filename,
-                    videoID=videoID,
-                    audio=audio_tensor.tolist(),
-                    vector=embeddings.tolist(),
+                    video_id=videoID,
+                    embedding=embedding,
                 )
-                print("AUDIO EMBEDDING")
-                print(audio_embedding)
-                return
-                session.add(audio_embedding)
-                session.commit()
-                print(f"Stored embeddings for {filename}.")
+                try:
+                    session.add(audio_embedding)
+                    session.commit()
+                    print(f"Stored embeddings for {filename}.")
+                except Exception as e:
+                    print(f"Error commiting change to DB for {filename}, batch {i // batch_size + 1}: {e}")
+                    session.rollback()
+        except Exception as e:
+            print(f"Error processing batch {i // batch_size + 1}: {e}")
 
-            except Exception as e:
-                print(f"Error processing {filename}: {e}")
-
-
-#process_and_store_audio_files(AUDIO_DIR)
-embeddings = get_embeddings(clap_model, audio_paths[:2])
-print(len(embeddings))
-print(embeddings[0], embeddings[0].shape)
+process_and_store_audio_files_in_batches(AUDIO_DIR, batch_size=50)
 session.close()
