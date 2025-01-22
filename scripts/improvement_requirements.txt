@@ -1,0 +1,10 @@
+librosa
+pgvector
+psycopg2-binary
+ipython
+pandas
+python-dotenv
+tqdm
+ipykernel
+ipywidgets
+tensorflow[and-cuda]

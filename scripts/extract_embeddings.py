@@ -81,7 +81,7 @@ def process_and_store_audio_files_in_batches(audio_dir, batch_size=10):
     # Process audio files in batches with progress bar
     for i in tqdm(range(0, len(audio_paths), batch_size), desc="Processing batches"):
         batch_num = i // batch_size + 1
-        if batch_num < 83:
+        if batch_num < 490:
             continue
         batch_paths = audio_paths[i:i + batch_size]
         print(f"Processing batch {i // batch_size + 1} with {len(batch_paths)} files...")

@@ -5,4 +5,4 @@ laion-clap
 pgvector
 SQLAlchemy
 torchvision
-psycopg2-binary  
+psycopg2-binary
