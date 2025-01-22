@@ -8,3 +8,4 @@ tqdm
 ipykernel
 ipywidgets
 tensorflow[and-cuda]
+essentia-tensorflow
