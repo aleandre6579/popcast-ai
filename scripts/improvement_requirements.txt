@@ -9,3 +9,7 @@ ipykernel
 ipywidgets
 tensorflow[and-cuda]
 essentia-tensorflow
+torch
+torchvision
+laion-clap
+SQLAlchemy

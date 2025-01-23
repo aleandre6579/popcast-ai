@@ -4,9 +4,9 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from dotenv import load_dotenv
 import librosa
 import os
-import torch
 import laion_clap
 from tqdm import tqdm
+import torch
 
 # Constants
 load_dotenv(dotenv_path="../.env")
@@ -16,16 +16,6 @@ POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
 DATABASE_URL = f"postgresql://user:{POSTGRES_PASSWORD}@45.149.206.230:5432/popcastdb"
 CLAP_MODEL_PATH = "./models/music_audioset_epoch_15_esc_90.14.pt"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-class CLAPModel(torch.nn.Module):
-    def __init__(self):
-        super(CLAPModel, self).__init__()
-        # Define the layers or architecture here
-        pass
-
-    def forward(self, x):
-        # Define the forward pass here
-        pass
 
 # Database Tables
 Base = declarative_base()
@@ -70,9 +60,8 @@ def preprocess_audio(audio_path, sample_rate=48000):
         raise ValueError(f"Audio sample rate {sr} doesn't match required rate {sample_rate}.")
     return audio
 
-def get_embeddings(model, audio_paths):
-    with torch.no_grad():
-        embeddings = model.get_audio_embedding_from_filelist(audio_paths, use_tensor=False)
+def get_embedding(model, audio_paths):
+    embeddings = model.get_audio_embedding_from_filelist(audio_paths, use_tensor=False)
     return embeddings
 
 def process_and_store_audio_files_in_batches(audio_dir, batch_size=10):
@@ -81,13 +70,13 @@ def process_and_store_audio_files_in_batches(audio_dir, batch_size=10):
     # Process audio files in batches with progress bar
     for i in tqdm(range(0, len(audio_paths), batch_size), desc="Processing batches"):
         batch_num = i // batch_size + 1
-        if batch_num < 490:
+        if batch_num < 921:
             continue
         batch_paths = audio_paths[i:i + batch_size]
         print(f"Processing batch {i // batch_size + 1} with {len(batch_paths)} files...")
         
         try:
-            embeddings = get_embeddings(clap_model, batch_paths)
+            embeddings = get_embedding(clap_model, batch_paths)
             
             for filepath, embedding in zip(batch_paths, embeddings):
                 filename = os.path.basename(filepath)

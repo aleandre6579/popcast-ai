@@ -11,6 +11,11 @@ import librosa
 import pandas as pd
 import numpy as np
 from psycopg2.extras import DictCursor
+import laion_clap
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base, sessionmaker
+from pgvector.sqlalchemy import Vector
+import torch
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Suppress TensorFlow logs
 import tensorflow as tf
@@ -43,16 +48,17 @@ from essentia.standard import (
     MelBands,
 )
 
-###
+####
 # Constants
-###
+####
+
 load_dotenv(dotenv_path="../.env")
 load_dotenv()
 AUDIO_DIR = os.getenv('DOWNLOAD_FOLDER')
 POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
 DATABASE_URL = f"postgresql://user:{POSTGRES_PASSWORD}@45.149.206.230:5432/popcastdb"
 CLAP_MODEL_PATH = "./models/music_audioset_epoch_15_esc_90.14.pt"
-DEVICE = "/GPU:0" if tf.config.list_physical_devices('GPU') else "/CPU:0"
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DOWNLOAD_FOLDER = os.getenv('DOWNLOAD_FOLDER')
 CPU_THREADS = int(os.getenv("CPU_THREADS"))
 MODELS_PATH = "./models"
@@ -79,15 +85,48 @@ with open("data/mtg_jamendo_instrument-discogs-effnet-1.json", "r") as jamendo_f
     jamendo_instrument_metadata = json.load(jamendo_file)
 jamendo_instrument_classes = jamendo_instrument_metadata["classes"]
 
-# Configure TensorFlow to use GPU efficiently
-gpus = tf.config.list_physical_devices("GPU")
-if gpus:
-    for gpu in gpus:
-        tf.config.experimental.set_memory_growth(gpu, True)
+####
+#  DB
+####
 
-###
+engine = create_engine(DATABASE_URL)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+Base = declarative_base()
+
+class UserAudio(Base):
+    __tablename__ = "user_audio"
+    id = Column(Integer, primary_key=True)
+    viewcount = Column(Integer, nullable=False)
+    embedding = Column(Vector(512), nullable=False)
+
+def get_song(video_id: str):
+    song_query = """
+        SELECT *
+        FROM songs
+        WHERE video_id = %s;
+    """
+    cursor.execute(song_query, (video_id,))
+    return cursor.fetchone()
+
+def insert_user_audio(embedding, viewcount) -> UserAudio:
+    try:
+        new_entry = UserAudio(
+            viewcount=viewcount,
+            embedding=embedding,
+        )
+        session.add(new_entry)
+        session.commit()
+        return new_entry
+    except Exception as e:
+        session.rollback()
+        print(f"Error inserting embedding: {e}")
+
+####
 # Essentia Functions
-###
+####
+
 def get_mel_bands(audio):
     spectrum = Spectrum()
     frame_generator = FrameGenerator(audio, frameSize=2048, hopSize=1024)
@@ -307,104 +346,144 @@ def run_essentia_models(audio44k):
 
     return features
 
-def extract_audio_features(audio_file):
-    audio44k = MonoLoader(filename=audio_file)()
+def extract_audio_features(audio):
+    #audio44k = MonoLoader(filename=audio_file)()
     
-    algorithm_features = run_essentia_algorithms(audio44k)
-    model_features = run_essentia_models(audio44k)
+    algorithm_features = run_essentia_algorithms(audio)
+    model_features = run_essentia_models(audio)
     
     return algorithm_features | model_features
 
-###
-# Other Functions
-###
-def predict_viewcount(video_id: str) -> int:
-    pass
+####
+#  CLAP Functions
+####
 
-def get_similar_songs(video_id: str) -> dict:
-    original_song_query = """
-        SELECT video_id, filename 
-        FROM audio_embeddings 
-        WHERE video_id = %s;
-    """
-    
+def load_clap_model(model_path):
+    model = laion_clap.CLAP_Module(enable_fusion=False, device=DEVICE, amodel='HTSAT-base')
+    model.load_ckpt('models/music_audioset_epoch_15_esc_90.14.pt')
+    return model
+
+clap_model = load_clap_model(CLAP_MODEL_PATH)
+
+def get_clap_embedding(audio):
+    audio = audio.reshape(1, -1)
+    embedding = clap_model.get_audio_embedding_from_data(x=audio, use_tensor=False)
+    return embedding
+
+####
+# Other Functions
+####
+
+def predict_viewcount(audio) -> int:
+    return 100
+
+def get_similar_songs(user_audio: UserAudio, similar_num=10) -> dict:
     similar_songs_query = """
         WITH target_embedding AS (
             SELECT embedding 
-            FROM audio_embeddings 
-            WHERE video_id = %s
+            FROM user_audio 
+            WHERE id = %s
         )
-        SELECT video_id, filename, 
-            1 - (embedding <=> (SELECT embedding FROM target_embedding)) AS similarity
-        FROM audio_embeddings
-        WHERE video_id != %s
+        SELECT ae.video_id, ae.filename, 
+            1 - (ae.embedding <=> (SELECT embedding FROM target_embedding)) AS similarity
+        FROM audio_embeddings ae
         ORDER BY similarity DESC
-        LIMIT 10;
+        LIMIT %s;
     """
 
     try:
-        # Fetch original song details
-        cursor.execute(original_song_query, (video_id,))
-        original_song = cursor.fetchone()
-
         # Fetch similar songs
-        cursor.execute(similar_songs_query, (video_id, video_id))
+        cursor.execute(similar_songs_query, (user_audio.id, similar_num))
         similar_songs = [{"video_id": row[0], "filename": row[1], "similarity": row[2]} for row in cursor.fetchall()]
 
-        return {
-            "original": {"video_id": original_song[0], "filename": original_song[1]},
-            "similar_songs": similar_songs
-        }
+        return similar_songs
 
     except Exception as e:
         print("Error:", e)
         return None
 
-
-def get_features(audio) -> dict:
-    pass
-
-def get_feature_differences(audio_features, video_id: str) -> dict:
-    min_max_query = """
-        SELECT 
-            MIN(danceability) AS min_danceability, MAX(danceability) AS max_danceability,
-            MIN(loudness) AS min_loudness, MAX(loudness) AS max_loudness,
-            MIN(energy) AS min_energy, MAX(energy) AS max_energy
-        FROM songs;
-    """
-    cursor.execute(min_max_query)
-    min_max_result = cursor.fetchone()
-    
-    min_danceability, max_danceability = min_max_result['min_danceability'], min_max_result['max_danceability']
-    min_loudness, max_loudness = min_max_result['min_loudness'], min_max_result['max_loudness']
-    min_energy, max_energy = min_max_result['min_energy'], min_max_result['max_energy']
+def get_feature_differences(user_audio_features, video_id: str) -> dict:
+    db_features = [
+        "danceability_normalized",
+        "loudness_normalized",
+        "bpm",
+        "energy_normalized",
+        "inharmonicity_normalized",
+        "timbre_normalized",
+        "onset_rate",
+        "brightness_normalized",
+        "dynamic_complexity_normalized",
+        "novelty_normalized",
+        "approachability_normalized",
+        "engagement_normalized",
+        "valence_normalized",
+        "arousal_normalized",
+        "aggressive_normalized",
+        "happy_normalized",
+        "party_normalized",
+        "relaxed_normalized",
+        "sad_normalized",
+        "acoustic_normalized",
+        "electronic_normalized",
+        "voice_normalized",
+        "instrumental_normalized",
+        "female_normalized",
+        "male_normalized",
+        "bright_normalized",
+        "dark_normalized",
+        "dry_normalized",
+        "wet_normalized",
+    ]
 
     def normalize(value, min_val, max_val):
         return (value - min_val) / (max_val - min_val) if max_val > min_val else 0
+
+    user_audio_features_normalized = {}
+    for feature in db_features:
+        if 'normalized' not in feature:
+            user_audio_features_normalized[feature] = user_audio_features[feature]
+            continue
+
+        feature_no_suffix = feature.removesuffix('_normalized')
+        min_max_query = f"""
+            SELECT
+                MIN({feature_no_suffix}) AS feature_min, MAX({feature_no_suffix}) AS feature_max
+            FROM songs;
+        """
+
+        cursor.execute(min_max_query)
+        min_max_result = cursor.fetchone()
+        
+        feature_min, feature_max = min_max_result['feature_min'], min_max_result['feature_max']
+
+        feature_normalized = normalize(user_audio_features[feature_no_suffix], feature_min, feature_max)
+        user_audio_features_normalized[feature] = feature_normalized
+
+    db_song = get_song(video_id)
+
+    feature_differences = {}
+    for feature in user_audio_features_normalized:
+        if not user_audio_features_normalized[feature] or not db_song[feature]:
+            continue
+        feature_differences[feature] = abs(user_audio_features_normalized[feature] - db_song[feature])
+
+    return feature_differences
+
+def improve_audio(audio):
+    audio_embedding = get_clap_embedding(audio)
+    viewcount = predict_viewcount(audio)
+    user_audio = insert_user_audio(audio_embedding, viewcount)
+
+    similar_songs = get_similar_songs(user_audio, similar_num=3)
+    user_song_features = extract_audio_features(audio)
+
+    similar_songs_features = {}
+    for similar_song in similar_songs:
+        feature_differences = [get_feature_differences(user_song_features, similar_song['video_id']) for similar_song in similar_songs]
+        db_song = get_song(similar_song['video_id'])
+        similar_songs_features[similar_song['video_id']] = {'features': db_song, 'feature_differences': feature_differences}
     
-    normalized_features = {
-        'danceability': normalize(user_song_features['danceability'], min_danceability, max_danceability),
-        'loudness': normalize(user_song_features['loudness'], min_loudness, max_loudness),
-        'energy': normalize(user_song_features['energy'], min_energy, max_energy),
-    }
-
-
-    song_query = """
-        SELECT *
-        FROM songs
-        WHERE video_id = %s;
-    """
-    cursor.execute(song_query, (video_id,))
-    song = cursor.fetchone()
-    differences = {
-        feature: abs(normalized_features[feature] - song[feature+'_normalized'])
-        for feature in normalized_features
-    }   
-    print(f'''
-        Danceability: User {normalized_features["danceability"]}, Stored {song["danceability_normalized"]}, Difference {differences["danceability"]}
-        Loudness: User {normalized_features["loudness"]}, Stored {song["loudness_normalized"]}, Difference {differences["loudness"]}
-        Energy: User {normalized_features["energy"]}, Stored {song["energy_normalized"]}, Difference {differences["energy"]}
-    ''')
+    return similar_songs_features
 
 def play_audio(file_path):
     try:
@@ -435,19 +514,16 @@ def create_audio_player(song_data):
 
     root.mainloop()
 
-
-###
+####
 # Main Code
-###
+####
+
 video_id = "LlWGt_84jpg"
 audio_path = DOWNLOAD_FOLDER + '/0^LlWGt_84jpg^Special Breed.mp3'
+audio, _ = librosa.load(audio_path, sr=48000)
 
-similar_songs = get_similar_songs(video_id)
-if similar_songs and False:
-    create_audio_player(similar_songs)
-
-user_song_features = extract_audio_features(audio_path)
-[get_feature_differences(user_song_features, similar_song['video_id']) for similar_song in similar_songs['similar_songs']]
+similar_songs_features = improve_audio(audio)
+print(similar_songs_features)
 
 cursor.close()
 conn.close()
