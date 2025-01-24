@@ -440,11 +440,17 @@ def get_feature_differences(user_audio_features, video_id: str) -> dict:
 
     user_audio_features_normalized = {}
     for feature in db_features:
+        feature_no_suffix = feature.removesuffix('_normalized')
+
+        if not user_audio_features[feature_no_suffix]:
+            continue
+
+        # If feature is not marked as 'normalized', just store the value 
         if 'normalized' not in feature:
             user_audio_features_normalized[feature] = user_audio_features[feature]
             continue
 
-        feature_no_suffix = feature.removesuffix('_normalized')
+        # Else, normalize it and store the normalized value
         min_max_query = f"""
             SELECT
                 MIN({feature_no_suffix}) AS feature_min, MAX({feature_no_suffix}) AS feature_max
@@ -465,14 +471,14 @@ def get_feature_differences(user_audio_features, video_id: str) -> dict:
     for feature in user_audio_features_normalized:
         if not user_audio_features_normalized[feature] or not db_song[feature]:
             continue
-        feature_differences[feature] = abs(user_audio_features_normalized[feature] - db_song[feature])
+        feature_differences[feature] = user_audio_features_normalized[feature] - db_song[feature]
 
     return feature_differences
 
 def improve_audio(audio):
     audio_embedding = get_clap_embedding(audio)
     viewcount = predict_viewcount(audio)
-    user_audio = insert_user_audio(audio_embedding, viewcount)
+    user_audio = insert_user_audio(audio_embedding[0], viewcount)
 
     similar_songs = get_similar_songs(user_audio, similar_num=3)
     user_song_features = extract_audio_features(audio)
