@@ -2,30 +2,48 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-import torchaudio
 import torchaudio.transforms as transforms
 import psycopg2
 import pandas as pd
 import numpy as np
 from dotenv import load_dotenv
 import os
+from pgvector.psycopg2 import register_vector
+from psycopg2.extras import DictCursor
+from torch_audiomentations import Compose, Gain, PolarityInversion
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 # Load environment variables
 load_dotenv()
-DB_HOST = os.getenv("DB_HOST")
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
+load_dotenv(dotenv_path="../.env")
 
 # Check if CUDA is available
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using {DEVICE} device")
 
-# Connect to PostgreSQL once and reuse connection
-def get_db_connection():
-    return psycopg2.connect(host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASSWORD)
+# Database Connection
+POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
+DATABASE_URL = f"postgresql://user:{POSTGRES_PASSWORD}@45.149.206.230:5432/popcastdb"
+DB_CONFIG = {
+    "host": '45.149.206.230',
+    "dbname": os.getenv('POSTGRES_DB'),
+    "user": os.getenv('POSTGRES_USER'),
+    "password": POSTGRES_PASSWORD,
+    "port": 5432
+}
 
-db_connection = get_db_connection()
+db_connection = psycopg2.connect(**DB_CONFIG)
+register_vector(db_connection)
+cursor = db_connection.cursor(cursor_factory=DictCursor)
+
+engine = create_engine(DATABASE_URL)
+
+
+# Function to fetch songs data from the database
+def fetch_songs_df():
+    query = "SELECT video_id, views FROM songs"
+    return pd.read_sql(query, engine)
 
 # Function to fetch audio embeddings from the database
 def fetch_embedding(video_id):
@@ -43,13 +61,13 @@ def fetch_embedding(video_id):
 
 # Define data augmentation transformations
 class AudioAugmentations:
-    def __init__(self, sample_rate=22050):
+    def __init__(self, sample_rate=48100):
         self.sample_rate = sample_rate
         self.transforms = [
             transforms.TimeStretch(),
             transforms.PitchShift(sample_rate, n_steps=2),
             lambda x: x + 0.005 * torch.randn_like(x),
-            transforms.Reverberate()
+            lambda x: F.convolve(x, torch.randn(1, 1, 4000) * 0.1)  # Simulate reverberation with random impulse response
         ]
     
     def augment(self, audio_tensor):
@@ -60,16 +78,27 @@ class AudioAugmentations:
                 augmented_audio = transform(augmented_audio)
         augmented_samples.append(augmented_audio)
         return augmented_samples
+    
+# Initialize augmentation callable
+apply_augmentation = Compose(
+    transforms=[
+        Gain(
+            min_gain_in_db=-15.0,
+            max_gain_in_db=5.0,
+            p=0.5,
+        ),
+        PolarityInversion(p=0.5)
+    ]
+)
 
-augmentations = AudioAugmentations()
+audioAugmentations = AudioAugmentations()
 
 # Custom Dataset with Augmentations
 class AudioEmbeddingDataset(Dataset):
     def __init__(self, songs_df, augment=False):
         self.songs_df = songs_df
-        self.video_ids = songs_df['videoID'].tolist()
+        self.video_ids = songs_df['video_id'].tolist()
         self.view_counts = songs_df['views'].tolist()
-        self.augment = augment
 
     def __len__(self):
         return len(self.video_ids)
@@ -83,7 +112,10 @@ class AudioEmbeddingDataset(Dataset):
         targets = [torch.tensor(self.view_counts[idx], dtype=torch.float32).to(DEVICE)]
         embeddings = [embedding_tensor]
         if self.augment:
-            augmented_embeddings = augmentations.augment(embedding_tensor)
+
+            apply_augmentation(audio_samples, sample_rate=16000)
+
+            augmented_embeddings = audioAugmentations.augment(embedding_tensor)
             embeddings.extend(augmented_embeddings)
             targets.extend([targets[0]] * len(augmented_embeddings))
         return torch.stack(embeddings), torch.stack(targets)
@@ -120,10 +152,16 @@ def train_model(model, dataloader, epochs=10, learning_rate=0.001):
             total_loss += loss.item()
         print(f"Epoch [{epoch+1}/{epochs}], Loss: {total_loss / len(dataloader):.4f}")
 
-# Load data
-songs_df = pd.read_csv('/mnt/d/AlexStuff/songs_data_full.csv', index_col=0)
+
+audio_path = '/mnt/f/AlexStuff/Songs/0^LlWGt_84jpg^Special Breed.mp3'
+
+# Load data from PostgreSQL
+songs_df = fetch_songs_df()
+
+print(songs_df[:20])
+
 dataset = AudioEmbeddingDataset(songs_df, augment=True)
-dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
+dataloader = DataLoader(dataset, batch_size=50, shuffle=True)
 
 # Instantiate model
 lstm = LSTM(input_size=512).to(DEVICE)
